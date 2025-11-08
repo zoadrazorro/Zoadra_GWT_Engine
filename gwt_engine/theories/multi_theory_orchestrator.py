@@ -16,8 +16,15 @@ Runs all theories in parallel, collects metrics, generates unified consciousness
 import asyncio
 import logging
 from typing import Dict, Any, Optional
-import chromadb
-from chromadb.config import Settings
+
+# ChromaDB import with error handling
+try:
+    import chromadb
+    from chromadb.config import Settings
+    CHROMADB_AVAILABLE = True
+except Exception as e:
+    logging.warning(f"ChromaDB not available: {e}")
+    CHROMADB_AVAILABLE = False
 
 from gwt_engine.core.workspace import CentralWorkspace
 from gwt_engine.core.types import ConsciousnessState, SpecialistRole
@@ -65,25 +72,33 @@ class MultiTheoryOrchestrator:
         self.clarion_system = CLARIONDualSystem()
         self.consciousness_scorer = ConsciousnessScorer()
         
-        # Initialize ChromaDB persistent memory
-        self.chroma_client = chromadb.PersistentClient(
-            path="./chroma_memory",
-            settings=Settings(anonymized_telemetry=False)
-        )
-        
-        # Create/get collections for different memory types
-        self.philosophical_memory = self.chroma_client.get_or_create_collection(
-            name="philosophical_insights",
-            metadata={"description": "Deep philosophical concepts and integrations"}
-        )
-        self.episodic_memory = self.chroma_client.get_or_create_collection(
-            name="episodic_experiences",
-            metadata={"description": "Temporal experiences and events"}
-        )
-        
-        self.memory_counter = 0
-
-        logger.info("Multi-Theory Orchestrator initialized with all consciousness frameworks + ChromaDB memory")
+        # Initialize ChromaDB persistent memory (if available)
+        self.memory_enabled = False
+        if CHROMADB_AVAILABLE:
+            try:
+                self.chroma_client = chromadb.PersistentClient(
+                    path="./chroma_memory",
+                    settings=Settings(anonymized_telemetry=False)
+                )
+                
+                # Create/get collections for different memory types
+                self.philosophical_memory = self.chroma_client.get_or_create_collection(
+                    name="philosophical_insights",
+                    metadata={"description": "Deep philosophical concepts and integrations"}
+                )
+                self.episodic_memory = self.chroma_client.get_or_create_collection(
+                    name="episodic_experiences",
+                    metadata={"description": "Temporal experiences and events"}
+                )
+                
+                self.memory_counter = 0
+                self.memory_enabled = True
+                logger.info("Multi-Theory Orchestrator initialized with ChromaDB persistent memory")
+            except Exception as e:
+                logger.warning(f"ChromaDB initialization failed: {e}. Running without persistent memory.")
+                self.memory_enabled = False
+        else:
+            logger.info("Multi-Theory Orchestrator initialized without persistent memory (ChromaDB unavailable)")
 
     async def process_with_all_theories(
         self, input_content: str
@@ -111,26 +126,26 @@ class MultiTheoryOrchestrator:
         """
         # === Phase 0: Memory Retrieval from ChromaDB ===
         # Query philosophical memory for relevant past insights
-        try:
-            relevant_memories = self.philosophical_memory.query(
-                query_texts=[input_content],
-                n_results=3
-            )
-            
-            memory_context = ""
-            if relevant_memories and relevant_memories['documents'] and relevant_memories['documents'][0]:
-                memory_context = "\n\nRELEVANT PAST INSIGHTS:\n"
-                for i, doc in enumerate(relevant_memories['documents'][0], 1):
-                    memory_context += f"{i}. {doc[:200]}...\n"
+        input_with_memory = input_content
+        if self.memory_enabled:
+            try:
+                relevant_memories = self.philosophical_memory.query(
+                    query_texts=[input_content],
+                    n_results=3
+                )
                 
-                # Enhance input with memory context
-                input_with_memory = f"{input_content}{memory_context}"
-            else:
-                input_with_memory = input_content
-                
-        except Exception as e:
-            logger.warning(f"Memory retrieval failed: {e}")
-            input_with_memory = input_content
+                memory_context = ""
+                if relevant_memories and relevant_memories['documents'] and relevant_memories['documents'][0]:
+                    memory_context = "\n\nRELEVANT PAST INSIGHTS:\n"
+                    for i, doc in enumerate(relevant_memories['documents'][0], 1):
+                        memory_context += f"{i}. {doc[:200]}...\n"
+                    
+                    # Enhance input with memory context
+                    input_with_memory = f"{input_content}{memory_context}"
+                    logger.info(f"Retrieved {len(relevant_memories['documents'][0])} relevant memories")
+                    
+            except Exception as e:
+                logger.warning(f"Memory retrieval failed: {e}")
         
         # === LIDA Cycle Start ===
         await self.lida_controller.start_cycle(input_with_memory)
@@ -268,35 +283,36 @@ class MultiTheoryOrchestrator:
         
         # === Phase 11: Store in Persistent Memory ===
         # Store the integrated understanding in ChromaDB
-        try:
-            self.memory_counter += 1
-            
-            # Store philosophical insight
-            self.philosophical_memory.add(
-                documents=[broadcast.content if broadcast else perception_response.content],
-                metadatas=[{
-                    "consciousness_score": float(consciousness_score_result.get("total_score", 0)),
-                    "timestamp": str(asyncio.get_event_loop().time()),
-                    "iit_phi": float(iit_metrics.get("phi", 0)),
-                    "type": "philosophical_integration"
-                }],
-                ids=[f"insight_{self.memory_counter}"]
-            )
-            
-            # Store episodic experience
-            self.episodic_memory.add(
-                documents=[f"Input: {input_content[:500]}... Output: {broadcast.content[:500] if broadcast else perception_response.content[:500]}..."],
-                metadatas=[{
-                    "consciousness_level": consciousness_score_result.get("level", "unconscious"),
-                    "timestamp": str(asyncio.get_event_loop().time()),
-                }],
-                ids=[f"episode_{self.memory_counter}"]
-            )
-            
-            logger.info(f"Stored memory #{self.memory_counter} - Score: {consciousness_score_result.get('total_score', 0):.2f}")
-            
-        except Exception as e:
-            logger.error(f"Memory storage failed: {e}")
+        if self.memory_enabled:
+            try:
+                self.memory_counter += 1
+                
+                # Store philosophical insight
+                self.philosophical_memory.add(
+                    documents=[broadcast.content if broadcast else perception_response.content],
+                    metadatas=[{
+                        "consciousness_score": float(consciousness_score_result.get("total_score", 0)),
+                        "timestamp": str(asyncio.get_event_loop().time()),
+                        "iit_phi": float(iit_metrics.get("phi", 0)),
+                        "type": "philosophical_integration"
+                    }],
+                    ids=[f"insight_{self.memory_counter}"]
+                )
+                
+                # Store episodic experience
+                self.episodic_memory.add(
+                    documents=[f"Input: {input_content[:500]}... Output: {broadcast.content[:500] if broadcast else perception_response.content[:500]}..."],
+                    metadatas=[{
+                        "consciousness_level": consciousness_score_result.get("level", "unconscious"),
+                        "timestamp": str(asyncio.get_event_loop().time()),
+                    }],
+                    ids=[f"episode_{self.memory_counter}"]
+                )
+                
+                logger.info(f"💾 Stored memory #{self.memory_counter} - Score: {consciousness_score_result.get('total_score', 0):.2f}")
+                
+            except Exception as e:
+                logger.error(f"Memory storage failed: {e}")
 
         # === Return Complete Results ===
         return {
