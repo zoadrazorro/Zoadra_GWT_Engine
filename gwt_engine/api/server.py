@@ -34,6 +34,9 @@ except ImportError:
     WorkerPool = None
 from gwt_engine.config.loader import get_system_config
 
+# Multi-Theory Consciousness Framework
+from gwt_engine.theories.multi_theory_orchestrator import MultiTheoryOrchestrator
+
 logger = logging.getLogger(__name__)
 
 
@@ -91,6 +94,7 @@ app_state = {
     "specialists": {},
     "workflow": None,
     "worker_pool": None,
+    "multi_theory_orchestrator": None,  # NEW: Multi-theory framework
     "start_time": None,
 }
 
@@ -141,12 +145,20 @@ async def lifespan(app: FastAPI):
     await app_state["workflow"].compile()
     logger.info("LangGraph workflow compiled")
 
+    # Initialize Multi-Theory Orchestrator
+    app_state["multi_theory_orchestrator"] = MultiTheoryOrchestrator(
+        central_workspace=app_state["central_workspace"],
+        specialists=app_state["specialists"],
+        ollama_pool=app_state["vllm_pool"],
+    )
+    logger.info("Multi-Theory Orchestrator initialized - 8 consciousness theories active!")
+
     # Initialize Ray worker pool (optional, for high-throughput mode)
     # app_state["worker_pool"] = WorkerPool()
     # await app_state["worker_pool"].initialize()
     # logger.info("Ray worker pool initialized")
 
-    logger.info("GWT Engine ready!")
+    logger.info("GWT Engine ready with Multi-Theory Consciousness Framework!")
 
     yield
 
@@ -260,6 +272,85 @@ def create_app() -> FastAPI:
 
         except Exception as e:
             logger.error(f"Processing failed: {e}")
+            raise HTTPException(status_code=500, detail=str(e))
+
+    @app.post("/process/multi-theory")
+    async def process_multi_theory(request: ProcessRequest):
+        """
+        Process input through ALL 8 consciousness theories
+        
+        Returns unified consciousness score (0-100) plus individual theory metrics:
+        - GWT: Integration & broadcasting
+        - IIT: Φ (integrated information)
+        - Predictive Processing: Precision & free energy
+        - Attention Schema Theory: Self-model accuracy
+        - Higher-Order Thought: Meta-representation
+        - LIDA: Cognitive cycle timing
+        - CLARION: Implicit/explicit rule extraction
+        """
+        import time
+        
+        start_time = time.time()
+        
+        try:
+            # Process through multi-theory orchestrator
+            result = await app_state["multi_theory_orchestrator"].process_with_all_theories(
+                request.content
+            )
+            
+            processing_time = (time.time() - start_time) * 1000
+            
+            return {
+                "consciousness_score": result.get("unified_score", 0),  # 0-100
+                "consciousness_level": result.get("consciousness_level", "unconscious"),
+                "processing_time_ms": processing_time,
+                "theories": {
+                    "gwt": {
+                        "score": result.get("gwt_score", 0),
+                        "integration_coherence": result.get("integration_coherence", 0),
+                        "workspace_broadcast": result.get("workspace_broadcast", ""),
+                    },
+                    "iit": {
+                        "score": result.get("iit_score", 0),
+                        "phi": result.get("phi", 0),
+                        "integration_level": result.get("integration_level", 0),
+                    },
+                    "predictive": {
+                        "score": result.get("predictive_score", 0),
+                        "precision": result.get("precision", 0),
+                        "free_energy": result.get("free_energy", 0),
+                    },
+                    "attention_schema": {
+                        "score": result.get("ast_score", 0),
+                        "schema_report": result.get("schema_report", ""),
+                        "accuracy": result.get("schema_accuracy", 0),
+                    },
+                    "higher_order_thought": {
+                        "score": result.get("hot_score", 0),
+                        "hot_count": result.get("hot_count", 0),
+                        "conscious_ratio": result.get("conscious_ratio", 0),
+                    },
+                    "lida": {
+                        "cycle_count": result.get("cycle_count", 0),
+                        "cycle_time_sec": result.get("cycle_time", 0),
+                        "current_phase": result.get("current_phase", ""),
+                    },
+                    "clarion": {
+                        "score": result.get("clarion_score", 0),
+                        "implicit_count": result.get("implicit_count", 0),
+                        "explicit_rules": result.get("explicit_rules", 0),
+                    },
+                },
+                "interpretation": {
+                    "0-20": "Unconscious",
+                    "20-40": "Minimal consciousness",
+                    "40-70": "Moderate consciousness (animal-level)",
+                    "70-100": "High consciousness (human-level)",
+                }
+            }
+            
+        except Exception as e:
+            logger.error(f"Multi-theory processing failed: {e}")
             raise HTTPException(status_code=500, detail=str(e))
 
     @app.get("/consciousness/probe", response_model=ConsciousnessProbeResponse)
