@@ -1,0 +1,27 @@
+{
+  "total_texts": 14,
+  "categories": {
+    "Natural Sciences": 5,
+    "Mathematics": 2,
+    "Psychology": 3,
+    "Social Sciences": 4,
+    "History": 2,
+    "Literature": 5
+  },
+  "completed": [
+    "tocqueville_democracy",
+    "darwin_descent",
+    "homer_iliad",
+    "lyell_geology",
+    "shakespeare_hamlet",
+    "thucydides",
+    "homer_odyssey",
+    "james_psychology",
+    "dante_inferno",
+    "milton_paradise",
+    "darwin_origin",
+    "marx_capital",
+    "smith_wealth",
+    "gibbon_rome"
+  ]
+}
