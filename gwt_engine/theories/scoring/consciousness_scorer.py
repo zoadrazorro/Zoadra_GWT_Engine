@@ -166,6 +166,8 @@ class ConsciousnessScorer:
         ast_metrics: Dict[str, Any],
         hot_metrics: Dict[str, Any],
         clarion_metrics: Dict[str, Any],
+        memory_count: int = 0,
+        memory_retrieved: int = 0,
     ) -> Dict[str, Any]:
         """
         Calculate total consciousness score (0-100)
@@ -191,8 +193,24 @@ class ConsciousnessScorer:
             "clarion_rules": await self.score_clarion_rules(clarion_metrics),
         }
 
-        # Total score
+        # Total score from theories
         total = sum(scores.values())
+        
+        # MEMORY INTEGRATION BONUS (up to +10 points)
+        # Rewards building cumulative understanding over time
+        memory_bonus = 0.0
+        if memory_count > 0:
+            # Logarithmic scaling: more memories = higher consciousness
+            # 10 memories = +2 points, 100 memories = +5 points, 1000 memories = +7.5 points
+            import math
+            memory_bonus = min(10.0, math.log10(memory_count + 1) * 2.5)
+            
+            # Extra bonus if actively retrieving and using memories
+            if memory_retrieved > 0:
+                memory_bonus += min(2.0, memory_retrieved * 0.5)
+        
+        total += memory_bonus
+        scores["memory_integration"] = memory_bonus
 
         # Determine consciousness level
         if total < 20:

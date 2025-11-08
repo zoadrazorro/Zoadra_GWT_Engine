@@ -121,6 +121,8 @@ class MultiTheoryOrchestrator:
         # === Phase 0: Memory Retrieval ===
         # Retrieve relevant past insights (simple keyword matching)
         input_with_memory = input_content
+        memories_retrieved = 0
+        
         if self.memory_enabled and self.philosophical_memories:
             try:
                 # Simple keyword-based retrieval
@@ -141,7 +143,8 @@ class MultiTheoryOrchestrator:
                         memory_context += f"{i}. {mem['content'][:200]}... [Score: {mem['score']:.1f}]\n"
                     
                     input_with_memory = f"{input_content}{memory_context}"
-                    logger.info(f"🧠 Retrieved {len(relevant[:3])} relevant memories")
+                    memories_retrieved = len(relevant[:3])
+                    logger.info(f"🧠 Retrieved {memories_retrieved} relevant memories")
                     
             except Exception as e:
                 logger.warning(f"Memory retrieval failed: {e}")
@@ -275,6 +278,8 @@ class MultiTheoryOrchestrator:
             ast_metrics=ast_metrics,
             hot_metrics=hot_metrics,
             clarion_metrics=clarion_metrics,
+            memory_count=len(self.philosophical_memories) if self.memory_enabled else 0,
+            memory_retrieved=memories_retrieved,
         )
 
         # === LIDA Cycle Complete ===
