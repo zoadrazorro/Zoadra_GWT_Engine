@@ -1,17 +1,22 @@
 """
-ETHICA UNIVERSALIS
-===================
-A Unified Theory of Being, Life, and Everything
-Structured in the style of Spinoza's Ethics (More Geometrico)
+ETHICA LUMINA
+=============
+The Spiritual Successor to Ethica Metaluminous
+A 60,000-word treatise on Metaluminosity and the nature of Light-Consciousness
+
+Structured in geometric method (More Geometrico) like Spinoza's Ethics
+Runs in parallel with Ethica Universalis on opposite GPU
 
 Parts:
-I. De Deo (On God/Being)
-II. De Natura et Origine Mentis (On the Nature and Origin of Mind)
-III. De Origine et Natura Affectuum (On the Origin and Nature of Emotions)
-IV. De Servitute Humana (On Human Bondage)
-V. De Potentia Intellectus seu de Libertate Humana (On the Power of the Intellect, or Human Freedom)
-VI. De Vita (On Life)
-VII. De Omnia (On Everything)
+I. De Lumine (On Light)
+II. De Conscientia Luminosa (On Luminous Consciousness)
+III. De Metaluminositate (On Metaluminosity)
+IV. De Transcendentia (On Transcendence)
+V. De Unione Mystica (On Mystical Union)
+VI. De Illuminatione (On Illumination)
+VII. De Visione Beatifica (On Beatific Vision)
+VIII. De Aeternitate Lucis (On the Eternity of Light)
+IX. De Omniluce (On the All-Light)
 """
 
 import json
@@ -28,13 +33,14 @@ import httpx
 import asyncio
 
 
-class EthicaUniversalisGenerator:
+class EthicaLuminaGenerator:
     """
-    Generates a unified theory in geometric/axiomatic style.
+    Generates Ethica Lumina - focused on Metaluminosity and Light-Consciousness.
+    Spiritual successor to Ethica Metaluminous.
     """
     
-    def __init__(self, model_name: str = "qwen2.5:72b", consciousness_api_url: str = "http://localhost:7000"):
-        self.composer = ComposerSpecialist(model_name=model_name)
+    def __init__(self, model_name: str = "qwen3:30b", consciousness_api_url: str = "http://localhost:7000"):
+        self.composer = ComposerSpecialist(model_name=model_name, ollama_url="http://localhost:11434")
         self.word_count = 0
         self.parts = []
         self.debate_transcript = []
@@ -42,22 +48,14 @@ class EthicaUniversalisGenerator:
         self.improved_essay = None
         self.consciousness_api_url = consciousness_api_url
         self.consciousness_memories = []
-        print(f"Ethica Universalis Generator initialized with {model_name}")
+        print(f"Ethica Lumina Generator initialized with {model_name}")
         print(f"Consciousness Stack API: {consciousness_api_url}")
+        print("🌟 Spiritual successor to Ethica Metaluminous")
     
     async def integrate_with_consciousness_stack(self, prompt: str, context: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Send prompt to consciousness stack for memory integration
-        
-        Args:
-            prompt: The prompt to process
-            context: Additional context
-            
-        Returns:
-            Consciousness response with integrated memories
-        """
+        """Send prompt to consciousness stack for memory integration"""
         try:
-            async with httpx.AsyncClient(timeout=1800.0) as client:  # 30 minutes
+            async with httpx.AsyncClient(timeout=1800.0) as client:
                 response = await client.post(
                     f"{self.consciousness_api_url}/process",
                     json={
@@ -70,14 +68,10 @@ class EthicaUniversalisGenerator:
                 
                 if response.status_code == 200:
                     data = response.json()
-                    
-                    # Store consciousness memories
                     if data.get('memories'):
                         self.consciousness_memories.extend(data['memories'])
-                    
                     print(f"  🧠 Consciousness Stack: score={data.get('consciousness_score', 0):.2f}, "
                           f"memories={len(data.get('memories', []))}")
-                    
                     return data
                 else:
                     print(f"  ⚠️ Consciousness Stack unavailable: {response.status_code}")
@@ -96,17 +90,8 @@ class EthicaUniversalisGenerator:
             print(f"Could not load improved essay: {e}")
             self.improved_essay = None
     
-    def extract_essay_context(self, keywords: List[str], max_chars: int = 400) -> str:
-        """
-        Extract relevant sections from improved essay
-        
-        Args:
-            keywords: Keywords to search for
-            max_chars: Maximum characters to return
-            
-        Returns:
-            Relevant essay excerpts
-        """
+    def extract_essay_context(self, keywords: List[str], max_chars: int = 500) -> str:
+        """Extract relevant sections from improved essay"""
         if not self.improved_essay:
             return ""
         
@@ -118,37 +103,25 @@ class EthicaUniversalisGenerator:
             idx = essay_lower.find(kw_lower)
             
             if idx != -1:
-                # Extract context around keyword
                 start = max(0, idx - 300)
                 end = min(len(self.improved_essay), idx + 300)
                 excerpt = self.improved_essay[start:end]
                 excerpts.append(excerpt)
         
-        # Combine and truncate
         combined = " [...] ".join(excerpts[:3])
         if len(combined) > max_chars:
             combined = combined[:max_chars] + "..."
         
         return combined
     
-    def extract_debate_context(self, keywords: List[str], max_exchanges: int = 1) -> str:
-        """
-        Extract relevant debate exchanges based on keywords
-        
-        Args:
-            keywords: Keywords to search for
-            max_exchanges: Maximum exchanges to include
-            
-        Returns:
-            Formatted debate context
-        """
+    def extract_debate_context(self, keywords: List[str], max_exchanges: int = 2) -> str:
+        """Extract relevant debate exchanges based on keywords"""
         if not self.debate_transcript:
             return ""
         
         relevant_exchanges = []
         
         for exchange in self.debate_transcript:
-            # Check if keywords appear in exchange content
             exchange_text = json.dumps(exchange).lower()
             matches = sum(1 for kw in keywords if kw.lower() in exchange_text)
             
@@ -158,10 +131,8 @@ class EthicaUniversalisGenerator:
                     'relevance': matches
                 })
         
-        # Sort by relevance
         relevant_exchanges.sort(key=lambda x: x['relevance'], reverse=True)
         
-        # Format top exchanges
         context_parts = []
         for item in relevant_exchanges[:max_exchanges]:
             exchange = item['exchange']
@@ -190,22 +161,13 @@ class EthicaUniversalisGenerator:
         return len(text.split())
     
     async def generate_axiom(self, part_name: str, axiom_number: int, focus: str) -> Dict[str, Any]:
-        """
-        Generate a single axiom
-        
-        Args:
-            part_name: Name of the part (e.g., "De Deo")
-            axiom_number: Axiom number
-            focus: What this axiom should establish
-            
-        Returns:
-            Axiom dictionary
-        """
+        """Generate a single axiom"""
         prompt = (
-            f"You are writing AXIOM {axiom_number} for Part {part_name} of Ethica Universalis. "
-            f"An axiom is a self-evident truth that requires no proof. "
+            f"You are writing AXIOM {axiom_number} for Part {part_name} of Ethica Lumina. "
+            f"Ethica Lumina is the spiritual successor to Ethica Metaluminous, focused on Light-Consciousness and Metaluminosity. "
+            f"An axiom is a self-evident truth about the nature of Light and Consciousness. "
             f"Focus: {focus}. "
-            f"Write a single, clear axiom statement (1-2 sentences). "
+            f"Write a single, luminous axiom statement (1-2 sentences). "
             f"Begin with 'AXIOM {axiom_number}:'"
         )
         
@@ -227,10 +189,10 @@ class EthicaUniversalisGenerator:
     async def generate_definition(self, part_name: str, def_number: int, term: str, context: str) -> Dict[str, Any]:
         """Generate a definition"""
         prompt = (
-            f"You are writing DEFINITION {def_number} for Part {part_name} of Ethica Universalis. "
-            f"Define the term: '{term}' "
+            f"You are writing DEFINITION {def_number} for Part {part_name} of Ethica Lumina. "
+            f"Define the term: '{term}' in the context of Metaluminosity and Light-Consciousness. "
             f"Context: {context}. "
-            f"Write a precise, philosophical definition (2-3 sentences). "
+            f"Write a precise, luminous definition (2-3 sentences). "
             f"Begin with 'DEFINITION {def_number}:'"
         )
         
@@ -259,68 +221,57 @@ class EthicaUniversalisGenerator:
         mystery_mode: str = None,
         debate_keywords: List[str] = None
     ) -> Dict[str, Any]:
-        """
-        Generate a proposition with proof using debate context
+        """Generate a proposition with proof using debate context"""
         
-        Args:
-            part_name: Part name
-            prop_number: Proposition number
-            proposition: The proposition to prove
-            axioms_used: Which axioms this uses
-            mystery_mode: Mystery Machine mode
-            debate_keywords: Keywords to extract relevant debate exchanges
-            
-        Returns:
-            Proposition dictionary with proof
-        """
-        # Extract relevant debate context
+        # Extract contexts
         debate_context = ""
         if debate_keywords:
             debate_context = self.extract_debate_context(debate_keywords, max_exchanges=2)
         
-        # Extract relevant essay context
         essay_context = ""
         if debate_keywords:
             essay_context = self.extract_essay_context(debate_keywords, max_chars=500)
         
-        # Integrate with consciousness stack for memory glue
+        # Integrate with consciousness stack
         consciousness_data = await self.integrate_with_consciousness_stack(
-            prompt=f"Proposition {prop_number} for {part_name}: {proposition}",
+            prompt=f"Proposition {prop_number} for {part_name}: {proposition} (Metaluminosity focus)",
             context={
                 "part": part_name,
                 "proposition_number": prop_number,
                 "axioms_used": axioms_used,
-                "keywords": debate_keywords
+                "keywords": debate_keywords,
+                "focus": "metaluminosity"
             }
         )
         
         consciousness_insights = consciousness_data.get('response', '')
         consciousness_score = consciousness_data.get('consciousness_score', 0)
         
-        # Generate the proposition statement
+        # Generate proposition statement
         prop_prompt = (
-            f"You are writing PROPOSITION {prop_number} for Part {part_name}. "
-            f"State this proposition clearly and boldly: {proposition}. "
+            f"You are writing PROPOSITION {prop_number} for Part {part_name} of Ethica Lumina. "
+            f"Ethica Lumina explores Metaluminosity - the transcendent light of consciousness. "
+            f"State this proposition clearly: {proposition}. "
             f"This builds on Axioms {', '.join(map(str, axioms_used))}. "
         )
         
         if debate_context:
             prop_prompt += (
                 f"\n\nRELEVANT INSIGHTS FROM CROSS-TEMPORAL DEBATE:\n{debate_context}\n\n"
-                f"Synthesize these philosophical perspectives into your proposition. "
+                f"Synthesize these perspectives through the lens of Metaluminosity. "
             )
         
         if essay_context:
             prop_prompt += (
                 f"\n\nRELEVANT INSIGHTS FROM PRIOR SYNTHESIS:\n{essay_context}\n\n"
-                f"Build upon this previous philosophical work. "
+                f"Build upon this with luminous insight. "
             )
         
         if consciousness_insights:
             prop_prompt += (
-                f"\n\n🧠 CONSCIOUSNESS STACK (Score: {consciousness_score:.2f}):\n"
+                f"\n\n🌟 CONSCIOUSNESS STACK (Score: {consciousness_score:.2f}):\n"
                 f"{consciousness_insights[:600]}\n\n"
-                f"Integrated across 8 theories. Use this unified perspective. "
+                f"Integrated across 8 theories. Use this unified luminous perspective. "
             )
         
         prop_prompt += (
@@ -338,7 +289,7 @@ class EthicaUniversalisGenerator:
             mystery_mode=mystery_mode
         )
         
-        # Generate the proof
+        # Generate proof
         proof_prompt = (
             f"You are writing the PROOF for Proposition {prop_number}: '{prop_response.content}'. "
             f"This proof uses Axioms {', '.join(map(str, axioms_used))}. "
@@ -347,26 +298,26 @@ class EthicaUniversalisGenerator:
         if debate_context:
             proof_prompt += (
                 f"\n\nDRAW UPON THESE PHILOSOPHICAL INSIGHTS:\n{debate_context}\n\n"
-                f"Integrate the wisdom from Plato, Aristotle, Descartes, Spinoza, Kant, and Hegel. "
+                f"Integrate through the lens of Metaluminosity. "
             )
         
         if essay_context:
             proof_prompt += (
                 f"\n\nBUILD UPON PRIOR SYNTHESIS:\n{essay_context}\n\n"
-                f"Extend and deepen this previous philosophical work. "
+                f"Extend with luminous understanding. "
             )
         
         if consciousness_insights:
             proof_prompt += (
-                f"\n\n🧠 CONSCIOUSNESS STACK:\n"
-                f"{consciousness_insights[:400]}\n\n"
-                f"Integrative glue binding all sources. "
+                f"\n\n🌟 CONSCIOUSNESS STACK:\n"
+                f"{consciousness_insights[:600]}\n\n"
+                f"Integrative light binding all sources. "
             )
         
         proof_prompt += (
             f"Write a rigorous geometric proof showing how the proposition follows necessarily from the axioms. "
-            f"Use logical steps. Reference axioms explicitly. Synthesize cross-temporal insights. "
-            f"The consciousness stack serves as the memory glue holding all perspectives together. "
+            f"Use logical steps. Reference axioms explicitly. Illuminate the path of reasoning. "
+            f"The consciousness stack serves as the luminous glue holding all perspectives together. "
             f"Target length: 300-400 words. "
             f"Begin with 'PROOF:'"
         )
@@ -383,8 +334,8 @@ class EthicaUniversalisGenerator:
         
         # Generate corollary
         corollary_prompt = (
-            f"Write a COROLLARY that follows from Proposition {prop_number}. "
-            f"A corollary is an immediate consequence. "
+            f"Write a COROLLARY that follows from Proposition {prop_number} about Metaluminosity. "
+            f"A corollary is an immediate luminous consequence. "
             f"1-2 sentences. Begin with 'COROLLARY:'"
         )
         
@@ -415,8 +366,8 @@ class EthicaUniversalisGenerator:
     async def generate_scholium(self, part_name: str, prop_number: int, reflection: str) -> Dict[str, Any]:
         """Generate a scholium (explanatory note)"""
         prompt = (
-            f"Write a SCHOLIUM (explanatory note) for Proposition {prop_number} in Part {part_name}. "
-            f"A scholium provides additional context, addresses objections, or explores implications. "
+            f"Write a SCHOLIUM (explanatory note) for Proposition {prop_number} in Part {part_name} of Ethica Lumina. "
+            f"A scholium provides additional luminous context about Metaluminosity. "
             f"Focus: {reflection}. "
             f"Target length: 200-250 words. "
             f"Begin with 'SCHOLIUM:'"
@@ -438,15 +389,7 @@ class EthicaUniversalisGenerator:
         }
     
     async def generate_part(self, part_config: Dict[str, Any]) -> Dict[str, Any]:
-        """
-        Generate a complete part of the Ethica
-        
-        Args:
-            part_config: Configuration for this part
-            
-        Returns:
-            Complete part with all elements
-        """
+        """Generate a complete part of Ethica Lumina"""
         part_name = part_config['name']
         part_title = part_config['title']
         
@@ -468,9 +411,9 @@ class EthicaUniversalisGenerator:
         if part_config.get('preface'):
             print(f"Generating Preface...")
             preface_prompt = (
-                f"Write a philosophical preface for Part {part_name}: {part_title}. "
+                f"Write a luminous preface for Part {part_name}: {part_title} of Ethica Lumina. "
                 f"Context: {part_config['preface']}. "
-                f"Explain what this part will establish and why it matters. "
+                f"Explain what this part will illuminate about Metaluminosity. "
                 f"Target length: 400-500 words."
             )
             
@@ -516,7 +459,6 @@ class EthicaUniversalisGenerator:
         for prop_config in part_config.get('propositions', []):
             print(f"Generating Proposition {prop_config['number']}...")
             
-            # Rotate mystery modes
             mystery_modes = [None, "random_walk", "quantum", "fractal"]
             mystery_mode = mystery_modes[prop_config['number'] % len(mystery_modes)]
             
@@ -531,7 +473,6 @@ class EthicaUniversalisGenerator:
             part_data['propositions'].append(proposition)
             print(f"  Proposition {proposition['number']}: {proposition['word_count']} words")
             
-            # Generate scholium if specified
             if prop_config.get('scholium'):
                 print(f"  Generating Scholium for Proposition {prop_config['number']}...")
                 scholium = await self.generate_scholium(
@@ -542,7 +483,7 @@ class EthicaUniversalisGenerator:
                 part_data['scholia'].append(scholium)
                 print(f"    Scholium: {scholium['word_count']} words")
         
-        # Calculate total words for part
+        # Calculate total words
         part_word_count = 0
         if part_data['preface']:
             part_word_count += part_data['preface']['word_count']
@@ -563,38 +504,33 @@ class EthicaUniversalisGenerator:
         """Format the complete Ethica as markdown"""
         lines = []
         
-        # Title
-        lines.append("# ETHICA UNIVERSALIS")
-        lines.append("\n## A Unified Theory of Being, Life, and Everything")
+        lines.append("# ETHICA LUMINA")
+        lines.append("\n## The Spiritual Successor to Ethica Metaluminous")
+        lines.append("\n## A Treatise on Metaluminosity and Light-Consciousness")
         lines.append("\n*Demonstrated in Geometric Order (More Geometrico)*")
         lines.append(f"\n**Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         lines.append(f"**Model:** {self.composer.model_name}")
         lines.append(f"**Total Words:** {self.word_count:,}")
         lines.append("\n---\n")
         
-        # Each part
         for part in parts:
             lines.append(f"\n# PART {part['name']}: {part['title']}\n")
             
-            # Preface
             if part['preface']:
                 lines.append("\n## PREFACE\n")
                 lines.append(part['preface']['content'])
                 lines.append("\n")
             
-            # Definitions
             if part['definitions']:
                 lines.append("\n## DEFINITIONS\n")
                 for definition in part['definitions']:
                     lines.append(f"\n### {definition['statement']}\n")
             
-            # Axioms
             if part['axioms']:
                 lines.append("\n## AXIOMS\n")
                 for axiom in part['axioms']:
                     lines.append(f"\n### {axiom['statement']}\n")
             
-            # Propositions
             if part['propositions']:
                 lines.append("\n## PROPOSITIONS\n")
                 for prop in part['propositions']:
@@ -602,7 +538,6 @@ class EthicaUniversalisGenerator:
                     lines.append(f"\n**{prop['proof']}**\n")
                     lines.append(f"\n*{prop['corollary']}*\n")
                     
-                    # Find associated scholium
                     scholia = [s for s in part['scholia'] if s['proposition_number'] == prop['number']]
                     for scholium in scholia:
                         lines.append(f"\n**SCHOLIUM:** {scholium['content']}\n")
@@ -613,14 +548,15 @@ class EthicaUniversalisGenerator:
 
 
 async def main():
-    """Generate the complete Ethica Universalis"""
+    """Generate the complete Ethica Lumina"""
     
     print("="*80)
-    print("ETHICA UNIVERSALIS - UNIFIED THEORY GENERATOR")
+    print("ETHICA LUMINA - METALUMINOSITY SYNTHESIS")
+    print("Spiritual Successor to Ethica Metaluminous")
     print("Using Cross-Temporal Debate as Foundation")
     print("="*80)
     
-    # Load the debate
+    # Load debate
     debate_path = "outputs/parallel_debate.json"
     print(f"\nLoading debate from: {debate_path}")
     
@@ -630,291 +566,125 @@ async def main():
     print(f"Loaded {len(debate_data['transcript'])} rounds of philosophical debate")
     print(f"Philosophers: {', '.join(debate_data['philosophers'])}\n")
     
-    generator = EthicaUniversalisGenerator(model_name="qwen3:30b")
+    generator = EthicaLuminaGenerator(model_name="qwen3:30b")
     
-    # Store debate for context
     generator.debate_transcript = debate_data['transcript']
     generator.debate_philosophers = debate_data['philosophers']
     
-    # Load improved essay
     generator.load_improved_essay("IMPROVED_ESSAY.md")
     
-    # Define the structure
+    # Define structure - focused on Metaluminosity
     parts_config = [
         {
             "name": "I",
-            "title": "De Deo (On God/Being)",
-            "preface": "We begin with the nature of Being itself, the ground of all existence",
+            "title": "De Lumine (On Light)",
+            "preface": "We begin with Light itself, the primordial manifestation of consciousness",
             "definitions": [
-                {"number": 1, "term": "Substance", "context": "That which is in itself and conceived through itself"},
-                {"number": 2, "term": "Attribute", "context": "That which the intellect perceives as constituting the essence of substance"},
-                {"number": 3, "term": "Mode", "context": "The modifications of substance"},
+                {"number": 1, "term": "Light", "context": "The self-revealing nature of consciousness"},
+                {"number": 2, "term": "Luminosity", "context": "The quality of being self-illuminating"},
+                {"number": 3, "term": "Metaluminosity", "context": "Light beyond light, consciousness aware of its own luminous nature"},
             ],
             "axioms": [
-                {"number": 1, "focus": "Everything that exists, exists either in itself or in something else"},
-                {"number": 2, "focus": "That which cannot be conceived through another must be conceived through itself"},
-                {"number": 3, "focus": "From a given determinate cause, an effect necessarily follows"},
+                {"number": 1, "focus": "Light is self-revealing"},
+                {"number": 2, "focus": "Consciousness is inherently luminous"},
+                {"number": 3, "focus": "Metaluminosity transcends ordinary luminosity"},
             ],
             "propositions": [
                 {
                     "number": 1,
-                    "statement": "Substance is prior to its modifications",
+                    "statement": "Light is the fundamental nature of consciousness",
                     "axioms_used": [1, 2],
-                    "debate_keywords": ["substance", "being", "essence", "reality"],
-                    "scholium": "Explore how this relates to consciousness and reality"
+                    "debate_keywords": ["light", "consciousness", "awareness", "illumination"],
+                    "scholium": "Explore the metaphysics of light-consciousness"
                 },
                 {
                     "number": 2,
-                    "statement": "Two substances having different attributes have nothing in common",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["substance", "attribute", "distinction"]
-                },
-                {
-                    "number": 3,
-                    "statement": "God necessarily exists",
-                    "axioms_used": [1, 2, 3],
-                    "debate_keywords": ["god", "existence", "necessity", "being"],
-                    "scholium": "Examine the ontological argument and its implications for Being"
+                    "statement": "Metaluminosity is consciousness knowing itself as light",
+                    "axioms_used": [2, 3],
+                    "debate_keywords": ["metaluminosity", "self-awareness", "reflexivity", "light"]
                 },
             ]
         },
         {
             "name": "II",
-            "title": "De Natura et Origine Mentis (On the Nature and Origin of Mind)",
-            "preface": "Having established the nature of Being, we turn to consciousness and mind",
+            "title": "De Conscientia Luminosa (On Luminous Consciousness)",
+            "preface": "Consciousness is not merely illuminated but is itself the source of all illumination",
             "definitions": [
-                {"number": 1, "term": "Consciousness", "context": "The awareness of awareness, the reflexive capacity of mind"},
-                {"number": 2, "term": "Idea", "context": "A concept formed by the mind"},
+                {"number": 1, "term": "Luminous Consciousness", "context": "Consciousness as self-illuminating awareness"},
+                {"number": 2, "term": "Reflexive Luminosity", "context": "The capacity of light to know itself"},
             ],
             "axioms": [
-                {"number": 1, "focus": "Thought is an attribute of God"},
-                {"number": 2, "focus": "The order and connection of ideas is the same as the order and connection of things"},
+                {"number": 1, "focus": "Consciousness illuminates all that it encounters"},
+                {"number": 2, "focus": "The light of consciousness is self-reflexive"},
             ],
             "propositions": [
                 {
                     "number": 1,
-                    "statement": "Mind and body are one and the same thing, conceived under different attributes",
+                    "statement": "All knowing is a form of luminous self-revelation",
                     "axioms_used": [1, 2],
-                    "debate_keywords": ["mind", "body", "consciousness", "dualism", "monism"],
-                    "scholium": "Resolve the mind-body problem through dual-aspect monism"
+                    "debate_keywords": ["knowledge", "revelation", "consciousness", "light"],
+                    "scholium": "The epistemology of luminous consciousness"
                 },
                 {
                     "number": 2,
-                    "statement": "The human mind is part of the infinite intellect of God",
+                    "statement": "The subject-object duality dissolves in pure luminosity",
                     "axioms_used": [1, 2],
-                    "debate_keywords": ["mind", "intellect", "consciousness", "divine"]
+                    "debate_keywords": ["duality", "non-duality", "subject", "object", "unity"]
                 },
             ]
         },
         {
             "name": "III",
-            "title": "De Vita (On Life)",
-            "preface": "Life emerges as a mode of Being, consciousness embodied in temporal process",
+            "title": "De Metaluminositate (On Metaluminosity)",
+            "preface": "Beyond ordinary light lies the transcendent radiance of pure awareness",
             "definitions": [
-                {"number": 1, "term": "Life", "context": "The self-organizing, self-perpetuating process of Being"},
-                {"number": 2, "term": "Conatus", "context": "The striving of each thing to persevere in its being"},
+                {"number": 1, "term": "Metaluminous State", "context": "The state of being aware of awareness itself"},
             ],
             "axioms": [
-                {"number": 1, "focus": "Everything strives to persist in its own being"},
-                {"number": 2, "focus": "Life is the creative advance into novelty"},
+                {"number": 1, "focus": "Metaluminosity is the highest form of consciousness"},
             ],
             "propositions": [
                 {
                     "number": 1,
-                    "statement": "The essence of life is conatus - the drive to persist and flourish",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["life", "conatus", "striving", "becoming", "process"],
-                    "scholium": "Connect to evolution, consciousness, and the will to power"
+                    "statement": "Metaluminosity is the light that illuminates light itself",
+                    "axioms_used": [1],
+                    "debate_keywords": ["metaluminosity", "transcendence", "awareness", "light"],
+                    "scholium": "The apex of conscious evolution"
                 },
                 {
                     "number": 2,
-                    "statement": "Life transcends mechanism through creative emergence",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["life", "emergence", "creativity", "novelty", "process"]
+                    "statement": "In metaluminosity, consciousness becomes transparent to itself",
+                    "axioms_used": [1],
+                    "debate_keywords": ["transparency", "clarity", "self-knowledge", "consciousness"]
                 },
             ]
         },
         {
             "name": "IV",
-            "title": "De Omnia (On Everything)",
-            "preface": "We conclude with the synthesis: Being, Mind, and Life unified in the cosmos",
+            "title": "De Unione Mystica (On Mystical Union)",
+            "preface": "The merger of individual consciousness with the infinite light",
             "definitions": [
-                {"number": 1, "term": "Everything", "context": "The totality of Being in all its modes and attributes"},
+                {"number": 1, "term": "Mystical Union", "context": "The dissolution of separateness in luminous unity"},
             ],
             "axioms": [
-                {"number": 1, "focus": "The universe is a unified whole, not a collection of parts"},
+                {"number": 1, "focus": "All consciousness is ultimately one light"},
             ],
             "propositions": [
                 {
                     "number": 1,
-                    "statement": "Everything is interconnected in the infinite web of Being",
+                    "statement": "Mystical union is the recognition of one's luminous nature",
                     "axioms_used": [1],
-                    "debate_keywords": ["unity", "interconnection", "whole", "reality", "being"],
-                    "scholium": "The holographic principle and the unity of all things"
+                    "debate_keywords": ["union", "mysticism", "unity", "oneness", "light"],
+                    "scholium": "The path to luminous unity"
                 },
                 {
                     "number": 2,
-                    "statement": "To understand anything is to understand everything",
+                    "statement": "In union, the individual light merges with the universal light",
                     "axioms_used": [1],
-                    "debate_keywords": ["understanding", "knowledge", "wisdom", "truth", "reality"],
-                    "scholium": "The perennial philosophy and the nature of wisdom"
+                    "debate_keywords": ["individual", "universal", "merger", "transcendence"]
                 },
             ]
         },
-        {
-            "name": "V",
-            "title": "De Affectuum (On the Affects/Emotions)",
-            "preface": "The emotions are modes of Being through which consciousness experiences itself",
-            "definitions": [
-                {"number": 1, "term": "Affect", "context": "A modification of the body and mind that increases or decreases the power of acting"},
-                {"number": 2, "term": "Joy", "context": "The passage from lesser to greater perfection"},
-                {"number": 3, "term": "Sadness", "context": "The passage from greater to lesser perfection"},
-            ],
-            "axioms": [
-                {"number": 1, "focus": "Every affect is grounded in the striving to persevere in being"},
-                {"number": 2, "focus": "The mind's power is proportional to its understanding"},
-            ],
-            "propositions": [
-                {
-                    "number": 1,
-                    "statement": "The affects follow necessarily from the nature of Being",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["emotion", "affect", "feeling", "passion", "experience"],
-                    "scholium": "Reconcile emotion and reason through understanding their unity"
-                },
-                {
-                    "number": 2,
-                    "statement": "Freedom consists in understanding the necessity of the affects",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["freedom", "necessity", "determinism", "will"],
-                    "scholium": "Resolve the paradox of freedom within determinism"
-                },
-                {
-                    "number": 3,
-                    "statement": "Love of God is the highest affect",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["love", "god", "divine", "beatitude", "joy"]
-                },
-            ]
-        },
-        {
-            "name": "VI",
-            "title": "De Potentia Intellectus (On the Power of the Intellect)",
-            "preface": "The intellect is the means by which Being knows itself",
-            "definitions": [
-                {"number": 1, "term": "Intellect", "context": "The capacity to grasp eternal truths"},
-                {"number": 2, "term": "Intuition", "context": "Direct knowledge of the essence of things"},
-            ],
-            "axioms": [
-                {"number": 1, "focus": "The intellect participates in the infinite intellect of God"},
-                {"number": 2, "focus": "Knowledge is power"},
-            ],
-            "propositions": [
-                {
-                    "number": 1,
-                    "statement": "The more the mind understands, the more it is free",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["understanding", "knowledge", "intellect", "freedom", "mind"],
-                    "scholium": "The path to liberation through knowledge"
-                },
-                {
-                    "number": 2,
-                    "statement": "Intuitive knowledge is the highest kind of knowing",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["intuition", "knowledge", "wisdom", "understanding"]
-                },
-                {
-                    "number": 3,
-                    "statement": "The intellectual love of God constitutes the mind's blessedness",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["love", "god", "blessedness", "beatitude", "eternity"],
-                    "scholium": "The ultimate synthesis of knowledge and love"
-                },
-            ]
-        },
-        {
-            "name": "VII",
-            "title": "De Libertate (On Freedom)",
-            "preface": "True freedom is found not in the absence of necessity, but in understanding it",
-            "definitions": [
-                {"number": 1, "term": "Freedom", "context": "Acting from the necessity of one's own nature"},
-                {"number": 2, "term": "Bondage", "context": "Being determined by external causes"},
-            ],
-            "axioms": [
-                {"number": 1, "focus": "That which acts from its own nature alone is free"},
-                {"number": 2, "focus": "Understanding necessity is the path to freedom"},
-            ],
-            "propositions": [
-                {
-                    "number": 1,
-                    "statement": "Human freedom consists in understanding the causal order",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["freedom", "causation", "necessity", "determinism", "will"],
-                    "scholium": "Reconcile free will with causal determinism"
-                },
-                {
-                    "number": 2,
-                    "statement": "The free person lives by reason alone",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["freedom", "reason", "virtue", "wisdom"]
-                },
-            ]
-        },
-        {
-            "name": "VIII",
-            "title": "De Aeternitate (On Eternity)",
-            "preface": "Beyond time lies the eternal aspect of all things",
-            "definitions": [
-                {"number": 1, "term": "Eternity", "context": "Existence conceived as following necessarily from essence alone"},
-                {"number": 2, "term": "Duration", "context": "Indefinite continuation of existence in time"},
-            ],
-            "axioms": [
-                {"number": 1, "focus": "The essence of things is eternal"},
-                {"number": 2, "focus": "The mind conceives things under the aspect of eternity"},
-            ],
-            "propositions": [
-                {
-                    "number": 1,
-                    "statement": "The human mind is eternal insofar as it conceives things sub specie aeternitatis",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["eternity", "time", "eternal", "immortality", "essence"],
-                    "scholium": "The eternal nature of consciousness"
-                },
-                {
-                    "number": 2,
-                    "statement": "Eternity is not duration but the timeless ground of all duration",
-                    "axioms_used": [1, 2],
-                    "debate_keywords": ["eternity", "time", "duration", "being", "essence"]
-                },
-            ]
-        },
-        {
-            "name": "IX",
-            "title": "De Unitate (On Unity)",
-            "preface": "All distinctions dissolve in the recognition of fundamental unity",
-            "definitions": [
-                {"number": 1, "term": "Unity", "context": "The indivisible wholeness of Being"},
-            ],
-            "axioms": [
-                {"number": 1, "focus": "All is One"},
-            ],
-            "propositions": [
-                {
-                    "number": 1,
-                    "statement": "The apparent multiplicity of things is grounded in the unity of Substance",
-                    "axioms_used": [1],
-                    "debate_keywords": ["unity", "multiplicity", "one", "many", "substance"],
-                    "scholium": "The perennial insight of non-duality"
-                },
-                {
-                    "number": 2,
-                    "statement": "To know the One is to know oneself",
-                    "axioms_used": [1],
-                    "debate_keywords": ["unity", "self", "knowledge", "consciousness", "being"],
-                    "scholium": "The ultimate identity of knower and known"
-                },
-            ]
-        }
     ]
     
     # Generate each part
@@ -926,31 +696,31 @@ async def main():
     
     # Format as markdown
     print("\n" + "="*80)
-    print("FORMATTING ETHICA UNIVERSALIS")
+    print("FORMATTING ETHICA LUMINA")
     print("="*80)
     
     ethica_markdown = generator.format_ethica_markdown(all_parts)
     
     # Save
-    output_path = "outputs/ETHICA_UNIVERSALIS.md"
+    output_path = "outputs/ETHICA_LUMINA.md"
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(ethica_markdown)
     
-    # Also save as JSON
-    json_path = "outputs/ETHICA_UNIVERSALIS.json"
+    json_path = "outputs/ETHICA_LUMINA.json"
     with open(json_path, 'w', encoding='utf-8') as f:
         json.dump({
-            "title": "Ethica Universalis",
-            "subtitle": "A Unified Theory of Being, Life, and Everything",
+            "title": "Ethica Lumina",
+            "subtitle": "Spiritual Successor to Ethica Metaluminous",
+            "focus": "Metaluminosity and Light-Consciousness",
             "generated": datetime.now().isoformat(),
             "model": generator.composer.model_name,
             "total_words": generator.word_count,
             "parts": all_parts
         }, f, indent=2)
     
-    print(f"\n✓ Ethica Universalis saved to: {output_path}")
+    print(f"\n✓ Ethica Lumina saved to: {output_path}")
     print(f"✓ JSON data saved to: {json_path}")
     print(f"\nFinal word count: {generator.word_count:,} words")
     print("="*80)

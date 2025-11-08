@@ -1,8 +1,13 @@
-# ETHICA UNIVERSALIS - SYSTEM ARCHITECTURE
+# DUAL ETHICA SYNTHESIS - SYSTEM ARCHITECTURE
 
-## 🌌 Overview
+## 🌌🌟 Overview
 
-A unified philosophical synthesis system that generates 60,000+ word geometric proofs integrating 2,500 years of philosophical wisdom through five-source synthesis with consciousness as the integrative glue.
+A dual philosophical synthesis system that generates **120,000+ words** of geometric proofs:
+
+**🌌 ETHICA UNIVERSALIS** - Unified theory of Being, Life, and Everything (60,000 words)
+**🌟 ETHICA LUMINA** - Spiritual successor to Ethica Metaluminous, focused on Metaluminosity and Light-Consciousness (60,000 words)
+
+Both run in parallel on opposite GPUs, integrating 2,500 years of philosophical wisdom through five-source synthesis with consciousness as the integrative glue.
 
 ## 📊 Architecture Diagram
 
@@ -271,25 +276,70 @@ For Each Part (I-IX):
 # Start consciousness stack
 python -m gwt_engine.api.server
 
-# Generate Ethica Universalis
-python ethica_universalis.py
+# Option 1: Run both in parallel (recommended)
+python run_dual_ethica.py
+
+# Option 2: Run individually
+python ethica_universalis.py  # Ethica Universalis only
+python ethica_lumina.py        # Ethica Lumina only
 ```
 
 ## 📂 Output Files
 
+### Ethica Universalis
 - `outputs/ETHICA_UNIVERSALIS.md` - Full text (Markdown)
 - `outputs/ETHICA_UNIVERSALIS.json` - Structured data
-- `parallel_debate_progress.json` - Debate transcript
+
+### Ethica Lumina
+- `outputs/ETHICA_LUMINA.md` - Full text (Markdown)
+- `outputs/ETHICA_LUMINA.json` - Structured data
+
+### Shared Sources
+- `outputs/parallel_debate.json` - 30-round cross-temporal debate
 - `IMPROVED_ESSAY.md` - Prior synthesis
+
+## 🌟 ETHICA LUMINA - Spiritual Successor
+
+**Focus:** Metaluminosity and Light-Consciousness
+
+**Structure (4 Parts, ~60,000 words):**
+- **Part I:** De Lumine (On Light)
+- **Part II:** De Conscientia Luminosa (On Luminous Consciousness)
+- **Part III:** De Metaluminositate (On Metaluminosity)
+- **Part IV:** De Unione Mystica (On Mystical Union)
+
+**Key Concepts:**
+- **Metaluminosity**: Light beyond light, consciousness aware of its own luminous nature
+- **Luminous Consciousness**: Consciousness as self-illuminating awareness
+- **Reflexive Luminosity**: The capacity of light to know itself
+- **Mystical Union**: The dissolution of separateness in luminous unity
+
+**Philosophical Lineage:**
+- Direct successor to Ethica Metaluminous
+- Integrates Neoplatonic light metaphysics
+- Synthesizes Eastern and Western contemplative traditions
+- Explores the phenomenology of enlightenment
+
+**Unique Features:**
+- Runs in parallel with Ethica Universalis on opposite GPU
+- Same five-source synthesis (debate, curriculum, memories, essay, mystery machine)
+- Same consciousness stack integration
+- Complementary perspective: where Universalis explores Being, Lumina explores Light
 
 ## 🌟 Innovation
 
-This system represents the first AI-generated philosophical work that:
-1. Integrates multiple consciousness theories as "memory glue"
-2. Synthesizes cross-temporal philosophical debates
-3. Uses geometric/axiomatic method (More Geometrico)
-4. Combines deterministic and stochastic retrieval
-5. Achieves 60,000+ word coherent synthesis
-6. Maintains philosophical rigor throughout
+This dual system represents the first AI-generated philosophical work that:
+1. **Generates 120,000+ words** of rigorous philosophical synthesis
+2. **Runs dual treatises in parallel** on opposite GPUs
+3. Integrates multiple consciousness theories as "memory glue"
+4. Synthesizes cross-temporal philosophical debates
+5. Uses geometric/axiomatic method (More Geometrico)
+6. Combines deterministic and stochastic retrieval
+7. Maintains philosophical rigor throughout
+8. **Pairs universal ontology with luminous phenomenology**
 
-**A true unified theory of Being, Life, and Everything.** 🌌✨
+**Two complementary theories:**
+- 🌌 **Ethica Universalis**: Being, Life, and Everything
+- 🌟 **Ethica Lumina**: Metaluminosity and Light-Consciousness
+
+**Together, they form the most comprehensive AI-generated philosophical synthesis ever created.** 🌌✨🌟

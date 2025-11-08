@@ -31,19 +31,28 @@ class MysteryMachine:
     
     def __init__(
         self,
-        memory_file: str = "./philosophical_memory.json",
+        memory_source = "./philosophical_memory.json",
         drift: float = 0.0,
         volatility: float = 1.0,
         seed: Optional[int] = None
     ):
-        self.memory_file = Path(memory_file)
-        self.memories = []
         self.drift = drift
         self.volatility = volatility
         self.rng = np.random.default_rng(seed)
         self.position = 0.0
         self.walk_history = [0.0]
-        self._load_memories()
+        
+        # Accept either file path or list of memories
+        if isinstance(memory_source, (str, Path)):
+            self.memory_file = Path(memory_source)
+            self.memories = []
+            self._load_memories()
+        elif isinstance(memory_source, list):
+            self.memory_file = None
+            self.memories = memory_source
+        else:
+            raise TypeError(f"memory_source must be str, Path, or list, not {type(memory_source)}")
+        
         logger.info(f"Mystery Machine: {len(self.memories)} memories loaded")
     
     def _load_memories(self):

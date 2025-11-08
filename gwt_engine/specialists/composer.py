@@ -55,7 +55,7 @@ class ComposerSpecialist:
         # Composition-specific settings
         self.temperature = 0.8  # Higher for creativity
         self.top_p = 0.95
-        self.max_tokens = 2048  # Longer outputs
+        self.max_tokens = 1536  # Optimized for 30B model
         
         # Load philosophical memory
         self.memory_file = Path(memory_file)

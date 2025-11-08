@@ -69,7 +69,7 @@ class OllamaClient:
         base_url: str,
         model_name: str,
         role: SpecialistRole,
-        timeout: float = 300.0,
+        timeout: float = 1800.0,  # 30 minutes for large models
     ):
         self.base_url = base_url.rstrip("/")
         self.model_name = model_name
