@@ -1,0 +1,61 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gwt-engine"
+version = "0.1.0"
+description = "Global Workspace Theory consciousness simulation optimized for dual AMD 7900 XT"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Zoadra Project"}
+]
+keywords = ["consciousness", "gwt", "vllm", "ai", "multi-agent"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "vllm>=0.6.0",
+    "ray[default]>=2.9.0",
+    "langgraph>=0.2.0",
+    "fastapi>=0.109.0",
+    "redis>=5.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "black>=24.0.0",
+    "ruff>=0.1.14",
+    "mypy>=1.8.0",
+]
+
+[project.scripts]
+gwt-server = "gwt_engine.api.server:main"
+gwt-deploy = "gwt_engine.scripts.deployment.deploy:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gwt_engine*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py310', 'py311', 'py312']
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
