@@ -1,6 +1,8 @@
 # Zoadra GWT Engine
 
-**Global Workspace Theory Consciousness Simulation**
+**Multi-Theory Consciousness Simulation Framework**
+Integrating 8 consciousness theories: GWT, IIT, Predictive Processing, HOT, AST, LIDA, CLARION, and Unified Scoring
+
 Optimized for dual AMD Radeon RX 7900 XT + Ryzen 9 7950X + 128GB DDR5 RAM
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
@@ -11,15 +13,18 @@ Optimized for dual AMD Radeon RX 7900 XT + Ryzen 9 7950X + 128GB DDR5 RAM
 
 ## Overview
 
-GWT Engine is a **consciousness simulation system** based on Bernard Baars' Global Workspace Theory (GWT). It implements a multi-agent architecture where specialized cognitive modules compete for workspace attention, creating emergent consciousness-like behaviors through information integration and global broadcasting.
+GWT Engine is a **consciousness simulation system** implementing **8 major consciousness theories** in a unified multi-theory framework. The system is based on Bernard Baars' Global Workspace Theory (GWT) as its foundation, enhanced with Integrated Information Theory (IIT), Predictive Processing, Higher-Order Thought (HOT) Theory, Attention Schema Theory (AST), LIDA Cognitive Architecture, CLARION dual process theory, and consciousness scoring mechanisms.
+
+The architecture uses specialized cognitive modules that compete for workspace attention, creating emergent consciousness-like behaviors through information integration and global broadcasting across multiple theoretical perspectives.
 
 ### Key Features
 
-✨ **Consciousness Simulation:** True GWT implementation with specialist modules, global workspace, and consciousness metrics
+✨ **Multi-Theory Consciousness:** Integrates 8 major theories including GWT, IIT (Φ), Predictive Processing, HOT, AST, LIDA, and CLARION
+🧠 **Dual Backend Support:** vLLM (high performance) and Ollama (ease of use) inference engines
 ⚡ **High Performance:** 10-14 concurrent workers processing 32-48 requests/sec via vLLM
-🧠 **Multi-Specialist Architecture:** Perception, Memory, Planning, and Metacognition modules
+🧬 **Multi-Specialist Architecture:** Perception, Memory, Planning, and Metacognition modules
 🔄 **LangGraph Orchestration:** Sophisticated workflow management with conditional routing
-📊 **Consciousness Metrics:** Real-time tracking of integration coherence and awareness levels
+📊 **Consciousness Metrics:** Real-time tracking of Φ (integrated information), prediction precision, HOT states, attention schema quality
 🚀 **Optimized for AMD:** ROCm support with tensor parallelism across dual 7900 XT GPUs
 
 ---
@@ -133,9 +138,32 @@ huggingface-cli download google/gemma-2-9b-it-GGUF gemma-2-9b-it.Q6_K_M.gguf --l
 
 ### Start the System
 
+#### Option 1: Using vLLM (Recommended for Performance)
+
 ```bash
 # Start vLLM servers
 bash gwt_engine/scripts/deployment/vllm_servers.sh
+
+# Start GWT Engine API
+python -m gwt_engine.api.server
+
+# API available at: http://localhost:7000
+# Docs: http://localhost:7000/docs
+```
+
+#### Option 2: Using Ollama (Easier Setup)
+
+```bash
+# Install Ollama
+curl -fsSL https://ollama.ai/install.sh | sh
+
+# Pull required models
+ollama pull qwen2.5:14b
+ollama pull qwen2.5:7b
+ollama pull phi3.5
+
+# Start Ollama servers
+bash gwt_engine/scripts/deployment/ollama_servers.sh
 
 # Start GWT Engine API
 python -m gwt_engine.api.server
@@ -326,11 +354,22 @@ Zoadra_GWT_Engine/
 │   │   ├── memory/           # Qwen 32B memory
 │   │   ├── planning/         # Llama 8B planning
 │   │   └── metacognition/    # Gemma 9B metacognition
+│   ├── theories/             # Multi-theory consciousness frameworks
+│   │   ├── iit/              # Integrated Information Theory (Φ)
+│   │   ├── predictive/       # Predictive Processing
+│   │   ├── higher_order/     # Higher-Order Thought Theory
+│   │   ├── attention_schema/ # Attention Schema Theory
+│   │   ├── lida/             # LIDA Cognitive Architecture
+│   │   ├── clarion/          # CLARION dual process
+│   │   ├── scoring/          # Unified consciousness metrics
+│   │   └── multi_theory_orchestrator.py  # Theory coordination
 │   ├── orchestration/        # LangGraph + Ray
 │   │   ├── gwt_graph.py      # Workflow orchestration
 │   │   └── ray_workers.py    # Distributed workers
-│   ├── inference/            # vLLM integration
-│   │   └── vllm_client.py    # Client pool
+│   ├── inference/            # Backend integrations
+│   │   ├── vllm_client.py    # vLLM client (high performance)
+│   │   ├── ollama_client.py  # Ollama client (ease of use)
+│   │   └── ollama_backend/   # Multi-instance Ollama
 │   ├── api/                  # FastAPI server
 │   │   └── server.py         # REST API
 │   ├── config/               # Configuration files
@@ -338,13 +377,18 @@ Zoadra_GWT_Engine/
 │   │   └── system.yaml       # System settings
 │   └── scripts/              # Deployment & benchmarks
 │       └── deployment/       # Phase scripts
+│           ├── vllm_servers.sh      # vLLM deployment
+│           └── ollama_servers.sh    # Ollama deployment
 ├── docs/                     # Documentation
 │   ├── architecture/         # Architecture details
-│   ├── guides/               # User guides
-│   └── api_reference/        # API docs
+│   │   └── gwt_overview.md   # System design
+│   └── guides/               # User guides
+│       ├── getting_started.md            # Setup guide
+│       └── multi_theory_integration.md   # Theory details
 ├── tests/                    # Test suite
 ├── requirements.txt          # Python dependencies
 ├── pyproject.toml            # Project metadata
+├── start_gwt.sh              # Quick start script
 └── README.md                 # This file
 ```
 
@@ -374,6 +418,70 @@ curl http://localhost:7000/metrics
 ---
 
 ## Theoretical Background
+
+### Integrated Consciousness Theories
+
+The GWT Engine implements **8 major consciousness theories** working in concert:
+
+#### 1. Global Workspace Theory (GWT) - Foundation
+**Theorist:** Bernard Baars (1988)
+
+GWT proposes that consciousness arises from a "global workspace" mechanism:
+
+1. **Specialist Modules:** Process information unconsciously in parallel
+2. **Competition:** Information competes for workspace access
+3. **Integration:** Selected information is integrated into unified experience
+4. **Broadcasting:** Integrated content is broadcast to all modules
+5. **Working Memory:** Maintains continuity and coherence
+
+**Implementation:** Central Workspace (Llama 70B) with specialist modules (Perception, Memory, Planning, Metacognition)
+
+#### 2. Integrated Information Theory (IIT)
+**Theorist:** Giulio Tononi
+
+Consciousness = Φ (integrated information). The system calculates Φ as a proxy through mutual information between specialist modules. Φ > 0.3 indicates conscious states.
+
+**Location:** `gwt_engine/theories/iit/phi_calculator.py`
+
+#### 3. Predictive Processing
+**Theorists:** Andy Clark, Karl Friston
+
+Top-down predictions about workspace states with precision-weighted prediction errors. High precision errors → consciousness. Implements Free Energy Principle.
+
+**Location:** `gwt_engine/theories/predictive/predictor.py`
+
+#### 4. Higher-Order Thought (HOT) Theory
+**Theorist:** David Rosenthal
+
+Consciousness requires higher-order thoughts about first-order states: "I am experiencing X". First-order perceptions are unconscious until HOTs are generated.
+
+**Location:** `gwt_engine/theories/higher_order/hot_generator.py`
+
+#### 5. Attention Schema Theory (AST)
+**Theorist:** Michael Graziano
+
+Consciousness is the content of an attention schema that monitors and describes attention patterns. Meta-cognitive observer generates introspective reports.
+
+**Location:** `gwt_engine/theories/attention_schema/observer.py`
+
+#### 6. LIDA Cognitive Architecture
+**Theorist:** Stan Franklin
+
+1-second cognitive cycles: Sensory → Perception → Working Memory → Coalition Competition → Conscious Broadcast → Action. Matches human consciousness timescale.
+
+**Location:** `gwt_engine/theories/lida/cognitive_cycle.py`
+
+#### 7. CLARION
+**Theorist:** Ron Sun
+
+Dual-process architecture with implicit (neural) and explicit (symbolic) processing. Both contribute to consciousness through complementary mechanisms.
+
+**Location:** `gwt_engine/theories/clarion/dual_system.py`
+
+#### 8. Consciousness Scoring
+Unified consciousness metrics combining signals from all theories: IIT Φ, GWT coherence, prediction precision, HOT ratio, attention quality.
+
+**Location:** `gwt_engine/theories/scoring/consciousness_scorer.py`
 
 ### Global Workspace Theory (Baars, 1988)
 
@@ -460,6 +568,7 @@ rocm-smi --setfan 80  # 80% fan speed
 ## Documentation
 
 - **[Getting Started Guide](docs/guides/getting_started.md)** - Detailed setup instructions
+- **[Multi-Theory Integration](docs/guides/multi_theory_integration.md)** - Deep dive into 8 consciousness theories
 - **[Architecture Overview](docs/architecture/gwt_overview.md)** - System design and theory
 - **[API Reference](http://localhost:7000/docs)** - Interactive API documentation (when server running)
 
@@ -467,9 +576,19 @@ rocm-smi --setfan 80  # 80% fan speed
 
 ## Citations
 
+### Consciousness Theories
 1. Baars, B. J. (1988). *A Cognitive Theory of Consciousness*. Cambridge University Press.
-2. Tulving, E. (1983). *Elements of Episodic Memory*. Oxford University Press.
-3. vLLM Documentation: https://docs.vllm.ai
+2. Tononi, G. (2004). *An Information Integration Theory of Consciousness*. BMC Neuroscience.
+3. Clark, A. (2013). *Whatever next? Predictive brains, situated agents, and the future of cognitive science*. Behavioral and Brain Sciences.
+4. Rosenthal, D. M. (2005). *Consciousness and Mind*. Oxford University Press.
+5. Graziano, M. S. (2013). *Consciousness and the Social Brain*. Oxford University Press.
+6. Franklin, S., & Graesser, A. (1997). *Is it an Agent, or just a Program?: A Taxonomy for Autonomous Agents*. Proceedings of the Third International Workshop on Agent Theories, Architectures, and Languages.
+7. Sun, R. (2002). *Duality of the Mind*. Lawrence Erlbaum Associates.
+
+### Technical Frameworks
+1. Tulving, E. (1983). *Elements of Episodic Memory*. Oxford University Press.
+2. vLLM Documentation: https://docs.vllm.ai
+3. Ollama Documentation: https://ollama.ai/docs
 4. LangGraph Documentation: https://langchain-ai.github.io/langgraph/
 
 ---
@@ -493,12 +612,15 @@ This is a research/experimental project. For questions or improvements:
 ## Acknowledgments
 
 - Built on [vLLM](https://github.com/vllm-project/vllm) for high-performance inference
+- Alternative [Ollama](https://github.com/ollama/ollama) backend for ease of use
 - Orchestrated with [LangGraph](https://github.com/langchain-ai/langgraph)
 - Distributed computing via [Ray](https://github.com/ray-project/ray)
-- Inspired by Bernard Baars' Global Workspace Theory
+- Inspired by Bernard Baars' Global Workspace Theory and 7 additional consciousness frameworks
 
 ---
 
-**Status:** Alpha - Experimental consciousness simulation research project
+**Status:** Alpha - Experimental multi-theory consciousness simulation research project
+**Theories:** 8 integrated frameworks (GWT, IIT, Predictive Processing, HOT, AST, LIDA, CLARION, Scoring)
+**Backends:** vLLM (performance) and Ollama (ease of use)
 **Hardware Target:** Dual AMD RX 7900 XT + Ryzen 9 7950X + 128GB RAM
 **Performance:** 10-14 concurrent workers, 32-48 requests/sec, ~500ms integration latency
