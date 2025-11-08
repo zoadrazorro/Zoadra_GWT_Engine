@@ -19,7 +19,7 @@ from gwt_engine.core.types import (
     ConsciousnessState,
 )
 from gwt_engine.core.workspace import CentralWorkspace
-from gwt_engine.inference.vllm_client import VLLMClientPool
+from gwt_engine.inference.ollama_client import OllamaClientPool
 from gwt_engine.specialists import (
     PerceptionSpecialist,
     MemorySpecialist,
@@ -99,33 +99,29 @@ async def lifespan(app: FastAPI):
     logger.info("Starting GWT Engine...")
     app_state["start_time"] = time.time()
 
-    # Initialize vLLM client pool
-    app_state["vllm_pool"] = VLLMClientPool()
+    # Initialize Ollama client pool
+    app_state["vllm_pool"] = OllamaClientPool()
     await app_state["vllm_pool"].initialize()
-    logger.info("vLLM client pool initialized")
+    logger.info("Ollama client pool initialized")
 
     # Initialize Central Workspace
-    workspace_client = app_state["vllm_pool"].get_client(
-        from gwt_engine.core.types import SpecialistRole
-
-        SpecialistRole.CENTRAL_WORKSPACE
-    )
+    workspace_client = app_state["vllm_pool"].get_client("central_workspace")
     app_state["central_workspace"] = CentralWorkspace(workspace_client)
     logger.info("Central Workspace initialized")
 
     # Initialize Specialists
     app_state["specialists"] = {
         "perception": PerceptionSpecialist(
-            app_state["vllm_pool"].get_client(SpecialistRole.PERCEPTION)
+            app_state["vllm_pool"].get_client("perception")
         ),
         "memory": MemorySpecialist(
-            app_state["vllm_pool"].get_client(SpecialistRole.MEMORY)
+            app_state["vllm_pool"].get_client("memory")
         ),
         "planning": PlanningSpecialist(
-            app_state["vllm_pool"].get_client(SpecialistRole.PLANNING)
+            app_state["vllm_pool"].get_client("planning")
         ),
         "metacognition": MetacognitionSpecialist(
-            app_state["vllm_pool"].get_client(SpecialistRole.METACOGNITION)
+            app_state["vllm_pool"].get_client("metacognition")
         ),
     }
     logger.info("Specialist modules initialized")
