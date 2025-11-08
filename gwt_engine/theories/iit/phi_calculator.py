@@ -127,10 +127,10 @@ class PhiCalculator:
         phi = await self.calculate_phi()
 
         return {
-            "phi": phi,
-            "phi_threshold": self.phi_threshold,
-            "is_conscious_iit": phi > self.phi_threshold,
-            "integration_level": min(1.0, phi / 3.0),  # Normalized 0-1
-            "phi_history": self.phi_history[-10:],
-            "num_specialists": len(self.specialist_activations),
+            "phi": float(phi),  # Convert numpy to Python float
+            "phi_threshold": float(self.phi_threshold),
+            "is_conscious_iit": bool(phi > self.phi_threshold),  # Convert numpy.bool to Python bool
+            "integration_level": float(min(1.0, phi / 3.0)),  # Normalized 0-1
+            "phi_history": [float(x) for x in self.phi_history[-10:]],  # Convert all to Python floats
+            "num_specialists": int(len(self.specialist_activations)),
         }

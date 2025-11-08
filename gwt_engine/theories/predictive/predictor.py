@@ -189,14 +189,14 @@ Predict the next likely conscious thought (one sentence):"""
         free_energy = await self.calculate_free_energy()
 
         return {
-            "precision": precision,
-            "precision_threshold": self.precision_threshold,
-            "is_conscious_precision": precision > self.precision_threshold,
-            "free_energy": free_energy,
-            "mean_prediction_error": (
+            "precision": float(precision),  # Convert numpy to Python float
+            "precision_threshold": float(self.precision_threshold),
+            "is_conscious_precision": bool(precision > self.precision_threshold),  # Convert numpy.bool to Python bool
+            "free_energy": float(free_energy),
+            "mean_prediction_error": float(
                 np.mean(self.prediction_errors[-10:])
                 if self.prediction_errors
                 else 0.0
             ),
-            "prediction_count": len(self.predictions),
+            "prediction_count": int(len(self.predictions)),
         }
