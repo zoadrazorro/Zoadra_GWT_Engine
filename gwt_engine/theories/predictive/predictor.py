@@ -154,6 +154,17 @@ Predict the next likely conscious thought (one sentence):"""
         precision = await self.calculate_precision()
         return precision > self.precision_threshold
 
+    async def update_prediction_error(self, error: float):
+        """
+        Manually update prediction error
+        
+        Args:
+            error: Prediction error value (0-1)
+        """
+        self.prediction_errors.append(error)
+        if len(self.prediction_errors) > 100:
+            self.prediction_errors.pop(0)
+    
     async def calculate_free_energy(self) -> float:
         """
         Calculate variational free energy (simplified)
