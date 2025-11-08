@@ -317,6 +317,228 @@ class UniversityCurriculumDownloader:
         },
     }
     
+    # MORE LITERATURE - WORLD CLASSICS
+    WORLD_LITERATURE = {
+        "arabian_nights": {
+            "url": "https://www.gutenberg.org/files/128/128-0.txt",
+            "title": "The Arabian Nights",
+            "subject": "Literature"
+        },
+        "beowulf": {
+            "url": "https://www.gutenberg.org/files/16328/16328-0.txt",
+            "title": "Beowulf",
+            "subject": "Literature"
+        },
+        "chaucer_canterbury": {
+            "url": "https://www.gutenberg.org/files/2383/2383-0.txt",
+            "title": "The Canterbury Tales by Chaucer",
+            "subject": "Literature"
+        },
+        "swift_gulliver": {
+            "url": "https://www.gutenberg.org/files/829/829-0.txt",
+            "title": "Gulliver's Travels by Swift",
+            "subject": "Literature"
+        },
+        "defoe_crusoe": {
+            "url": "https://www.gutenberg.org/files/521/521-0.txt",
+            "title": "Robinson Crusoe by Defoe",
+            "subject": "Literature"
+        },
+        "shelley_frankenstein": {
+            "url": "https://www.gutenberg.org/files/84/84-0.txt",
+            "title": "Frankenstein by Mary Shelley",
+            "subject": "Literature"
+        },
+        "austen_pride": {
+            "url": "https://www.gutenberg.org/files/1342/1342-0.txt",
+            "title": "Pride and Prejudice by Austen",
+            "subject": "Literature"
+        },
+        "dickens_tale": {
+            "url": "https://www.gutenberg.org/files/98/98-0.txt",
+            "title": "A Tale of Two Cities by Dickens",
+            "subject": "Literature"
+        },
+        "bronte_jane": {
+            "url": "https://www.gutenberg.org/files/1260/1260-0.txt",
+            "title": "Jane Eyre by Charlotte Bronte",
+            "subject": "Literature"
+        },
+        "melville_moby": {
+            "url": "https://www.gutenberg.org/files/2701/2701-0.txt",
+            "title": "Moby Dick by Melville",
+            "subject": "Literature"
+        },
+        "twain_huck": {
+            "url": "https://www.gutenberg.org/files/76/76-0.txt",
+            "title": "Huckleberry Finn by Twain",
+            "subject": "Literature"
+        },
+        "wilde_dorian": {
+            "url": "https://www.gutenberg.org/files/174/174-0.txt",
+            "title": "The Picture of Dorian Gray by Wilde",
+            "subject": "Literature"
+        },
+        "stoker_dracula": {
+            "url": "https://www.gutenberg.org/files/345/345-0.txt",
+            "title": "Dracula by Stoker",
+            "subject": "Literature"
+        },
+        "kafka_metamorphosis": {
+            "url": "https://www.gutenberg.org/files/5200/5200-0.txt",
+            "title": "Metamorphosis by Kafka",
+            "subject": "Literature"
+        },
+    }
+    
+    # POETRY
+    POETRY = {
+        "whitman_leaves": {
+            "url": "https://www.gutenberg.org/files/1322/1322-0.txt",
+            "title": "Leaves of Grass by Whitman",
+            "subject": "Poetry"
+        },
+        "dickinson_poems": {
+            "url": "https://www.gutenberg.org/files/12242/12242-0.txt",
+            "title": "Poems by Emily Dickinson",
+            "subject": "Poetry"
+        },
+        "blake_songs": {
+            "url": "https://www.gutenberg.org/files/1934/1934-0.txt",
+            "title": "Songs of Innocence and Experience by Blake",
+            "subject": "Poetry"
+        },
+        "wordsworth_lyrical": {
+            "url": "https://www.gutenberg.org/files/8905/8905-0.txt",
+            "title": "Lyrical Ballads by Wordsworth",
+            "subject": "Poetry"
+        },
+    }
+    
+    # DRAMA
+    DRAMA = {
+        "shakespeare_macbeth": {
+            "url": "https://www.gutenberg.org/files/1533/1533-0.txt",
+            "title": "Macbeth by Shakespeare",
+            "subject": "Drama"
+        },
+        "shakespeare_romeo": {
+            "url": "https://www.gutenberg.org/files/1513/1513-0.txt",
+            "title": "Romeo and Juliet by Shakespeare",
+            "subject": "Drama"
+        },
+        "shakespeare_lear": {
+            "url": "https://www.gutenberg.org/files/2266/2266-0.txt",
+            "title": "King Lear by Shakespeare",
+            "subject": "Drama"
+        },
+        "sophocles_oedipus": {
+            "url": "https://www.gutenberg.org/files/31/31-0.txt",
+            "title": "Oedipus Rex by Sophocles",
+            "subject": "Drama"
+        },
+        "ibsen_dolls": {
+            "url": "https://www.gutenberg.org/files/2542/2542-0.txt",
+            "title": "A Doll's House by Ibsen",
+            "subject": "Drama"
+        },
+    }
+    
+    # MORE PHILOSOPHY
+    MORE_PHILOSOPHY = {
+        "berkeley_principles": {
+            "url": "https://www.gutenberg.org/files/4723/4723-0.txt",
+            "title": "Principles of Human Knowledge by Berkeley",
+            "subject": "Philosophy"
+        },
+        "hegel_phenomenology": {
+            "url": "https://www.gutenberg.org/files/6698/6698-0.txt",
+            "title": "Phenomenology of Spirit by Hegel",
+            "subject": "Philosophy"
+        },
+        "kierkegaard_fear": {
+            "url": "https://www.gutenberg.org/files/52914/52914-0.txt",
+            "title": "Fear and Trembling by Kierkegaard",
+            "subject": "Philosophy"
+        },
+        "bentham_morals": {
+            "url": "https://www.gutenberg.org/files/34075/34075-0.txt",
+            "title": "Introduction to Morals and Legislation by Bentham",
+            "subject": "Philosophy"
+        },
+    }
+    
+    # SCIENCE - MORE FOUNDATIONAL WORKS
+    MORE_SCIENCE = {
+        "copernicus_revolutions": {
+            "url": "https://www.gutenberg.org/files/54/54-0.txt",
+            "title": "On the Revolutions of Heavenly Spheres by Copernicus",
+            "subject": "Astronomy"
+        },
+        "kepler_harmonies": {
+            "url": "https://www.gutenberg.org/files/55448/55448-0.txt",
+            "title": "The Harmonies of the World by Kepler",
+            "subject": "Astronomy"
+        },
+        "harvey_circulation": {
+            "url": "https://www.gutenberg.org/files/28989/28989-0.txt",
+            "title": "On the Motion of the Heart and Blood by Harvey",
+            "subject": "Medicine"
+        },
+        "vesalius_anatomy": {
+            "url": "https://www.gutenberg.org/files/45842/45842-0.txt",
+            "title": "On the Fabric of the Human Body by Vesalius",
+            "subject": "Anatomy"
+        },
+    }
+    
+    # EASTERN PHILOSOPHY & RELIGION
+    EASTERN_WISDOM = {
+        "buddha_dhammapada": {
+            "url": "https://www.gutenberg.org/files/2017/2017-0.txt",
+            "title": "The Dhammapada",
+            "subject": "Buddhism"
+        },
+        "upanishads": {
+            "url": "https://www.gutenberg.org/files/3283/3283-0.txt",
+            "title": "The Upanishads",
+            "subject": "Hinduism"
+        },
+        "zhuangzi": {
+            "url": "https://www.gutenberg.org/files/5597/5597-0.txt",
+            "title": "The Writings of Zhuangzi",
+            "subject": "Taoism"
+        },
+    }
+    
+    # MYTHOLOGY
+    MYTHOLOGY = {
+        "bulfinch_mythology": {
+            "url": "https://www.gutenberg.org/files/4928/4928-0.txt",
+            "title": "Bulfinch's Mythology",
+            "subject": "Mythology"
+        },
+        "grimm_fairy": {
+            "url": "https://www.gutenberg.org/files/2591/2591-0.txt",
+            "title": "Grimm's Fairy Tales",
+            "subject": "Mythology/Folklore"
+        },
+    }
+    
+    # AUTOBIOGRAPHY & BIOGRAPHY
+    BIOGRAPHY = {
+        "franklin_autobiography": {
+            "url": "https://www.gutenberg.org/files/20203/20203-0.txt",
+            "title": "Autobiography of Benjamin Franklin",
+            "subject": "Biography"
+        },
+        "plutarch_lives": {
+            "url": "https://www.gutenberg.org/files/674/674-0.txt",
+            "title": "Plutarch's Lives",
+            "subject": "Biography"
+        },
+    }
+    
     def download_text(self, key: str, info: Dict, category: str) -> bool:
         """Download a single text"""
         if key in self.completed:
@@ -371,17 +593,25 @@ class UniversityCurriculumDownloader:
         categories = [
             ("Natural Sciences", self.NATURAL_SCIENCES),
             ("Advanced Sciences", self.ADVANCED_SCIENCES),
+            ("More Science", self.MORE_SCIENCE),
             ("Mathematics", self.MATHEMATICS),
             ("Psychology", self.PSYCHOLOGY),
             ("Social Sciences", self.SOCIAL_SCIENCES),
             ("Anthropology & Sociology", self.ANTHROPOLOGY),
             ("History", self.HISTORY),
             ("Literature", self.LITERATURE),
+            ("World Literature", self.WORLD_LITERATURE),
+            ("Poetry", self.POETRY),
+            ("Drama", self.DRAMA),
             ("Religion & Theology", self.RELIGION),
+            ("Eastern Wisdom", self.EASTERN_WISDOM),
             ("Political Theory", self.POLITICAL_THEORY),
+            ("More Philosophy", self.MORE_PHILOSOPHY),
             ("Linguistics", self.LINGUISTICS),
             ("Art & Aesthetics", self.ART),
             ("Logic & Reasoning", self.LOGIC),
+            ("Mythology", self.MYTHOLOGY),
+            ("Biography", self.BIOGRAPHY),
         ]
         
         total_texts = sum(len(texts) for _, texts in categories)
