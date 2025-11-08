@@ -63,19 +63,29 @@ class CurriculumRAG:
                             text_to_category[text_id] = category_name
                             self.category_index[category_name].append(text_id)
         
-        # Load each text
+        # Load each text (search in subdirectories)
         for text_id in self.completed:
-            text_file = self.curriculum_dir / f"{text_id}.txt"
-            if text_file.exists():
-                with open(text_file, 'r', encoding='utf-8', errors='ignore') as f:
-                    content = f.read()
-                    
-                    self.text_index[text_id] = {
-                        'content': content,
-                        'word_count': len(content.split()),
-                        'category': text_to_category.get(text_id, 'Unknown'),
-                        'path': str(text_file)
-                    }
+            # Try finding the file in any subdirectory
+            found = False
+            for subdir in self.curriculum_dir.iterdir():
+                if subdir.is_dir():
+                    text_file = subdir / f"{text_id}.txt"
+                    if text_file.exists():
+                        try:
+                            with open(text_file, 'r', encoding='utf-8', errors='ignore') as f:
+                                content = f.read()
+                                
+                                self.text_index[text_id] = {
+                                    'content': content,
+                                    'word_count': len(content.split()),
+                                    'category': text_to_category.get(text_id, subdir.name),
+                                    'path': str(text_file)
+                                }
+                                found = True
+                                break
+                        except Exception as e:
+                            print(f"  [WARNING] Could not load {text_id}: {e}")
+                            continue
     
     def search_by_keywords(self, keywords: List[str], max_results: int = 10) -> List[Dict[str, Any]]:
         """

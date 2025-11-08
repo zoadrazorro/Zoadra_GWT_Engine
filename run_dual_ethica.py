@@ -17,7 +17,7 @@ from datetime import datetime
 
 async def run_ethica_universalis():
     """Run Ethica Universalis on GPU 0"""
-    print("🌌 Starting Ethica Universalis on GPU 0...")
+    print("[UNIVERSALIS] Starting on GPU 0...")
     process = await asyncio.create_subprocess_exec(
         sys.executable, "ethica_universalis.py",
         stdout=asyncio.subprocess.PIPE,
@@ -25,15 +25,18 @@ async def run_ethica_universalis():
     )
     
     async for line in process.stdout:
-        print(f"[UNIVERSALIS] {line.decode().strip()}")
+        try:
+            print(f"[UNIVERSALIS] {line.decode('utf-8', errors='replace').strip()}")
+        except:
+            pass
     
     await process.wait()
-    print("✓ Ethica Universalis complete!")
+    print("[UNIVERSALIS] Complete!")
     return process.returncode
 
 async def run_ethica_lumina():
     """Run Ethica Lumina on GPU 1"""
-    print("🌟 Starting Ethica Lumina on GPU 1...")
+    print("[LUMINA] Starting on GPU 1...")
     process = await asyncio.create_subprocess_exec(
         sys.executable, "ethica_lumina.py",
         stdout=asyncio.subprocess.PIPE,
@@ -41,10 +44,13 @@ async def run_ethica_lumina():
     )
     
     async for line in process.stdout:
-        print(f"[LUMINA] {line.decode().strip()}")
+        try:
+            print(f"[LUMINA] {line.decode('utf-8', errors='replace').strip()}")
+        except:
+            pass
     
     await process.wait()
-    print("✓ Ethica Lumina complete!")
+    print("[LUMINA] Complete!")
     return process.returncode
 
 async def main():
@@ -54,22 +60,24 @@ async def main():
     print("DUAL ETHICA SYNTHESIS")
     print("="*80)
     print()
-    print("🌌 Ethica Universalis: Being, Life, and Everything")
-    print("🌟 Ethica Lumina: Metaluminosity and Light-Consciousness")
+    print("UNIVERSALIS: Being, Life, and Everything")
+    print("LUMINA: Metaluminosity and Light-Consciousness")
     print()
-    print("Both running in parallel with consciousness stack integration")
+    print("Running sequentially with consciousness stack integration")
     print("Total target: 120,000+ words")
     print("="*80)
     print()
     
     start_time = datetime.now()
     
-    # Run both in parallel
-    results = await asyncio.gather(
-        run_ethica_universalis(),
-        run_ethica_lumina(),
-        return_exceptions=True
-    )
+    # Run sequentially (Ollama doesn't support dual instances easily)
+    print("Running Ethica Universalis first...")
+    result1 = await run_ethica_universalis()
+    
+    print("\nRunning Ethica Lumina second...")
+    result2 = await run_ethica_lumina()
+    
+    results = [result1, result2]
     
     end_time = datetime.now()
     duration = end_time - start_time

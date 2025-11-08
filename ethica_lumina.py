@@ -59,10 +59,9 @@ class EthicaLuminaGenerator:
                 response = await client.post(
                     f"{self.consciousness_api_url}/process",
                     json={
-                        "prompt": prompt,
-                        "context": context,
-                        "return_memories": True,
-                        "consciousness_mode": "full"
+                        "content": prompt,
+                        "message_type": "perception",
+                        "priority": 8
                     }
                 )
                 
@@ -70,14 +69,15 @@ class EthicaLuminaGenerator:
                     data = response.json()
                     if data.get('memories'):
                         self.consciousness_memories.extend(data['memories'])
-                    print(f"  🧠 Consciousness Stack: score={data.get('consciousness_score', 0):.2f}, "
-                          f"memories={len(data.get('memories', []))}")
+                    consciousness_level = data.get('consciousness_level', 0)
+                    print(f"  [CONSCIOUSNESS] Level: {consciousness_level:.2f}, "
+                          f"broadcast: {data.get('workspace_broadcast', 'N/A')[:100]}")
                     return data
                 else:
-                    print(f"  ⚠️ Consciousness Stack unavailable: {response.status_code}")
+                    print(f"  [WARNING] Consciousness Stack unavailable: {response.status_code}")
                     return {}
         except Exception as e:
-            print(f"  ⚠️ Consciousness Stack error: {e}")
+            print(f"  [WARNING] Consciousness Stack error: {e}")
             return {}
     
     def load_improved_essay(self, essay_path: str = "IMPROVED_ESSAY.md"):
@@ -495,10 +495,37 @@ class EthicaLuminaGenerator:
         part_data['total_word_count'] = part_word_count
         self.word_count += part_word_count
         
-        print(f"\n✓ Part {part_name} complete: {part_word_count:,} words")
+        print(f"\n[COMPLETE] Part {part_name}: {part_word_count:,} words")
         print(f"Running total: {self.word_count:,} words\n")
         
+        # Save incremental progress
+        self._save_progress()
+        
         return part_data
+    
+    def _save_progress(self):
+        """Save incremental progress after each part"""
+        try:
+            progress_data = {
+                "title": "Ethica Lumina",
+                "status": "in_progress",
+                "generated": datetime.now().isoformat(),
+                "model": self.composer.model_name,
+                "total_words": self.word_count,
+                "parts_completed": len(self.parts),
+                "parts_total": 4,
+                "parts": self.parts
+            }
+            
+            progress_path = "outputs/ethica_lumina_progress.json"
+            Path(progress_path).parent.mkdir(parents=True, exist_ok=True)
+            
+            with open(progress_path, 'w', encoding='utf-8') as f:
+                json.dump(progress_data, f, indent=2)
+            
+            print(f"[PROGRESS SAVED] {progress_path}")
+        except Exception as e:
+            print(f"[WARNING] Could not save progress: {e}")
     
     def format_ethica_markdown(self, parts: List[Dict[str, Any]]) -> str:
         """Format the complete Ethica as markdown"""
@@ -720,8 +747,8 @@ async def main():
             "parts": all_parts
         }, f, indent=2)
     
-    print(f"\n✓ Ethica Lumina saved to: {output_path}")
-    print(f"✓ JSON data saved to: {json_path}")
+    print(f"\n[SAVED] Ethica Lumina saved to: {output_path}")
+    print(f"[SAVED] JSON data saved to: {json_path}")
     print(f"\nFinal word count: {generator.word_count:,} words")
     print("="*80)
 
