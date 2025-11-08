@@ -110,12 +110,17 @@ State ONLY the topic and thesis in 1-2 sentences. Be specific.
         for i, focus in enumerate(section_focuses, 1):
             logger.info(f"\n📄 Section {i}/{num_sections}: {focus}")
             
+            # Alternate between deterministic and stochastic retrieval
+            mystery_modes = ["random_walk", "quantum", "fractal", None]
+            mystery_mode = mystery_modes[i % len(mystery_modes)]
+            
             section_content = await self.composer.compose_essay_section(
                 topic=self.topic,
                 section_number=i,
                 total_sections=num_sections,
                 section_focus=focus,
-                previous_section=previous_content
+                previous_section=previous_content,
+                mystery_mode=mystery_mode
             )
             
             word_count = len(section_content.split())

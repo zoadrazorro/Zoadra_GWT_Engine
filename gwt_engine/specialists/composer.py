@@ -13,6 +13,11 @@ from typing import Dict, Any, Optional, List
 from gwt_engine.core.types import SpecialistResponse, SpecialistRole
 from gwt_engine.inference.ollama_backend.client import OllamaClient, OllamaGenerationRequest
 
+# Import Mystery Machine for stochastic memory retrieval
+import sys
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+from mystery_machine import MysteryMachine
+
 logger = logging.getLogger(__name__)
 
 
@@ -56,8 +61,16 @@ class ComposerSpecialist:
         self.philosophical_memories = []
         self._load_memory()
         
+        # Initialize Mystery Machine for stochastic retrieval
+        self.mystery_machine = MysteryMachine(
+            memory_file=str(memory_file),
+            drift=0.1,  # Slight forward bias
+            volatility=2.0  # High randomness for creativity
+        )
+        
         logger.info(f"Composer Specialist initialized with {self.model_name}")
         logger.info(f"Loaded {len(self.philosophical_memories)} philosophical memories")
+        logger.info(f"🎰 Mystery Machine integrated for serendipitous discovery")
     
     def _load_memory(self):
         """Load philosophical memories from disk"""
@@ -99,6 +112,58 @@ class ComposerSpecialist:
         relevant.sort(key=lambda x: x[0], reverse=True)
         return [mem for _, mem in relevant[:max_memories]]
     
+    def _retrieve_mysterious_memories(
+        self, 
+        num_memories: int = 5,
+        mode: str = "random_walk"
+    ) -> List[Dict]:
+        """
+        Retrieve memories through STOCHASTIC DISCOVERY using Mystery Machine
+        
+        Args:
+            num_memories: Number of memories to discover
+            mode: Discovery mode - "random_walk", "quantum", or "fractal"
+            
+        Returns:
+            Serendipitously discovered memories
+        """
+        logger.info(f"🎰 Engaging Mystery Machine: mode={mode}")
+        
+        if mode == "quantum":
+            # Quantum superposition collapse
+            return self.mystery_machine.quantum_superposition_retrieval(
+                num_memories=num_memories * 2,  # Generate more, collapse some
+                collapse_threshold=0.5
+            )
+        elif mode == "fractal":
+            # Fractal dive returns a tree, extract memories
+            tree = self.mystery_machine.fractal_memory_dive(
+                depth=3,
+                branching_factor=2
+            )
+            # Flatten tree to list
+            memories = []
+            if tree.get('root', {}).get('memory'):
+                memories.append(tree['root']['memory'])
+            
+            def extract_from_branches(branches):
+                if not branches:
+                    return
+                for branch in branches:
+                    if branch.get('memory'):
+                        memories.append(branch['memory'])
+                    if branch.get('children'):
+                        extract_from_branches(branch['children'])
+            
+            extract_from_branches(tree.get('branches', []))
+            return memories[:num_memories]
+        else:
+            # Default: Random walk
+            return self.mystery_machine.mysterious_retrieval(
+                num_memories=num_memories,
+                walk_steps=10
+            )
+    
     async def compose(
         self,
         prompt: str,
@@ -106,10 +171,11 @@ class ComposerSpecialist:
         section_type: str = "body",
         previous_content: Optional[str] = None,
         constraints: Optional[Dict[str, Any]] = None,
-        use_memory: bool = True
+        use_memory: bool = True,
+        mystery_mode: Optional[str] = None  # "random_walk", "quantum", "fractal", or None
     ) -> SpecialistResponse:
         """
-        Generate long-form composition WITH MEMORY INTEGRATION
+        Generate long-form composition WITH MEMORY INTEGRATION + MYSTERY MACHINE
         
         Args:
             prompt: Writing prompt/topic
@@ -118,17 +184,29 @@ class ComposerSpecialist:
             previous_content: Previous section for continuity
             constraints: Additional constraints (word_count, tone, etc.)
             use_memory: Whether to retrieve and use philosophical memories
+            mystery_mode: Use Mystery Machine for serendipitous discovery
             
         Returns:
             SpecialistResponse with composed text
         """
         
-        # Retrieve relevant memories
+        # Retrieve memories using BOTH deterministic AND stochastic methods
         memories = []
         if use_memory:
-            memories = self._retrieve_relevant_memories(prompt, max_memories=10)
-            if memories:
-                logger.info(f"🧠 Retrieved {len(memories)} relevant memories for composition")
+            # Deterministic: keyword-based retrieval
+            relevant_memories = self._retrieve_relevant_memories(prompt, max_memories=7)
+            memories.extend(relevant_memories)
+            if relevant_memories:
+                logger.info(f"🧠 Retrieved {len(relevant_memories)} relevant memories")
+            
+            # Stochastic: Mystery Machine for serendipity
+            if mystery_mode:
+                mysterious_memories = self._retrieve_mysterious_memories(
+                    num_memories=3,
+                    mode=mystery_mode
+                )
+                memories.extend(mysterious_memories)
+                logger.info(f"🎰 Discovered {len(mysterious_memories)} mysterious memories via {mystery_mode}")
         
         # Build composition instruction with memory context
         instruction = self._build_instruction(
@@ -267,7 +345,8 @@ class ComposerSpecialist:
         section_number: int,
         total_sections: int,
         section_focus: str,
-        previous_section: Optional[str] = None
+        previous_section: Optional[str] = None,
+        mystery_mode: Optional[str] = None
     ) -> str:
         """
         Compose one section of a multi-section essay
@@ -278,6 +357,7 @@ class ComposerSpecialist:
             total_sections: Total number of sections
             section_focus: Specific focus for this section
             previous_section: Content of previous section
+            mystery_mode: Mystery Machine mode for serendipitous discovery
             
         Returns:
             Composed section text
@@ -313,7 +393,8 @@ Write this section with depth and originality.
             style="formal",
             section_type=section_type,
             previous_content=previous_section,
-            constraints=constraints
+            constraints=constraints,
+            mystery_mode=mystery_mode
         )
         
         return response.content
