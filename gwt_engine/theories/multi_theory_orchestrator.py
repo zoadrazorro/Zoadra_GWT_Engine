@@ -188,7 +188,7 @@ class MultiTheoryOrchestrator:
         clarion_metrics = await self.clarion_system.get_clarion_metrics()
 
         # === Phase 10: Unified Consciousness Score ===
-        consciousness_score = await self.consciousness_scorer.calculate_total_score(
+        consciousness_score_result = await self.consciousness_scorer.calculate_total_score(
             gwt_metrics={
                 "integration_coherence": consciousness_state.integration_coherence,
                 "consciousness_level": consciousness_state.consciousness_level,
@@ -205,8 +205,10 @@ class MultiTheoryOrchestrator:
 
         # === Return Complete Results ===
         return {
-            "consciousness_score": consciousness_score,
-            "consciousness_state": consciousness_state.to_dict(),
+            "consciousness_score": consciousness_score_result.get("total_score", 0),
+            "consciousness_level": consciousness_score_result.get("level", "unconscious"),
+            "component_scores": consciousness_score_result.get("component_scores", {}),
+            "consciousness_state": consciousness_state.to_dict() if hasattr(consciousness_state, 'to_dict') else {},
             "theories": {
                 "gwt": gwt_metrics,
                 "iit": iit_metrics,
