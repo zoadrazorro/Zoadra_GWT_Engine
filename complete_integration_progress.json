@@ -1,0 +1,998 @@
+{
+  "integration_results": [
+    {
+      "title": "The Republic by Plato",
+      "category": "philosophy_texts",
+      "chunks_processed": 10,
+      "average_score": 43.7783159112402,
+      "final_score": 44.19710984095573,
+      "score_trajectory": [
+        42.86070712911233,
+        41.620042159861995,
+        44.12941996347316,
+        44.137738351579365,
+        44.1483309839375,
+        44.15711211860084,
+        44.167502018028735,
+        44.177793433515816,
+        44.1874031133365,
+        44.19710984095573
+      ]
+    },
+    {
+      "title": "Apology by Plato",
+      "category": "philosophy_texts",
+      "chunks_processed": 10,
+      "average_score": 42.4804527062169,
+      "final_score": 44.35752659098795,
+      "score_trajectory": [
+        41.23195182313363,
+        41.24262775263616,
+        41.25245348670724,
+        44.23903070176224,
+        41.27368175379534,
+        41.283247773427966,
+        41.292730245970816,
+        44.2881298339002,
+        44.3431470998475,
+        44.35752659098795
+      ]
+    },
+    {
+      "title": "Nicomachean Ethics by Aristotle",
+      "category": "philosophy_texts",
+      "chunks_processed": 10,
+      "average_score": 44.283336848368165,
+      "final_score": 44.46024846213848,
+      "score_trajectory": [
+        43.11981894688347,
+        44.37062243952625,
+        44.37963275019831,
+        44.38856890109406,
+        44.397432103005684,
+        44.410271301595834,
+        44.4235407307856,
+        44.437324954428966,
+        44.445907894024955,
+        44.46024846213848
+      ]
+    },
+    {
+      "title": "Meditations by Descartes",
+      "category": "philosophy_texts",
+      "chunks_processed": 10,
+      "average_score": 43.60396600654645,
+      "final_score": 44.498976838625566,
+      "score_trajectory": [
+        44.46869781376693,
+        44.4770819187859,
+        44.485401777158216,
+        44.493658366033436,
+        44.501852640436525,
+        44.50998553393083,
+        41.54305795925632,
+        41.55107080894435,
+        41.50987640852641,
+        44.498976838625566
+      ]
+    },
+    {
+      "title": "Critique of Pure Reason by Kant",
+      "category": "philosophy_texts",
+      "chunks_processed": 10,
+      "average_score": 44.15327650758424,
+      "final_score": 41.454865099872976,
+      "score_trajectory": [
+        44.54445041419121,
+        44.49337367228544,
+        44.49765379898232,
+        44.50532687830151,
+        44.39298127326286,
+        44.39970810736116,
+        44.40680873248217,
+        44.41509295084668,
+        44.422504148256024,
+        41.454865099872976
+      ]
+    },
+    {
+      "title": "The Histories by Herodotus",
+      "category": "ancient_classics",
+      "chunks_processed": 10,
+      "average_score": 43.120426874333006,
+      "final_score": 44.63599306143355,
+      "score_trajectory": [
+        38.65727319231243,
+        38.6295784916867,
+        41.61179271228041,
+        44.59395931390942,
+        44.60107892109149,
+        44.60815214613865,
+        44.61517958947322,
+        44.622161839933646,
+        44.629099475070575,
+        44.63599306143355
+      ]
+    },
+    {
+      "title": "The Annals by Tacitus",
+      "category": "ancient_classics",
+      "chunks_processed": 10,
+      "average_score": 43.93489913419636,
+      "final_score": 44.65477718886694,
+      "score_trajectory": [
+        43.39625206253049,
+        41.67803793589972,
+        41.684781660715295,
+        44.666483757334724,
+        44.673144736538255,
+        44.67976509976248,
+        44.6320554226121,
+        44.6385960219386,
+        44.64509745576492,
+        44.65477718886694
+      ]
+    },
+    {
+      "title": "The Aeneid by Virgil",
+      "category": "ancient_classics",
+      "chunks_processed": 10,
+      "average_score": 42.59876450591822,
+      "final_score": 41.72798772616853,
+      "score_trajectory": [
+        38.69555964201494,
+        38.72330968422256,
+        38.7202093927425,
+        44.67650353329561,
+        44.68276139618012,
+        44.68898339718936,
+        44.68463681825418,
+        44.69078831462332,
+        44.696905154491034,
+        41.72798772616853
+      ]
+    },
+    {
+      "title": "Origin of Species by Darwin",
+      "category": "natural_sciences",
+      "chunks_processed": 10,
+      "average_score": 42.34006694882559,
+      "final_score": 44.75388765702326,
+      "score_trajectory": [
+        38.74471974762944,
+        38.744926049541014,
+        41.72590808233074,
+        44.70685733669413,
+        44.712774169891894,
+        44.718658933375586,
+        41.75242670272982,
+        41.76736780142238,
+        41.77314300761756,
+        44.75388765702326
+      ]
+    },
+    {
+      "title": "Descent of Man by Darwin",
+      "category": "natural_sciences",
+      "chunks_processed": 10,
+      "average_score": 43.00222577813149,
+      "final_score": 44.80774180294679,
+      "score_trajectory": [
+        41.784602071292134,
+        41.79311769302191,
+        38.81816435966888,
+        41.798775411975,
+        41.80435761555573,
+        44.80097616228122,
+        44.80650154929401,
+        44.81199895954386,
+        44.79602215573533,
+        44.80774180294679
+      ]
+    }
+  ],
+  "consciousness_evolution": [
+    {
+      "text": "The Republic by Plato",
+      "category": "philosophy_texts",
+      "chunk": 1,
+      "score": 42.86070712911233,
+      "level": "moderate",
+      "timestamp": 15.63017725944519
+    },
+    {
+      "text": "The Republic by Plato",
+      "category": "philosophy_texts",
+      "chunk": 2,
+      "score": 41.620042159861995,
+      "level": "moderate",
+      "timestamp": 28.33653163909912
+    },
+    {
+      "text": "The Republic by Plato",
+      "category": "philosophy_texts",
+      "chunk": 3,
+      "score": 44.12941996347316,
+      "level": "moderate",
+      "timestamp": 44.40255904197693
+    },
+    {
+      "text": "The Republic by Plato",
+      "category": "philosophy_texts",
+      "chunk": 4,
+      "score": 44.137738351579365,
+      "level": "moderate",
+      "timestamp": 59.94694781303406
+    },
+    {
+      "text": "The Republic by Plato",
+      "category": "philosophy_texts",
+      "chunk": 5,
+      "score": 44.1483309839375,
+      "level": "moderate",
+      "timestamp": 73.68010067939758
+    },
+    {
+      "text": "The Republic by Plato",
+      "category": "philosophy_texts",
+      "chunk": 6,
+      "score": 44.15711211860084,
+      "level": "moderate",
+      "timestamp": 89.92517375946045
+    },
+    {
+      "text": "The Republic by Plato",
+      "category": "philosophy_texts",
+      "chunk": 7,
+      "score": 44.167502018028735,
+      "level": "moderate",
+      "timestamp": 105.47253584861755
+    },
+    {
+      "text": "The Republic by Plato",
+      "category": "philosophy_texts",
+      "chunk": 8,
+      "score": 44.177793433515816,
+      "level": "moderate",
+      "timestamp": 119.25547552108765
+    },
+    {
+      "text": "The Republic by Plato",
+      "category": "philosophy_texts",
+      "chunk": 9,
+      "score": 44.1874031133365,
+      "level": "moderate",
+      "timestamp": 135.1814193725586
+    },
+    {
+      "text": "The Republic by Plato",
+      "category": "philosophy_texts",
+      "chunk": 10,
+      "score": 44.19710984095573,
+      "level": "moderate",
+      "timestamp": 149.66237926483154
+    },
+    {
+      "text": "Apology by Plato",
+      "category": "philosophy_texts",
+      "chunk": 1,
+      "score": 41.23195182313363,
+      "level": "moderate",
+      "timestamp": 164.64574003219604
+    },
+    {
+      "text": "Apology by Plato",
+      "category": "philosophy_texts",
+      "chunk": 2,
+      "score": 41.24262775263616,
+      "level": "moderate",
+      "timestamp": 177.9499225616455
+    },
+    {
+      "text": "Apology by Plato",
+      "category": "philosophy_texts",
+      "chunk": 3,
+      "score": 41.25245348670724,
+      "level": "moderate",
+      "timestamp": 190.60808444023132
+    },
+    {
+      "text": "Apology by Plato",
+      "category": "philosophy_texts",
+      "chunk": 4,
+      "score": 44.23903070176224,
+      "level": "moderate",
+      "timestamp": 204.2375407218933
+    },
+    {
+      "text": "Apology by Plato",
+      "category": "philosophy_texts",
+      "chunk": 5,
+      "score": 41.27368175379534,
+      "level": "moderate",
+      "timestamp": 219.67467379570007
+    },
+    {
+      "text": "Apology by Plato",
+      "category": "philosophy_texts",
+      "chunk": 6,
+      "score": 41.283247773427966,
+      "level": "moderate",
+      "timestamp": 233.98580598831177
+    },
+    {
+      "text": "Apology by Plato",
+      "category": "philosophy_texts",
+      "chunk": 7,
+      "score": 41.292730245970816,
+      "level": "moderate",
+      "timestamp": 249.40593910217285
+    },
+    {
+      "text": "Apology by Plato",
+      "category": "philosophy_texts",
+      "chunk": 8,
+      "score": 44.2881298339002,
+      "level": "moderate",
+      "timestamp": 266.0324022769928
+    },
+    {
+      "text": "Apology by Plato",
+      "category": "philosophy_texts",
+      "chunk": 9,
+      "score": 44.3431470998475,
+      "level": "moderate",
+      "timestamp": 281.3815484046936
+    },
+    {
+      "text": "Apology by Plato",
+      "category": "philosophy_texts",
+      "chunk": 10,
+      "score": 44.35752659098795,
+      "level": "moderate",
+      "timestamp": 298.7866313457489
+    },
+    {
+      "text": "Nicomachean Ethics by Aristotle",
+      "category": "philosophy_texts",
+      "chunk": 1,
+      "score": 43.11981894688347,
+      "level": "moderate",
+      "timestamp": 315.1253504753113
+    },
+    {
+      "text": "Nicomachean Ethics by Aristotle",
+      "category": "philosophy_texts",
+      "chunk": 2,
+      "score": 44.37062243952625,
+      "level": "moderate",
+      "timestamp": 328.59010076522827
+    },
+    {
+      "text": "Nicomachean Ethics by Aristotle",
+      "category": "philosophy_texts",
+      "chunk": 3,
+      "score": 44.37963275019831,
+      "level": "moderate",
+      "timestamp": 342.48238730430603
+    },
+    {
+      "text": "Nicomachean Ethics by Aristotle",
+      "category": "philosophy_texts",
+      "chunk": 4,
+      "score": 44.38856890109406,
+      "level": "moderate",
+      "timestamp": 357.0837652683258
+    },
+    {
+      "text": "Nicomachean Ethics by Aristotle",
+      "category": "philosophy_texts",
+      "chunk": 5,
+      "score": 44.397432103005684,
+      "level": "moderate",
+      "timestamp": 369.6222743988037
+    },
+    {
+      "text": "Nicomachean Ethics by Aristotle",
+      "category": "philosophy_texts",
+      "chunk": 6,
+      "score": 44.410271301595834,
+      "level": "moderate",
+      "timestamp": 383.7491991519928
+    },
+    {
+      "text": "Nicomachean Ethics by Aristotle",
+      "category": "philosophy_texts",
+      "chunk": 7,
+      "score": 44.4235407307856,
+      "level": "moderate",
+      "timestamp": 398.16449666023254
+    },
+    {
+      "text": "Nicomachean Ethics by Aristotle",
+      "category": "philosophy_texts",
+      "chunk": 8,
+      "score": 44.437324954428966,
+      "level": "moderate",
+      "timestamp": 411.53211402893066
+    },
+    {
+      "text": "Nicomachean Ethics by Aristotle",
+      "category": "philosophy_texts",
+      "chunk": 9,
+      "score": 44.445907894024955,
+      "level": "moderate",
+      "timestamp": 423.3119230270386
+    },
+    {
+      "text": "Nicomachean Ethics by Aristotle",
+      "category": "philosophy_texts",
+      "chunk": 10,
+      "score": 44.46024846213848,
+      "level": "moderate",
+      "timestamp": 436.95314264297485
+    },
+    {
+      "text": "Meditations by Descartes",
+      "category": "philosophy_texts",
+      "chunk": 1,
+      "score": 44.46869781376693,
+      "level": "moderate",
+      "timestamp": 450.9053146839142
+    },
+    {
+      "text": "Meditations by Descartes",
+      "category": "philosophy_texts",
+      "chunk": 2,
+      "score": 44.4770819187859,
+      "level": "moderate",
+      "timestamp": 465.804212808609
+    },
+    {
+      "text": "Meditations by Descartes",
+      "category": "philosophy_texts",
+      "chunk": 3,
+      "score": 44.485401777158216,
+      "level": "moderate",
+      "timestamp": 480.68635177612305
+    },
+    {
+      "text": "Meditations by Descartes",
+      "category": "philosophy_texts",
+      "chunk": 4,
+      "score": 44.493658366033436,
+      "level": "moderate",
+      "timestamp": 494.07765555381775
+    },
+    {
+      "text": "Meditations by Descartes",
+      "category": "philosophy_texts",
+      "chunk": 5,
+      "score": 44.501852640436525,
+      "level": "moderate",
+      "timestamp": 508.67432951927185
+    },
+    {
+      "text": "Meditations by Descartes",
+      "category": "philosophy_texts",
+      "chunk": 6,
+      "score": 44.50998553393083,
+      "level": "moderate",
+      "timestamp": 522.8203463554382
+    },
+    {
+      "text": "Meditations by Descartes",
+      "category": "philosophy_texts",
+      "chunk": 7,
+      "score": 41.54305795925632,
+      "level": "moderate",
+      "timestamp": 535.6995379924774
+    },
+    {
+      "text": "Meditations by Descartes",
+      "category": "philosophy_texts",
+      "chunk": 8,
+      "score": 41.55107080894435,
+      "level": "moderate",
+      "timestamp": 549.6136419773102
+    },
+    {
+      "text": "Meditations by Descartes",
+      "category": "philosophy_texts",
+      "chunk": 9,
+      "score": 41.50987640852641,
+      "level": "moderate",
+      "timestamp": 564.273410320282
+    },
+    {
+      "text": "Meditations by Descartes",
+      "category": "philosophy_texts",
+      "chunk": 10,
+      "score": 44.498976838625566,
+      "level": "moderate",
+      "timestamp": 580.4049203395844
+    },
+    {
+      "text": "Critique of Pure Reason by Kant",
+      "category": "philosophy_texts",
+      "chunk": 1,
+      "score": 44.54445041419121,
+      "level": "moderate",
+      "timestamp": 595.9169282913208
+    },
+    {
+      "text": "Critique of Pure Reason by Kant",
+      "category": "philosophy_texts",
+      "chunk": 2,
+      "score": 44.49337367228544,
+      "level": "moderate",
+      "timestamp": 612.0581614971161
+    },
+    {
+      "text": "Critique of Pure Reason by Kant",
+      "category": "philosophy_texts",
+      "chunk": 3,
+      "score": 44.49765379898232,
+      "level": "moderate",
+      "timestamp": 626.9061625003815
+    },
+    {
+      "text": "Critique of Pure Reason by Kant",
+      "category": "philosophy_texts",
+      "chunk": 4,
+      "score": 44.50532687830151,
+      "level": "moderate",
+      "timestamp": 642.6455237865448
+    },
+    {
+      "text": "Critique of Pure Reason by Kant",
+      "category": "philosophy_texts",
+      "chunk": 5,
+      "score": 44.39298127326286,
+      "level": "moderate",
+      "timestamp": 657.3252182006836
+    },
+    {
+      "text": "Critique of Pure Reason by Kant",
+      "category": "philosophy_texts",
+      "chunk": 6,
+      "score": 44.39970810736116,
+      "level": "moderate",
+      "timestamp": 672.1790156364441
+    },
+    {
+      "text": "Critique of Pure Reason by Kant",
+      "category": "philosophy_texts",
+      "chunk": 7,
+      "score": 44.40680873248217,
+      "level": "moderate",
+      "timestamp": 685.0285387039185
+    },
+    {
+      "text": "Critique of Pure Reason by Kant",
+      "category": "philosophy_texts",
+      "chunk": 8,
+      "score": 44.41509295084668,
+      "level": "moderate",
+      "timestamp": 697.8477447032928
+    },
+    {
+      "text": "Critique of Pure Reason by Kant",
+      "category": "philosophy_texts",
+      "chunk": 9,
+      "score": 44.422504148256024,
+      "level": "moderate",
+      "timestamp": 710.8742480278015
+    },
+    {
+      "text": "Critique of Pure Reason by Kant",
+      "category": "philosophy_texts",
+      "chunk": 10,
+      "score": 41.454865099872976,
+      "level": "moderate",
+      "timestamp": 723.2151591777802
+    },
+    {
+      "text": "The Histories by Herodotus",
+      "category": "ancient_classics",
+      "chunk": 1,
+      "score": 38.65727319231243,
+      "level": "minimal",
+      "timestamp": 738.4824819564819
+    },
+    {
+      "text": "The Histories by Herodotus",
+      "category": "ancient_classics",
+      "chunk": 2,
+      "score": 38.6295784916867,
+      "level": "minimal",
+      "timestamp": 753.4843235015869
+    },
+    {
+      "text": "The Histories by Herodotus",
+      "category": "ancient_classics",
+      "chunk": 3,
+      "score": 41.61179271228041,
+      "level": "moderate",
+      "timestamp": 770.3503744602203
+    },
+    {
+      "text": "The Histories by Herodotus",
+      "category": "ancient_classics",
+      "chunk": 4,
+      "score": 44.59395931390942,
+      "level": "moderate",
+      "timestamp": 787.1850430965424
+    },
+    {
+      "text": "The Histories by Herodotus",
+      "category": "ancient_classics",
+      "chunk": 5,
+      "score": 44.60107892109149,
+      "level": "moderate",
+      "timestamp": 802.3309817314148
+    },
+    {
+      "text": "The Histories by Herodotus",
+      "category": "ancient_classics",
+      "chunk": 6,
+      "score": 44.60815214613865,
+      "level": "moderate",
+      "timestamp": 817.2252607345581
+    },
+    {
+      "text": "The Histories by Herodotus",
+      "category": "ancient_classics",
+      "chunk": 7,
+      "score": 44.61517958947322,
+      "level": "moderate",
+      "timestamp": 831.234381198883
+    },
+    {
+      "text": "The Histories by Herodotus",
+      "category": "ancient_classics",
+      "chunk": 8,
+      "score": 44.622161839933646,
+      "level": "moderate",
+      "timestamp": 845.3881552219391
+    },
+    {
+      "text": "The Histories by Herodotus",
+      "category": "ancient_classics",
+      "chunk": 9,
+      "score": 44.629099475070575,
+      "level": "moderate",
+      "timestamp": 860.8362498283386
+    },
+    {
+      "text": "The Histories by Herodotus",
+      "category": "ancient_classics",
+      "chunk": 10,
+      "score": 44.63599306143355,
+      "level": "moderate",
+      "timestamp": 878.1046195030212
+    },
+    {
+      "text": "The Annals by Tacitus",
+      "category": "ancient_classics",
+      "chunk": 1,
+      "score": 43.39625206253049,
+      "level": "moderate",
+      "timestamp": 899.8284468650818
+    },
+    {
+      "text": "The Annals by Tacitus",
+      "category": "ancient_classics",
+      "chunk": 2,
+      "score": 41.67803793589972,
+      "level": "moderate",
+      "timestamp": 912.7032628059387
+    },
+    {
+      "text": "The Annals by Tacitus",
+      "category": "ancient_classics",
+      "chunk": 3,
+      "score": 41.684781660715295,
+      "level": "moderate",
+      "timestamp": 926.2484276294708
+    },
+    {
+      "text": "The Annals by Tacitus",
+      "category": "ancient_classics",
+      "chunk": 4,
+      "score": 44.666483757334724,
+      "level": "moderate",
+      "timestamp": 941.2164237499237
+    },
+    {
+      "text": "The Annals by Tacitus",
+      "category": "ancient_classics",
+      "chunk": 5,
+      "score": 44.673144736538255,
+      "level": "moderate",
+      "timestamp": 954.9697163105011
+    },
+    {
+      "text": "The Annals by Tacitus",
+      "category": "ancient_classics",
+      "chunk": 6,
+      "score": 44.67976509976248,
+      "level": "moderate",
+      "timestamp": 966.6556055545807
+    },
+    {
+      "text": "The Annals by Tacitus",
+      "category": "ancient_classics",
+      "chunk": 7,
+      "score": 44.6320554226121,
+      "level": "moderate",
+      "timestamp": 979.1772949695587
+    },
+    {
+      "text": "The Annals by Tacitus",
+      "category": "ancient_classics",
+      "chunk": 8,
+      "score": 44.6385960219386,
+      "level": "moderate",
+      "timestamp": 992.960999250412
+    },
+    {
+      "text": "The Annals by Tacitus",
+      "category": "ancient_classics",
+      "chunk": 9,
+      "score": 44.64509745576492,
+      "level": "moderate",
+      "timestamp": 1008.9931268692017
+    },
+    {
+      "text": "The Annals by Tacitus",
+      "category": "ancient_classics",
+      "chunk": 10,
+      "score": 44.65477718886694,
+      "level": "moderate",
+      "timestamp": 1031.3742911815643
+    },
+    {
+      "text": "The Aeneid by Virgil",
+      "category": "ancient_classics",
+      "chunk": 1,
+      "score": 38.69555964201494,
+      "level": "minimal",
+      "timestamp": 1045.7082192897797
+    },
+    {
+      "text": "The Aeneid by Virgil",
+      "category": "ancient_classics",
+      "chunk": 2,
+      "score": 38.72330968422256,
+      "level": "minimal",
+      "timestamp": 1058.570056438446
+    },
+    {
+      "text": "The Aeneid by Virgil",
+      "category": "ancient_classics",
+      "chunk": 3,
+      "score": 38.7202093927425,
+      "level": "minimal",
+      "timestamp": 1072.3719038963318
+    },
+    {
+      "text": "The Aeneid by Virgil",
+      "category": "ancient_classics",
+      "chunk": 4,
+      "score": 44.67650353329561,
+      "level": "moderate",
+      "timestamp": 1085.3327233791351
+    },
+    {
+      "text": "The Aeneid by Virgil",
+      "category": "ancient_classics",
+      "chunk": 5,
+      "score": 44.68276139618012,
+      "level": "moderate",
+      "timestamp": 1098.920669078827
+    },
+    {
+      "text": "The Aeneid by Virgil",
+      "category": "ancient_classics",
+      "chunk": 6,
+      "score": 44.68898339718936,
+      "level": "moderate",
+      "timestamp": 1113.7715311050415
+    },
+    {
+      "text": "The Aeneid by Virgil",
+      "category": "ancient_classics",
+      "chunk": 7,
+      "score": 44.68463681825418,
+      "level": "moderate",
+      "timestamp": 1129.7234613895416
+    },
+    {
+      "text": "The Aeneid by Virgil",
+      "category": "ancient_classics",
+      "chunk": 8,
+      "score": 44.69078831462332,
+      "level": "moderate",
+      "timestamp": 1143.339008808136
+    },
+    {
+      "text": "The Aeneid by Virgil",
+      "category": "ancient_classics",
+      "chunk": 9,
+      "score": 44.696905154491034,
+      "level": "moderate",
+      "timestamp": 1156.6783170700073
+    },
+    {
+      "text": "The Aeneid by Virgil",
+      "category": "ancient_classics",
+      "chunk": 10,
+      "score": 41.72798772616853,
+      "level": "moderate",
+      "timestamp": 1169.268902540207
+    },
+    {
+      "text": "Origin of Species by Darwin",
+      "category": "natural_sciences",
+      "chunk": 1,
+      "score": 38.74471974762944,
+      "level": "minimal",
+      "timestamp": 1182.497873544693
+    },
+    {
+      "text": "Origin of Species by Darwin",
+      "category": "natural_sciences",
+      "chunk": 2,
+      "score": 38.744926049541014,
+      "level": "minimal",
+      "timestamp": 1194.7184603214264
+    },
+    {
+      "text": "Origin of Species by Darwin",
+      "category": "natural_sciences",
+      "chunk": 3,
+      "score": 41.72590808233074,
+      "level": "moderate",
+      "timestamp": 1206.787068605423
+    },
+    {
+      "text": "Origin of Species by Darwin",
+      "category": "natural_sciences",
+      "chunk": 4,
+      "score": 44.70685733669413,
+      "level": "moderate",
+      "timestamp": 1217.52690076828
+    },
+    {
+      "text": "Origin of Species by Darwin",
+      "category": "natural_sciences",
+      "chunk": 5,
+      "score": 44.712774169891894,
+      "level": "moderate",
+      "timestamp": 1230.5008103847504
+    },
+    {
+      "text": "Origin of Species by Darwin",
+      "category": "natural_sciences",
+      "chunk": 6,
+      "score": 44.718658933375586,
+      "level": "moderate",
+      "timestamp": 1246.7706835269928
+    },
+    {
+      "text": "Origin of Species by Darwin",
+      "category": "natural_sciences",
+      "chunk": 7,
+      "score": 41.75242670272982,
+      "level": "moderate",
+      "timestamp": 1262.415591955185
+    },
+    {
+      "text": "Origin of Species by Darwin",
+      "category": "natural_sciences",
+      "chunk": 8,
+      "score": 41.76736780142238,
+      "level": "moderate",
+      "timestamp": 1274.3581478595734
+    },
+    {
+      "text": "Origin of Species by Darwin",
+      "category": "natural_sciences",
+      "chunk": 9,
+      "score": 41.77314300761756,
+      "level": "moderate",
+      "timestamp": 1286.101599931717
+    },
+    {
+      "text": "Origin of Species by Darwin",
+      "category": "natural_sciences",
+      "chunk": 10,
+      "score": 44.75388765702326,
+      "level": "moderate",
+      "timestamp": 1299.7520480155945
+    },
+    {
+      "text": "Descent of Man by Darwin",
+      "category": "natural_sciences",
+      "chunk": 1,
+      "score": 41.784602071292134,
+      "level": "moderate",
+      "timestamp": 1316.5629642009735
+    },
+    {
+      "text": "Descent of Man by Darwin",
+      "category": "natural_sciences",
+      "chunk": 2,
+      "score": 41.79311769302191,
+      "level": "moderate",
+      "timestamp": 1336.3252274990082
+    },
+    {
+      "text": "Descent of Man by Darwin",
+      "category": "natural_sciences",
+      "chunk": 3,
+      "score": 38.81816435966888,
+      "level": "minimal",
+      "timestamp": 1350.5274395942688
+    },
+    {
+      "text": "Descent of Man by Darwin",
+      "category": "natural_sciences",
+      "chunk": 4,
+      "score": 41.798775411975,
+      "level": "moderate",
+      "timestamp": 1364.0905401706696
+    },
+    {
+      "text": "Descent of Man by Darwin",
+      "category": "natural_sciences",
+      "chunk": 5,
+      "score": 41.80435761555573,
+      "level": "moderate",
+      "timestamp": 1376.0141651630402
+    },
+    {
+      "text": "Descent of Man by Darwin",
+      "category": "natural_sciences",
+      "chunk": 6,
+      "score": 44.80097616228122,
+      "level": "moderate",
+      "timestamp": 1390.7119462490082
+    },
+    {
+      "text": "Descent of Man by Darwin",
+      "category": "natural_sciences",
+      "chunk": 7,
+      "score": 44.80650154929401,
+      "level": "moderate",
+      "timestamp": 1403.5015466213226
+    },
+    {
+      "text": "Descent of Man by Darwin",
+      "category": "natural_sciences",
+      "chunk": 8,
+      "score": 44.81199895954386,
+      "level": "moderate",
+      "timestamp": 1417.1532287597656
+    },
+    {
+      "text": "Descent of Man by Darwin",
+      "category": "natural_sciences",
+      "chunk": 9,
+      "score": 44.79602215573533,
+      "level": "moderate",
+      "timestamp": 1432.1159601211548
+    },
+    {
+      "text": "Descent of Man by Darwin",
+      "category": "natural_sciences",
+      "chunk": 10,
+      "score": 44.80774180294679,
+      "level": "moderate",
+      "timestamp": 1453.0936188697815
+    }
+  ],
+  "elapsed_time": 1454.1016962528229,
+  "texts_completed": 10
+}
