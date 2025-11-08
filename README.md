@@ -1,4 +1,4 @@
-# Zoadra GWT Engine
+# Perennial Integrated Consciousness Framework
 
 **Multi-Theory Consciousness Simulation Framework**
 Integrating 8 consciousness theories • Optimized for dual AMD Radeon RX 7900 XT + Ryzen 9 7950X + 128GB DDR5 RAM
