@@ -539,6 +539,281 @@ class UniversityCurriculumDownloader:
         },
     }
     
+    # ADVANCED MATHEMATICS & LOGIC
+    ADVANCED_MATH = {
+        "russell_principia": {
+            "url": "https://www.gutenberg.org/files/21016/21016-0.txt",
+            "title": "Principia Mathematica by Russell & Whitehead",
+            "subject": "Mathematics/Logic"
+        },
+        "poincare_science": {
+            "url": "https://www.gutenberg.org/files/37157/37157-0.txt",
+            "title": "Science and Hypothesis by Poincaré",
+            "subject": "Mathematics/Philosophy"
+        },
+    }
+    
+    # EPISTEMOLOGY & METAPHYSICS
+    EPISTEMOLOGY = {
+        "locke_understanding": {
+            "url": "https://www.gutenberg.org/files/10615/10615-0.txt",
+            "title": "An Essay Concerning Human Understanding by Locke",
+            "subject": "Epistemology"
+        },
+        "leibniz_monadology": {
+            "url": "https://www.gutenberg.org/files/34985/34985-0.txt",
+            "title": "The Monadology by Leibniz",
+            "subject": "Metaphysics"
+        },
+    }
+    
+    # ETHICS & MORAL PHILOSOPHY
+    ETHICS = {
+        "spinoza_tractatus": {
+            "url": "https://www.gutenberg.org/files/989/989-0.txt",
+            "title": "Tractatus Theologico-Politicus by Spinoza",
+            "subject": "Ethics/Politics"
+        },
+        "mill_utilitarianism": {
+            "url": "https://www.gutenberg.org/files/11224/11224-0.txt",
+            "title": "Utilitarianism by Mill",
+            "subject": "Ethics"
+        },
+        "kant_metaphysics_morals": {
+            "url": "https://www.gutenberg.org/files/5682/5682-0.txt",
+            "title": "Metaphysics of Morals by Kant",
+            "subject": "Ethics"
+        },
+    }
+    
+    # AESTHETICS & ART THEORY
+    AESTHETICS = {
+        "kant_judgment": {
+            "url": "https://www.gutenberg.org/files/48433/48433-0.txt",
+            "title": "Critique of Judgment by Kant",
+            "subject": "Aesthetics"
+        },
+        "schiller_aesthetic": {
+            "url": "https://www.gutenberg.org/files/6798/6798-0.txt",
+            "title": "Letters on Aesthetic Education by Schiller",
+            "subject": "Aesthetics"
+        },
+    }
+    
+    # POLITICAL ECONOMY
+    ECONOMICS_ADVANCED = {
+        "ricardo_principles": {
+            "url": "https://www.gutenberg.org/files/33310/33310-0.txt",
+            "title": "Principles of Political Economy by Ricardo",
+            "subject": "Economics"
+        },
+        "malthus_population": {
+            "url": "https://www.gutenberg.org/files/4239/4239-0.txt",
+            "title": "An Essay on Population by Malthus",
+            "subject": "Economics"
+        },
+    }
+    
+    # SCIENTIFIC METHOD & PHILOSOPHY OF SCIENCE
+    PHILOSOPHY_OF_SCIENCE = {
+        "mill_logic": {
+            "url": "https://www.gutenberg.org/files/27942/27942-0.txt",
+            "title": "A System of Logic by Mill",
+            "subject": "Logic/Scientific Method"
+        },
+        "whewell_inductive": {
+            "url": "https://www.gutenberg.org/files/39996/39996-0.txt",
+            "title": "Philosophy of the Inductive Sciences by Whewell",
+            "subject": "Philosophy of Science"
+        },
+    }
+    
+    # ANCIENT TEXTS
+    ANCIENT_CLASSICS = {
+        "herodotus": {
+            "url": "https://www.gutenberg.org/files/2707/2707-0.txt",
+            "title": "The Histories by Herodotus",
+            "subject": "History"
+        },
+        "tacitus_annals": {
+            "url": "https://www.gutenberg.org/files/6841/6841-0.txt",
+            "title": "The Annals by Tacitus",
+            "subject": "History"
+        },
+        "virgil_aeneid": {
+            "url": "https://www.gutenberg.org/files/228/228-0.txt",
+            "title": "The Aeneid by Virgil",
+            "subject": "Literature"
+        },
+        "ovid_metamorphoses": {
+            "url": "https://www.gutenberg.org/files/21765/21765-0.txt",
+            "title": "Metamorphoses by Ovid",
+            "subject": "Literature"
+        },
+        "lucretius": {
+            "url": "https://www.gutenberg.org/files/785/785-0.txt",
+            "title": "On the Nature of Things by Lucretius",
+            "subject": "Philosophy/Science"
+        },
+    }
+    
+    # RENAISSANCE & ENLIGHTENMENT
+    RENAISSANCE = {
+        "montaigne_essays": {
+            "url": "https://www.gutenberg.org/files/3600/3600-0.txt",
+            "title": "Essays by Montaigne",
+            "subject": "Philosophy"
+        },
+        "erasmus_folly": {
+            "url": "https://www.gutenberg.org/files/9371/9371-0.txt",
+            "title": "The Praise of Folly by Erasmus",
+            "subject": "Philosophy"
+        },
+        "voltaire_candide": {
+            "url": "https://www.gutenberg.org/files/19942/19942-0.txt",
+            "title": "Candide by Voltaire",
+            "subject": "Literature/Philosophy"
+        },
+    }
+    
+    # ROMANTIC LITERATURE
+    ROMANTICISM = {
+        "shelley_prometheus": {
+            "url": "https://www.gutenberg.org/files/4363/4363-0.txt",
+            "title": "Prometheus Unbound by Shelley",
+            "subject": "Poetry"
+        },
+        "byron_don_juan": {
+            "url": "https://www.gutenberg.org/files/21700/21700-0.txt",
+            "title": "Don Juan by Byron",
+            "subject": "Poetry"
+        },
+        "coleridge_biographia": {
+            "url": "https://www.gutenberg.org/files/6081/6081-0.txt",
+            "title": "Biographia Literaria by Coleridge",
+            "subject": "Literary Criticism"
+        },
+    }
+    
+    # AMERICAN LITERATURE
+    AMERICAN_CLASSICS = {
+        "thoreau_walden": {
+            "url": "https://www.gutenberg.org/files/205/205-0.txt",
+            "title": "Walden by Thoreau",
+            "subject": "Philosophy/Nature"
+        },
+        "thoreau_disobedience": {
+            "url": "https://www.gutenberg.org/files/71/71-0.txt",
+            "title": "Civil Disobedience by Thoreau",
+            "subject": "Political Philosophy"
+        },
+        "poe_tales": {
+            "url": "https://www.gutenberg.org/files/2147/2147-0.txt",
+            "title": "Tales by Edgar Allan Poe",
+            "subject": "Literature"
+        },
+        "hawthorne_scarlet": {
+            "url": "https://www.gutenberg.org/files/25344/25344-0.txt",
+            "title": "The Scarlet Letter by Hawthorne",
+            "subject": "Literature"
+        },
+    }
+    
+    # RUSSIAN LITERATURE
+    RUSSIAN_CLASSICS = {
+        "dostoevsky_crime": {
+            "url": "https://www.gutenberg.org/files/2554/2554-0.txt",
+            "title": "Crime and Punishment by Dostoevsky",
+            "subject": "Literature"
+        },
+        "dostoevsky_idiot": {
+            "url": "https://www.gutenberg.org/files/2638/2638-0.txt",
+            "title": "The Idiot by Dostoevsky",
+            "subject": "Literature"
+        },
+        "tolstoy_anna": {
+            "url": "https://www.gutenberg.org/files/1399/1399-0.txt",
+            "title": "Anna Karenina by Tolstoy",
+            "subject": "Literature"
+        },
+        "turgenev_fathers": {
+            "url": "https://www.gutenberg.org/files/30723/30723-0.txt",
+            "title": "Fathers and Sons by Turgenev",
+            "subject": "Literature"
+        },
+        "gogol_souls": {
+            "url": "https://www.gutenberg.org/files/1081/1081-0.txt",
+            "title": "Dead Souls by Gogol",
+            "subject": "Literature"
+        },
+    }
+    
+    # FRENCH LITERATURE
+    FRENCH_CLASSICS = {
+        "hugo_miserables": {
+            "url": "https://www.gutenberg.org/files/135/135-0.txt",
+            "title": "Les Misérables by Hugo",
+            "subject": "Literature"
+        },
+        "dumas_monte": {
+            "url": "https://www.gutenberg.org/files/1184/1184-0.txt",
+            "title": "The Count of Monte Cristo by Dumas",
+            "subject": "Literature"
+        },
+        "flaubert_bovary": {
+            "url": "https://www.gutenberg.org/files/2413/2413-0.txt",
+            "title": "Madame Bovary by Flaubert",
+            "subject": "Literature"
+        },
+    }
+    
+    # GERMAN LITERATURE & PHILOSOPHY
+    GERMAN_CLASSICS = {
+        "goethe_sorrows": {
+            "url": "https://www.gutenberg.org/files/2527/2527-0.txt",
+            "title": "The Sorrows of Young Werther by Goethe",
+            "subject": "Literature"
+        },
+        "schopenhauer_essays": {
+            "url": "https://www.gutenberg.org/files/10732/10732-0.txt",
+            "title": "Essays by Schopenhauer",
+            "subject": "Philosophy"
+        },
+    }
+    
+    # UTOPIAN & DYSTOPIAN LITERATURE
+    UTOPIAN = {
+        "plato_laws": {
+            "url": "https://www.gutenberg.org/files/1750/1750-0.txt",
+            "title": "The Laws by Plato",
+            "subject": "Philosophy/Politics"
+        },
+        "bacon_atlantis": {
+            "url": "https://www.gutenberg.org/files/2434/2434-0.txt",
+            "title": "New Atlantis by Bacon",
+            "subject": "Utopian Literature"
+        },
+        "butler_erewhon": {
+            "url": "https://www.gutenberg.org/files/1906/1906-0.txt",
+            "title": "Erewhon by Butler",
+            "subject": "Utopian Literature"
+        },
+    }
+    
+    # TRAVEL & EXPLORATION
+    EXPLORATION = {
+        "polo_travels": {
+            "url": "https://www.gutenberg.org/files/10636/10636-0.txt",
+            "title": "The Travels of Marco Polo",
+            "subject": "Travel/History"
+        },
+        "darwin_voyage": {
+            "url": "https://www.gutenberg.org/files/3704/3704-0.txt",
+            "title": "Voyage of the Beagle by Darwin",
+            "subject": "Science/Travel"
+        },
+    }
+    
     def download_text(self, key: str, info: Dict, category: str) -> bool:
         """Download a single text"""
         if key in self.completed:
@@ -595,23 +870,38 @@ class UniversityCurriculumDownloader:
             ("Advanced Sciences", self.ADVANCED_SCIENCES),
             ("More Science", self.MORE_SCIENCE),
             ("Mathematics", self.MATHEMATICS),
+            ("Advanced Mathematics", self.ADVANCED_MATH),
             ("Psychology", self.PSYCHOLOGY),
             ("Social Sciences", self.SOCIAL_SCIENCES),
+            ("Economics Advanced", self.ECONOMICS_ADVANCED),
             ("Anthropology & Sociology", self.ANTHROPOLOGY),
             ("History", self.HISTORY),
+            ("Ancient Classics", self.ANCIENT_CLASSICS),
             ("Literature", self.LITERATURE),
             ("World Literature", self.WORLD_LITERATURE),
+            ("American Literature", self.AMERICAN_CLASSICS),
+            ("Russian Literature", self.RUSSIAN_CLASSICS),
+            ("French Literature", self.FRENCH_CLASSICS),
+            ("German Literature", self.GERMAN_CLASSICS),
             ("Poetry", self.POETRY),
             ("Drama", self.DRAMA),
+            ("Romanticism", self.ROMANTICISM),
+            ("Renaissance & Enlightenment", self.RENAISSANCE),
             ("Religion & Theology", self.RELIGION),
             ("Eastern Wisdom", self.EASTERN_WISDOM),
             ("Political Theory", self.POLITICAL_THEORY),
             ("More Philosophy", self.MORE_PHILOSOPHY),
+            ("Epistemology & Metaphysics", self.EPISTEMOLOGY),
+            ("Ethics & Moral Philosophy", self.ETHICS),
+            ("Aesthetics & Art Theory", self.AESTHETICS),
+            ("Philosophy of Science", self.PHILOSOPHY_OF_SCIENCE),
             ("Linguistics", self.LINGUISTICS),
             ("Art & Aesthetics", self.ART),
             ("Logic & Reasoning", self.LOGIC),
             ("Mythology", self.MYTHOLOGY),
             ("Biography", self.BIOGRAPHY),
+            ("Utopian Literature", self.UTOPIAN),
+            ("Travel & Exploration", self.EXPLORATION),
         ]
         
         total_texts = sum(len(texts) for _, texts in categories)
