@@ -32,18 +32,19 @@ class ComposerSpecialist:
     - Structured analysis
     """
     
-    def __init__(self, ollama_url: str = "http://localhost:11434", memory_file: str = "./philosophical_memory.json"):
+    def __init__(self, ollama_url: str = "http://localhost:11434", memory_file: str = "./philosophical_memory.json", model_name: str = None):
         """
-        Initialize Composer with 30B model on GPU 1 + Memory Integration
+        Initialize Composer with configurable model + Memory Integration
         
         Args:
             ollama_url: Ollama server URL
             memory_file: Path to philosophical memory JSON
+            model_name: Model to use (default: qwen2.5:32b)
         """
         self.role = SpecialistRole.COMPOSER
         
-        # Use larger model for composition
-        self.model_name = "qwen2.5:32b"  # 30B+ model
+        # Use larger model for composition (configurable)
+        self.model_name = model_name or "qwen2.5:32b"  # Default 32B, can override
         
         self.client = OllamaClient(
             base_url=ollama_url,
@@ -62,11 +63,16 @@ class ComposerSpecialist:
         self._load_memory()
         
         # Initialize Mystery Machine for stochastic retrieval
-        self.mystery_machine = MysteryMachine(
-            memory_file=str(memory_file),
-            drift=0.1,  # Slight forward bias
-            volatility=2.0  # High randomness for creativity
-        )
+        self.mystery_machine = MysteryMachine(self.philosophical_memories)
+        
+        # Initialize Curriculum RAG for comprehensive knowledge
+        try:
+            from curriculum_rag import CurriculumRAG
+            self.curriculum_rag = CurriculumRAG()
+            logger.info(f"📚 Curriculum RAG integrated: {self.curriculum_rag.total_texts} texts")
+        except Exception as e:
+            logger.warning(f"Curriculum RAG not available: {e}")
+            self.curriculum_rag = None
         
         logger.info(f"Composer Specialist initialized with {self.model_name}")
         logger.info(f"Loaded {len(self.philosophical_memories)} philosophical memories")
@@ -164,6 +170,28 @@ class ComposerSpecialist:
                 walk_steps=10
             )
     
+    def _retrieve_curriculum_context(self, prompt: str, max_texts: int = 3) -> List[Dict[str, Any]]:
+        """
+        Retrieve relevant context from curriculum RAG
+        
+        Args:
+            prompt: Query prompt
+            max_texts: Maximum texts to retrieve
+            
+        Returns:
+            List of curriculum contexts
+        """
+        if not self.curriculum_rag:
+            return []
+        
+        try:
+            contexts = self.curriculum_rag.query_for_context(prompt, max_texts=max_texts, context_chars=500)
+            logger.info(f"📚 Retrieved {len(contexts)} curriculum contexts")
+            return contexts
+        except Exception as e:
+            logger.warning(f"Curriculum RAG retrieval failed: {e}")
+            return []
+    
     async def compose(
         self,
         prompt: str,
@@ -172,10 +200,11 @@ class ComposerSpecialist:
         previous_content: Optional[str] = None,
         constraints: Optional[Dict[str, Any]] = None,
         use_memory: bool = True,
-        mystery_mode: Optional[str] = None  # "random_walk", "quantum", "fractal", or None
+        mystery_mode: Optional[str] = None,  # "random_walk", "quantum", "fractal", or None
+        use_curriculum: bool = True  # NEW: Use curriculum RAG
     ) -> SpecialistResponse:
         """
-        Generate long-form composition WITH MEMORY INTEGRATION + MYSTERY MACHINE
+        Generate long-form composition WITH MEMORY + MYSTERY MACHINE + CURRICULUM RAG
         
         Args:
             prompt: Writing prompt/topic
@@ -185,6 +214,7 @@ class ComposerSpecialist:
             constraints: Additional constraints (word_count, tone, etc.)
             use_memory: Whether to retrieve and use philosophical memories
             mystery_mode: Use Mystery Machine for serendipitous discovery
+            use_curriculum: Use curriculum RAG for comprehensive knowledge
             
         Returns:
             SpecialistResponse with composed text
@@ -208,9 +238,14 @@ class ComposerSpecialist:
                 memories.extend(mysterious_memories)
                 logger.info(f"🎰 Discovered {len(mysterious_memories)} mysterious memories via {mystery_mode}")
         
-        # Build composition instruction with memory context
+        # Retrieve curriculum context
+        curriculum_contexts = []
+        if use_curriculum:
+            curriculum_contexts = self._retrieve_curriculum_context(prompt, max_texts=3)
+        
+        # Build composition instruction with memory + curriculum context
         instruction = self._build_instruction(
-            prompt, style, section_type, previous_content, constraints, memories
+            prompt, style, section_type, previous_content, constraints, memories, curriculum_contexts
         )
         
         try:
@@ -256,9 +291,10 @@ class ComposerSpecialist:
         section_type: str,
         previous_content: Optional[str],
         constraints: Optional[Dict[str, Any]],
-        memories: Optional[List[Dict]] = None
+        memories: Optional[List[Dict]] = None,
+        curriculum_contexts: Optional[List[Dict]] = None
     ) -> str:
-        """Build detailed composition instruction WITH MEMORY CONTEXT"""
+        """Build detailed composition instruction WITH MEMORY + CURRICULUM CONTEXT"""
         
         # Style guidelines
         style_guides = {
@@ -282,7 +318,7 @@ class ComposerSpecialist:
         instruction_parts.append(f"TASK: Write a {section_type} section in {style} style.")
         instruction_parts.append(f"\nTOPIC: {prompt}")
         
-        # MEMORY CONTEXT - The key addition!
+        # MEMORY CONTEXT - Philosophical insights!
         if memories:
             instruction_parts.append(f"\n🧠 RELEVANT KNOWLEDGE FROM YOUR CONSCIOUSNESS:")
             instruction_parts.append("You have previously integrated these philosophical insights:")
@@ -291,6 +327,18 @@ class ComposerSpecialist:
                 score = mem.get('score', 0)
                 instruction_parts.append(f"\n{i}. [{score:.1f}] {content_preview}...")
             instruction_parts.append("\nDraw upon these insights in your writing. Synthesize and build upon them.")
+        
+        # CURRICULUM CONTEXT - University knowledge base!
+        if curriculum_contexts:
+            instruction_parts.append(f"\n📚 RELEVANT TEXTS FROM UNIVERSITY CURRICULUM:")
+            instruction_parts.append("You have access to these canonical works:")
+            for i, ctx in enumerate(curriculum_contexts, 1):
+                source = ctx.get('source', 'Unknown')
+                category = ctx.get('category', 'Unknown')
+                excerpt = ctx.get('excerpt', '')[:300]
+                instruction_parts.append(f"\n{i}. {source} ({category})")
+                instruction_parts.append(f"   Excerpt: {excerpt}...")
+            instruction_parts.append("\nReference and integrate these texts where relevant. Cite them naturally.")
         
         # Style guidance
         if style in style_guides:

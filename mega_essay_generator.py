@@ -24,7 +24,7 @@ from datetime import datetime
 sys.path.insert(0, str(Path(__file__).parent))
 
 from gwt_engine.specialists.composer import ComposerSpecialist
-from gwt_engine.specialists.cross_temporal_debate import CrossTemporalDebate, HISTORICAL_PHILOSOPHERS
+from gwt_engine.specialists.cross_temporal_debate import CrossTemporalDebate, HISTORICAL_PHILOSOPHERS, create_debate
 from debate_orchestrator import DebateOrchestrator
 
 
@@ -33,10 +33,11 @@ class MegaEssayGenerator:
     Generates extensive philosophical essays with debate transcripts.
     """
 
-    def __init__(self):
-        self.composer = ComposerSpecialist()
+    def __init__(self, model_name: str = "qwen2.5:32b"):
+        self.composer = ComposerSpecialist(model_name=model_name)
         self.word_count = 0
         self.sections = []
+        print(f"MegaEssayGenerator initialized with model: {model_name}")
 
     def count_words(self, text: str) -> int:
         """Count words in text."""
@@ -73,7 +74,7 @@ class MegaEssayGenerator:
             f"Target length: 800 words. Be scholarly but engaging."
         )
 
-        part1 = self.composer.compose(topic=prompt1, style="formal", max_length=2048)
+        part1 = self.composer.compose_sync(topic=prompt1, style="formal", max_length=2048)
         intro_parts.append(part1)
         print(f"  Part 1: {self.count_words(part1)} words")
 
@@ -642,52 +643,49 @@ class MegaEssayGenerator:
 
 def main():
     """
-    Main entry point - generate complete debate and essay.
+    Main entry point - load existing debate and generate essay.
     """
     print("="*80)
-    print("CROSS-TEMPORAL PHILOSOPHICAL DEBATE + MEGA ESSAY SYSTEM")
+    print("MEGA ESSAY GENERATOR - Using Existing Parallel Debate")
     print("="*80)
 
-    # Step 1: Run the debate
-    orchestrator = DebateOrchestrator()
+    # Step 1: Load the existing parallel debate
+    debate_path = "outputs/parallel_debate.json"
+    
+    print(f"\nLoading debate from: {debate_path}")
+    
+    with open(debate_path, 'r', encoding='utf-8') as f:
+        debate_data = json.load(f)
+    
+    topic = debate_data['topic']
+    philosophers = debate_data['philosophers']
+    
+    # Map philosopher names to keys
+    name_mapping = {
+        'Plato': 'plato',
+        'Aristotle': 'aristotle',
+        'René Descartes': 'descartes',
+        'Baruch Spinoza': 'spinoza',
+        'Immanuel Kant': 'kant',
+        'Georg Wilhelm Friedrich Hegel': 'hegel'
+    }
+    
+    philosopher_keys = [name_mapping.get(p, p.lower().replace(' ', '')) for p in philosophers]
+    
+    # Create debate object and populate it
+    debate = create_debate(topic, philosopher_keys)
+    debate.full_transcript = debate_data['transcript']
+    
+    print(f"Loaded {len(debate.full_transcript)} rounds")
+    print(f"Topic: {topic}")
+    print(f"Philosophers: {', '.join(philosophers)}\n")
 
-    topic = "What is the nature of consciousness and its relationship to reality?"
-
-    philosophers = [
-        "plato",
-        "aristotle",
-        "descartes",
-        "spinoza",
-        "leibniz",
-        "hume",
-        "kant",
-        "hegel",
-        "whitehead",
-        "bergson"
-    ]
-
-    print(f"\nRunning debate with {len(philosophers)} philosophers...")
-    print(f"Topic: {topic}\n")
-
-    # Run a substantial debate (30 rounds = 10 complete cycles)
-    debate = orchestrator.run_full_debate(
-        topic=topic,
-        philosopher_names=philosophers,
-        num_rounds=30
-    )
-
-    # Export debate transcript
-    debate_path = "outputs/mega_debate_transcript.json"
-    Path(debate_path).parent.mkdir(parents=True, exist_ok=True)
-    debate.export_full_transcript(debate_path)
-    print(f"\nDebate transcript saved to: {debate_path}")
-
-    # Step 2: Generate the mega essay
+    # Step 2: Generate the mega essay with 32B model
     print("\n" + "="*80)
-    print("GENERATING 50,000+ WORD ESSAY")
+    print("GENERATING 50,000+ WORD ESSAY WITH 32B MODEL")
     print("="*80 + "\n")
 
-    generator = MegaEssayGenerator()
+    generator = MegaEssayGenerator(model_name="qwen2.5:32b")  # Use 32B (70B not available)
     essay = generator.generate_complete_essay(debate, philosophers)
 
     # Save the essay

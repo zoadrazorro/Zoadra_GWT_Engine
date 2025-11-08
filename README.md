@@ -1,7 +1,8 @@
 # Perennial Integrated Consciousness Framework
 
-**Multi-Theory Consciousness Simulation Framework**
-Integrating 8 consciousness theories • Optimized for dual AMD Radeon RX 7900 XT + Ryzen 9 7950X + 128GB DDR5 RAM
+**Multi-Theory Consciousness Simulation Framework + Philosophical Synthesis Engine**
+Integrating 8 consciousness theories • Cross-temporal philosophical debates • 60,000-word geometric proofs
+Optimized for dual AMD Radeon RX 7900 XT + Ryzen 9 7950X + 128GB DDR5 RAM
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -17,13 +18,26 @@ The system implements a multi-agent architecture where specialized cognitive mod
 
 ### Key Features
 
+#### 🧠 Consciousness Engine
 ✨ **Multi-Theory Integration:** 8 consciousness theories working in parallel (GWT, IIT, Predictive Processing, AST, HOT, LIDA, CLARION)
 🧠 **Consciousness Scoring:** Unified 0-100 scale combining all theoretical frameworks
 ⚡ **High Performance:** 10-14 concurrent workers processing 32-48 requests/sec via vLLM
 🔬 **Specialist Architecture:** Perception, Memory, Planning, and Metacognition modules
 🔄 **LangGraph Orchestration:** Sophisticated workflow management with conditional routing
 📊 **Real-time Metrics:** Integration coherence, Φ (phi) values, prediction precision, consciousness levels
+
+#### 🌌 Philosophical Synthesis Engine (NEW!)
+📚 **Ethica Universalis:** 60,000-word unified theory in geometric method (More Geometrico)
+🎭 **Cross-Temporal Debates:** 30-round debates between Plato, Aristotle, Descartes, Spinoza, Kant, Hegel
+🎰 **Mystery Machine:** Brownian noise-based stochastic memory retrieval
+📖 **Curriculum RAG:** 92 canonical texts across all disciplines
+🔗 **Consciousness as Glue:** 8 theories integrate all sources into unified perspective
+⚡ **Parallel Generation:** GPU-maximized concurrent debate rounds
+
+#### 🚀 Performance
 🚀 **Optimized for AMD:** ROCm support with tensor parallelism across dual 7900 XT GPUs
+🔥 **72B Model Support:** Qwen2.5:72B for philosophical synthesis
+⚡ **Parallel Debate:** 6 concurrent generations, 3x faster than sequential
 
 ---
 
@@ -548,6 +562,66 @@ rocm-smi --setfan 80  # 80% fan speed
 8. Tulving, E. (1983). *Elements of Episodic Memory*. Oxford University Press.
 9. vLLM Documentation: https://docs.vllm.ai
 10. LangGraph Documentation: https://langchain-ai.github.io/langgraph/
+
+---
+
+## 🌌 Ethica Universalis - Philosophical Synthesis
+
+### Overview
+
+**Ethica Universalis** is a 60,000-word unified theory of Being, Life, and Everything, generated using the geometric method (More Geometrico) inspired by Spinoza's *Ethics* and structured like Metaluminous Ethica.
+
+### Structure
+
+**9 Parts, 21 Propositions:**
+- **Part I:** De Deo (On God/Being)
+- **Part II:** De Mente (On Mind)
+- **Part III:** De Vita (On Life)
+- **Part IV:** De Omnia (On Everything)
+- **Part V:** De Affectuum (On Affects/Emotions)
+- **Part VI:** De Potentia Intellectus (On Intellect)
+- **Part VII:** De Libertate (On Freedom)
+- **Part VIII:** De Aeternitate (On Eternity)
+- **Part IX:** De Unitate (On Unity)
+
+Each proposition includes:
+- **Statement** (1-2 sentences)
+- **Proof** (300-400 words, geometric method)
+- **Corollary** (immediate consequence)
+- **Scholium** (explanatory note)
+
+### Five-Source Synthesis
+
+1. **Cross-Temporal Debate** (30 rounds, 6 philosophers)
+2. **Curriculum RAG** (92 canonical texts)
+3. **Philosophical Memories** (520 integrated memories)
+4. **Mystery Machine** (Brownian noise retrieval)
+5. **Improved Essay** (previous synthesis)
+
+**With Consciousness Stack as Memory Glue** - 8 theories integrate all sources
+
+### Usage
+
+```bash
+# Start consciousness stack
+python -m gwt_engine.api.server
+
+# Generate parallel debate (14 minutes)
+python parallel_debate_orchestrator.py
+
+# Generate Ethica Universalis (2-4 hours)
+python ethica_universalis.py
+```
+
+### Output
+
+- `outputs/ETHICA_UNIVERSALIS.md` - Full text (Markdown)
+- `outputs/ETHICA_UNIVERSALIS.json` - Structured data
+- `outputs/parallel_debate.json` - Debate transcript
+
+### Architecture
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed system architecture and data flow diagrams.
 
 ---
 
