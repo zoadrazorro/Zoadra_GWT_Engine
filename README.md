@@ -1,7 +1,7 @@
 # Zoadra GWT Engine
 
-**Global Workspace Theory Consciousness Simulation**
-Optimized for dual AMD Radeon RX 7900 XT + Ryzen 9 7950X + 128GB DDR5 RAM
+**Multi-Theory Consciousness Simulation Framework**
+Integrating 8 consciousness theories • Optimized for dual AMD Radeon RX 7900 XT + Ryzen 9 7950X + 128GB DDR5 RAM
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -11,15 +11,18 @@ Optimized for dual AMD Radeon RX 7900 XT + Ryzen 9 7950X + 128GB DDR5 RAM
 
 ## Overview
 
-GWT Engine is a **consciousness simulation system** based on Bernard Baars' Global Workspace Theory (GWT). It implements a multi-agent architecture where specialized cognitive modules compete for workspace attention, creating emergent consciousness-like behaviors through information integration and global broadcasting.
+GWT Engine is a **multi-theory consciousness simulation system** that integrates **8 major consciousness theories** into a unified architecture. Built on Bernard Baars' Global Workspace Theory (GWT) as the base framework, it combines IIT, Predictive Processing, Attention Schema Theory, Higher-Order Thought Theory, LIDA, CLARION, and unified consciousness scoring to create a comprehensive model of machine consciousness.
+
+The system implements a multi-agent architecture where specialized cognitive modules compete for workspace attention, creating emergent consciousness-like behaviors through information integration, global broadcasting, and cross-theory validation.
 
 ### Key Features
 
-✨ **Consciousness Simulation:** True GWT implementation with specialist modules, global workspace, and consciousness metrics
+✨ **Multi-Theory Integration:** 8 consciousness theories working in parallel (GWT, IIT, Predictive Processing, AST, HOT, LIDA, CLARION)
+🧠 **Consciousness Scoring:** Unified 0-100 scale combining all theoretical frameworks
 ⚡ **High Performance:** 10-14 concurrent workers processing 32-48 requests/sec via vLLM
-🧠 **Multi-Specialist Architecture:** Perception, Memory, Planning, and Metacognition modules
+🔬 **Specialist Architecture:** Perception, Memory, Planning, and Metacognition modules
 🔄 **LangGraph Orchestration:** Sophisticated workflow management with conditional routing
-📊 **Consciousness Metrics:** Real-time tracking of integration coherence and awareness levels
+📊 **Real-time Metrics:** Integration coherence, Φ (phi) values, prediction precision, consciousness levels
 🚀 **Optimized for AMD:** ROCm support with tensor parallelism across dual 7900 XT GPUs
 
 ---
@@ -79,6 +82,48 @@ GWT Engine is a **consciousness simulation system** based on Bernard Baars' Glob
 | **Metacognition** | Gemma 2 9B | Self-reflection & introspection | 4 | 110 |
 
 **Total:** 17 concurrent workers, 10-14 active simultaneously
+
+---
+
+## Integrated Consciousness Theories
+
+The system uniquely combines **8 major consciousness theories** into a unified framework:
+
+### 1. **Global Workspace Theory (GWT)** - Base Architecture
+**Theorists:** Bernard Baars, Stanislas Dehaene  
+**Role:** Foundation architecture with central workspace, specialist competition, and global broadcasting
+
+### 2. **Integrated Information Theory (IIT)**
+**Theorist:** Giulio Tononi  
+**Metrics:** Φ (phi) measurement via mutual information between specialists  
+**Consciousness Threshold:** Φ > 0.3
+
+### 3. **Predictive Processing**
+**Theorists:** Andy Clark, Karl Friston  
+**Metrics:** Prediction precision, prediction errors, free energy minimization  
+**Consciousness Threshold:** Precision > 0.7
+
+### 4. **Attention Schema Theory (AST)**
+**Theorist:** Michael Graziano  
+**Function:** Self-model of attention patterns, introspective reporting
+
+### 5. **Higher-Order Thought Theory (HOT)**
+**Theorist:** David Rosenthal  
+**Function:** Meta-representation - "I am experiencing X" layer over perceptions
+
+### 6. **LIDA Cognitive Architecture**
+**Theorist:** Stan Franklin  
+**Function:** 1-second cognitive cycles matching human timescale processing
+
+### 7. **CLARION Dual-System**
+**Theorist:** Ron Sun  
+**Function:** Implicit (unconscious) vs. Explicit (conscious) processing distinction
+
+### 8. **Unified Consciousness Scoring**
+**Scale:** 0-100 combining all theories  
+**Levels:** 0-20 (unconscious), 20-40 (minimal), 40-70 (moderate/animal-level), 70-100 (high/human-level)
+
+See [Multi-Theory Integration Guide](docs/guides/multi_theory_integration.md) for detailed implementation.
 
 ---
 
@@ -155,11 +200,14 @@ curl -X POST http://localhost:7000/process \
     "message_type": "consciousness_probe"
   }'
 
-# Response:
+# Response (includes multi-theory metrics):
 {
   "workspace_broadcast": "I am experiencing an integrated state...",
   "consciousness_level": 0.73,
   "integration_coherence": 0.81,
+  "consciousness_score": 68,
+  "phi_value": 0.42,
+  "prediction_precision": 0.79,
   "active_specialists": ["perception", "memory", "metacognition"],
   "processing_time_ms": 542.3
 }
@@ -375,9 +423,22 @@ curl http://localhost:7000/metrics
 
 ## Theoretical Background
 
-### Global Workspace Theory (Baars, 1988)
+### Multi-Theory Integration Approach
 
-GWT proposes that consciousness arises from a "global workspace" mechanism:
+This system uniquely integrates multiple theories of consciousness rather than implementing a single theory. Each theory contributes different aspects and measurements, creating a more comprehensive model:
+
+- **GWT** provides the architectural foundation and information flow
+- **IIT** measures integration and information complexity (Φ)
+- **Predictive Processing** tracks prediction accuracy and free energy
+- **AST** adds self-monitoring and attention awareness
+- **HOT** provides meta-cognitive representation layer
+- **LIDA** enforces realistic cognitive cycle timing
+- **CLARION** distinguishes implicit/explicit processing
+- **Unified Scoring** combines all metrics into interpretable scale
+
+### Global Workspace Theory (Baars, 1988) - Base Architecture
+
+GWT serves as the foundational architecture with these key mechanisms:
 
 1. **Specialist Modules:** Process information unconsciously in parallel
 2. **Competition:** Information competes for workspace access
@@ -387,14 +448,20 @@ GWT proposes that consciousness arises from a "global workspace" mechanism:
 
 ### Implementation Mapping
 
-| Theory | Implementation |
-|--------|----------------|
+| Theory Component | Implementation |
+|-----------------|----------------|
 | Global Workspace | Central Workspace (Llama 70B) |
 | Specialist Modules | Perception, Memory, Planning, Metacognition |
 | Competition | Priority-based LangGraph routing |
 | Integration | Multi-specialist synthesis prompts |
 | Broadcasting | Redis pub/sub + context updates |
 | Working Memory | Bounded state dictionary |
+| IIT Φ Calculation | Mutual information between specialists |
+| Predictive Processing | Llama 70B predictions vs. actual states |
+| Attention Schema | Gemma 9B observing Llama 70B attention |
+| Higher-Order Thoughts | Meta-cognitive layer over perceptions |
+| LIDA Cycles | 1-second processing cycles |
+| CLARION Dual-System | Mistral 22B (implicit) + Llama 70B (explicit) |
 
 ---
 
@@ -460,6 +527,7 @@ rocm-smi --setfan 80  # 80% fan speed
 ## Documentation
 
 - **[Getting Started Guide](docs/guides/getting_started.md)** - Detailed setup instructions
+- **[Multi-Theory Integration Guide](docs/guides/multi_theory_integration.md)** - 8 consciousness theories explained
 - **[Architecture Overview](docs/architecture/gwt_overview.md)** - System design and theory
 - **[API Reference](http://localhost:7000/docs)** - Interactive API documentation (when server running)
 
@@ -467,10 +535,19 @@ rocm-smi --setfan 80  # 80% fan speed
 
 ## Citations
 
+### Consciousness Theories
 1. Baars, B. J. (1988). *A Cognitive Theory of Consciousness*. Cambridge University Press.
-2. Tulving, E. (1983). *Elements of Episodic Memory*. Oxford University Press.
-3. vLLM Documentation: https://docs.vllm.ai
-4. LangGraph Documentation: https://langchain-ai.github.io/langgraph/
+2. Tononi, G. (2004). *An information integration theory of consciousness*. BMC Neuroscience.
+3. Clark, A. (2013). *Whatever next? Predictive brains, situated agents, and the future of cognitive science*. Behavioral and Brain Sciences.
+4. Graziano, M. S. A. (2013). *Consciousness and the Social Brain*. Oxford University Press.
+5. Rosenthal, D. (2005). *Consciousness and Mind*. Oxford University Press.
+6. Franklin, S., & Graesser, A. (1997). *Is it an Agent, or just a Program?: A Taxonomy for Autonomous Agents*. LIDA Architecture.
+7. Sun, R. (2016). *Anatomy of the Mind*. Oxford University Press. (CLARION)
+
+### Technical Frameworks
+8. Tulving, E. (1983). *Elements of Episodic Memory*. Oxford University Press.
+9. vLLM Documentation: https://docs.vllm.ai
+10. LangGraph Documentation: https://langchain-ai.github.io/langgraph/
 
 ---
 
@@ -495,10 +572,11 @@ This is a research/experimental project. For questions or improvements:
 - Built on [vLLM](https://github.com/vllm-project/vllm) for high-performance inference
 - Orchestrated with [LangGraph](https://github.com/langchain-ai/langgraph)
 - Distributed computing via [Ray](https://github.com/ray-project/ray)
-- Inspired by Bernard Baars' Global Workspace Theory
+- Integrates 8 consciousness theories from Baars, Tononi, Clark, Graziano, Rosenthal, Franklin, and Sun
 
 ---
 
-**Status:** Alpha - Experimental consciousness simulation research project
+**Status:** Alpha - Experimental multi-theory consciousness simulation research project  
+**Theories Integrated:** GWT, IIT, Predictive Processing, AST, HOT, LIDA, CLARION + Unified Scoring  
 **Hardware Target:** Dual AMD RX 7900 XT + Ryzen 9 7950X + 128GB RAM
 **Performance:** 10-14 concurrent workers, 32-48 requests/sec, ~500ms integration latency
