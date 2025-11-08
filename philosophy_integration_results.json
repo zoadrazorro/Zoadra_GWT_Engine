@@ -1,0 +1,1221 @@
+{
+  "The Republic by Plato": [
+    {
+      "chunk": 2,
+      "score": 37.60090672373561,
+      "level": "minimal"
+    },
+    {
+      "chunk": 3,
+      "score": 37.145470067515504,
+      "level": "minimal"
+    },
+    {
+      "chunk": 4,
+      "score": 38.414687139181225,
+      "level": "minimal"
+    },
+    {
+      "chunk": 5,
+      "score": 38.43356998390734,
+      "level": "minimal"
+    },
+    {
+      "chunk": 6,
+      "score": 38.45213002910536,
+      "level": "minimal"
+    },
+    {
+      "chunk": 7,
+      "score": 38.460487416711935,
+      "level": "minimal"
+    },
+    {
+      "chunk": 8,
+      "score": 42.66775269102843,
+      "level": "moderate"
+    },
+    {
+      "chunk": 9,
+      "score": 42.64889162134211,
+      "level": "moderate"
+    },
+    {
+      "chunk": 10,
+      "score": 41.380206294287895,
+      "level": "moderate"
+    },
+    {
+      "chunk": 11,
+      "score": 41.36238076789407,
+      "level": "moderate"
+    },
+    {
+      "chunk": 12,
+      "score": 41.34575655755716,
+      "level": "moderate"
+    },
+    {
+      "chunk": 13,
+      "score": 41.33048198972795,
+      "level": "moderate"
+    },
+    {
+      "chunk": 14,
+      "score": 42.56659580821686,
+      "level": "moderate"
+    },
+    {
+      "chunk": 15,
+      "score": 42.55407514037642,
+      "level": "moderate"
+    },
+    {
+      "chunk": 16,
+      "score": 42.54286350930058,
+      "level": "moderate"
+    },
+    {
+      "chunk": 17,
+      "score": 42.53288737359428,
+      "level": "moderate"
+    },
+    {
+      "chunk": 18,
+      "score": 41.27406592745409,
+      "level": "moderate"
+    },
+    {
+      "chunk": 19,
+      "score": 41.24458385083589,
+      "level": "moderate"
+    },
+    {
+      "chunk": 20,
+      "score": 41.36115622716052,
+      "level": "moderate"
+    }
+  ],
+  "Apology by Plato": [
+    {
+      "chunk": 1,
+      "score": 39.59445710216825,
+      "level": "minimal"
+    },
+    {
+      "chunk": 2,
+      "score": 39.59797136612631,
+      "level": "minimal"
+    },
+    {
+      "chunk": 3,
+      "score": 36.399962737960756,
+      "level": "minimal"
+    },
+    {
+      "chunk": 4,
+      "score": 37.54584943970053,
+      "level": "minimal"
+    },
+    {
+      "chunk": 5,
+      "score": 39.276266900556344,
+      "level": "minimal"
+    },
+    {
+      "chunk": 6,
+      "score": 39.28204170915284,
+      "level": "minimal"
+    },
+    {
+      "chunk": 7,
+      "score": 39.288103273819395,
+      "level": "minimal"
+    },
+    {
+      "chunk": 8,
+      "score": 42.263557765260636,
+      "level": "moderate"
+    },
+    {
+      "chunk": 9,
+      "score": 42.26615496153603,
+      "level": "moderate"
+    },
+    {
+      "chunk": 10,
+      "score": 42.27027261580938,
+      "level": "moderate"
+    },
+    {
+      "chunk": 11,
+      "score": 42.27549090219084,
+      "level": "moderate"
+    },
+    {
+      "chunk": 12,
+      "score": 42.281516895532164,
+      "level": "moderate"
+    },
+    {
+      "chunk": 13,
+      "score": 42.28814077535168,
+      "level": "moderate"
+    },
+    {
+      "chunk": 14,
+      "score": 42.29520905971665,
+      "level": "moderate"
+    },
+    {
+      "chunk": 15,
+      "score": 42.302607545525895,
+      "level": "moderate"
+    },
+    {
+      "chunk": 16,
+      "score": 41.05745869635818,
+      "level": "moderate"
+    },
+    {
+      "chunk": 17,
+      "score": 42.314947502664864,
+      "level": "moderate"
+    },
+    {
+      "chunk": 18,
+      "score": 42.322625137276525,
+      "level": "moderate"
+    },
+    {
+      "chunk": 19,
+      "score": 42.330440531106504,
+      "level": "moderate"
+    },
+    {
+      "chunk": 20,
+      "score": 41.08520512407303,
+      "level": "moderate"
+    }
+  ],
+  "Nicomachean Ethics by Aristotle": [
+    {
+      "chunk": 1,
+      "score": 42.34299818839066,
+      "level": "moderate"
+    },
+    {
+      "chunk": 2,
+      "score": 42.350865835580805,
+      "level": "moderate"
+    },
+    {
+      "chunk": 3,
+      "score": 42.35878277122805,
+      "level": "moderate"
+    },
+    {
+      "chunk": 4,
+      "score": 42.36672877865166,
+      "level": "moderate"
+    },
+    {
+      "chunk": 5,
+      "score": 41.12136032392698,
+      "level": "moderate"
+    },
+    {
+      "chunk": 6,
+      "score": 41.12625166850564,
+      "level": "moderate"
+    },
+    {
+      "chunk": 7,
+      "score": 42.38403038522535,
+      "level": "moderate"
+    },
+    {
+      "chunk": 8,
+      "score": 41.13905764059655,
+      "level": "moderate"
+    },
+    {
+      "chunk": 9,
+      "score": 41.144280565119935,
+      "level": "moderate"
+    },
+    {
+      "chunk": 10,
+      "score": 41.149673232811466,
+      "level": "moderate"
+    },
+    {
+      "chunk": 11,
+      "score": 42.4072134291976,
+      "level": "moderate"
+    },
+    {
+      "chunk": 12,
+      "score": 42.41476527090573,
+      "level": "moderate"
+    },
+    {
+      "chunk": 13,
+      "score": 41.170147084321535,
+      "level": "moderate"
+    },
+    {
+      "chunk": 14,
+      "score": 41.175659026538305,
+      "level": "moderate"
+    },
+    {
+      "chunk": 15,
+      "score": 42.4330653661208,
+      "level": "moderate"
+    },
+    {
+      "chunk": 16,
+      "score": 42.44047137744982,
+      "level": "moderate"
+    },
+    {
+      "chunk": 17,
+      "score": 42.44787001820789,
+      "level": "moderate"
+    },
+    {
+      "chunk": 18,
+      "score": 42.45525538489248,
+      "level": "moderate"
+    },
+    {
+      "chunk": 19,
+      "score": 41.21060692120627,
+      "level": "moderate"
+    },
+    {
+      "chunk": 20,
+      "score": 42.46791178358459,
+      "level": "moderate"
+    }
+  ],
+  "Meditations by Marcus Aurelius": [
+    {
+      "chunk": 1,
+      "score": 42.47519649997226,
+      "level": "moderate"
+    },
+    {
+      "chunk": 2,
+      "score": 41.23052768909917,
+      "level": "moderate"
+    },
+    {
+      "chunk": 3,
+      "score": 41.23594832466497,
+      "level": "moderate"
+    },
+    {
+      "chunk": 4,
+      "score": 41.24144726926512,
+      "level": "moderate"
+    },
+    {
+      "chunk": 5,
+      "score": 41.24701459835572,
+      "level": "moderate"
+    },
+    {
+      "chunk": 6,
+      "score": 41.252641448675256,
+      "level": "moderate"
+    },
+    {
+      "chunk": 7,
+      "score": 42.5096167022513,
+      "level": "moderate"
+    },
+    {
+      "chunk": 8,
+      "score": 42.516573813529064,
+      "level": "moderate"
+    },
+    {
+      "chunk": 9,
+      "score": 41.27214221308781,
+      "level": "moderate"
+    },
+    {
+      "chunk": 10,
+      "score": 41.27775621988343,
+      "level": "moderate"
+    },
+    {
+      "chunk": 11,
+      "score": 42.53458698548683,
+      "level": "moderate"
+    },
+    {
+      "chunk": 12,
+      "score": 42.54139692528186,
+      "level": "moderate"
+    },
+    {
+      "chunk": 13,
+      "score": 42.54818385238623,
+      "level": "moderate"
+    },
+    {
+      "chunk": 14,
+      "score": 42.55494589016237,
+      "level": "moderate"
+    },
+    {
+      "chunk": 15,
+      "score": 42.56168143128209,
+      "level": "moderate"
+    },
+    {
+      "chunk": 16,
+      "score": 42.5683891027052,
+      "level": "moderate"
+    },
+    {
+      "chunk": 17,
+      "score": 42.54460348811642,
+      "level": "moderate"
+    },
+    {
+      "chunk": 18,
+      "score": 42.55097706441814,
+      "level": "moderate"
+    },
+    {
+      "chunk": 19,
+      "score": 42.56815002588526,
+      "level": "moderate"
+    },
+    {
+      "chunk": 20,
+      "score": 42.57378574914164,
+      "level": "moderate"
+    }
+  ],
+  "The Enchiridion by Epictetus": [
+    {
+      "chunk": 1,
+      "score": 41.33027651659661,
+      "level": "moderate"
+    },
+    {
+      "chunk": 2,
+      "score": 41.336762238283555,
+      "level": "moderate"
+    },
+    {
+      "chunk": 3,
+      "score": 41.34323984457974,
+      "level": "moderate"
+    },
+    {
+      "chunk": 4,
+      "score": 42.598736609603286,
+      "level": "moderate"
+    },
+    {
+      "chunk": 5,
+      "score": 42.63801383256691,
+      "level": "moderate"
+    },
+    {
+      "chunk": 6,
+      "score": 42.64264958439916,
+      "level": "moderate"
+    },
+    {
+      "chunk": 7,
+      "score": 42.64734317296753,
+      "level": "moderate"
+    },
+    {
+      "chunk": 8,
+      "score": 42.6520888974034,
+      "level": "moderate"
+    },
+    {
+      "chunk": 9,
+      "score": 42.656881522694334,
+      "level": "moderate"
+    },
+    {
+      "chunk": 10,
+      "score": 42.66171623663524,
+      "level": "moderate"
+    },
+    {
+      "chunk": 11,
+      "score": 42.666588611365974,
+      "level": "moderate"
+    },
+    {
+      "chunk": 12,
+      "score": 42.67149456893725,
+      "level": "moderate"
+    },
+    {
+      "chunk": 13,
+      "score": 42.67643035042343,
+      "level": "moderate"
+    },
+    {
+      "chunk": 14,
+      "score": 41.43251757241338,
+      "level": "moderate"
+    },
+    {
+      "chunk": 15,
+      "score": 41.43859433835645,
+      "level": "moderate"
+    },
+    {
+      "chunk": 16,
+      "score": 42.5579866250103,
+      "level": "moderate"
+    },
+    {
+      "chunk": 17,
+      "score": 42.48990087220626,
+      "level": "moderate"
+    },
+    {
+      "chunk": 18,
+      "score": 41.24702047938833,
+      "level": "moderate"
+    },
+    {
+      "chunk": 19,
+      "score": 42.50526329123731,
+      "level": "moderate"
+    },
+    {
+      "chunk": 20,
+      "score": 42.517395482221495,
+      "level": "moderate"
+    }
+  ],
+  "Meditations by Descartes": [
+    {
+      "chunk": 1,
+      "score": 43.77973970315125,
+      "level": "moderate"
+    },
+    {
+      "chunk": 2,
+      "score": 42.543311582429745,
+      "level": "moderate"
+    },
+    {
+      "chunk": 3,
+      "score": 42.55571288794659,
+      "level": "moderate"
+    },
+    {
+      "chunk": 4,
+      "score": 42.56836012364787,
+      "level": "moderate"
+    },
+    {
+      "chunk": 5,
+      "score": 42.58144144098206,
+      "level": "moderate"
+    },
+    {
+      "chunk": 6,
+      "score": 42.59436702464728,
+      "level": "moderate"
+    },
+    {
+      "chunk": 7,
+      "score": 42.606974731023925,
+      "level": "moderate"
+    },
+    {
+      "chunk": 8,
+      "score": 42.65465619819225,
+      "level": "moderate"
+    },
+    {
+      "chunk": 9,
+      "score": 39.70189839543476,
+      "level": "minimal"
+    },
+    {
+      "chunk": 10,
+      "score": 36.77153809166288,
+      "level": "minimal"
+    },
+    {
+      "chunk": 11,
+      "score": 39.76398604584754,
+      "level": "minimal"
+    },
+    {
+      "chunk": 12,
+      "score": 41.025787642529,
+      "level": "moderate"
+    },
+    {
+      "chunk": 13,
+      "score": 38.10850760355267,
+      "level": "minimal"
+    },
+    {
+      "chunk": 14,
+      "score": 38.09564555619785,
+      "level": "minimal"
+    },
+    {
+      "chunk": 15,
+      "score": 39.82786179386124,
+      "level": "minimal"
+    },
+    {
+      "chunk": 16,
+      "score": 39.8351986638916,
+      "level": "minimal"
+    },
+    {
+      "chunk": 17,
+      "score": 39.842652712431075,
+      "level": "minimal"
+    },
+    {
+      "chunk": 18,
+      "score": 42.821627571577814,
+      "level": "moderate"
+    },
+    {
+      "chunk": 19,
+      "score": 42.82729722521737,
+      "level": "moderate"
+    },
+    {
+      "chunk": 20,
+      "score": 42.83293742597793,
+      "level": "moderate"
+    }
+  ],
+  "Critique of Pure Reason by Kant": [
+    {
+      "chunk": 1,
+      "score": 42.83854847828406,
+      "level": "moderate"
+    },
+    {
+      "chunk": 2,
+      "score": 42.842553699108336,
+      "level": "moderate"
+    },
+    {
+      "chunk": 3,
+      "score": 42.84810734909323,
+      "level": "moderate"
+    },
+    {
+      "chunk": 4,
+      "score": 42.85363273610602,
+      "level": "moderate"
+    },
+    {
+      "chunk": 5,
+      "score": 41.616176844482766,
+      "level": "moderate"
+    },
+    {
+      "chunk": 6,
+      "score": 42.87545731425327,
+      "level": "moderate"
+    },
+    {
+      "chunk": 7,
+      "score": 44.133511814649424,
+      "level": "moderate"
+    },
+    {
+      "chunk": 8,
+      "score": 44.143047585654,
+      "level": "moderate"
+    },
+    {
+      "chunk": 9,
+      "score": 44.152647127885636,
+      "level": "moderate"
+    },
+    {
+      "chunk": 10,
+      "score": 44.162319496471575,
+      "level": "moderate"
+    },
+    {
+      "chunk": 11,
+      "score": 44.172659919438175,
+      "level": "moderate"
+    },
+    {
+      "chunk": 12,
+      "score": 44.18231768856037,
+      "level": "moderate"
+    },
+    {
+      "chunk": 13,
+      "score": 44.19246482975254,
+      "level": "moderate"
+    },
+    {
+      "chunk": 14,
+      "score": 44.202124797699724,
+      "level": "moderate"
+    },
+    {
+      "chunk": 15,
+      "score": 41.23717700080703,
+      "level": "moderate"
+    },
+    {
+      "chunk": 16,
+      "score": 41.24755173479342,
+      "level": "moderate"
+    },
+    {
+      "chunk": 17,
+      "score": 41.2581063799184,
+      "level": "moderate"
+    },
+    {
+      "chunk": 18,
+      "score": 44.24386695120524,
+      "level": "moderate"
+    },
+    {
+      "chunk": 19,
+      "score": 41.27847529890964,
+      "level": "moderate"
+    },
+    {
+      "chunk": 20,
+      "score": 41.287999361776556,
+      "level": "moderate"
+    }
+  ],
+  "Thus Spoke Zarathustra by Nietzsche": [
+    {
+      "chunk": 1,
+      "score": 41.30843982140331,
+      "level": "moderate"
+    },
+    {
+      "chunk": 2,
+      "score": 44.33849725888719,
+      "level": "moderate"
+    },
+    {
+      "chunk": 3,
+      "score": 44.35017419367574,
+      "level": "moderate"
+    },
+    {
+      "chunk": 4,
+      "score": 43.115247419267455,
+      "level": "moderate"
+    },
+    {
+      "chunk": 5,
+      "score": 43.11608908761758,
+      "level": "moderate"
+    },
+    {
+      "chunk": 6,
+      "score": 44.3751369416844,
+      "level": "moderate"
+    },
+    {
+      "chunk": 7,
+      "score": 44.38411001924302,
+      "level": "moderate"
+    },
+    {
+      "chunk": 8,
+      "score": 44.39300954615857,
+      "level": "moderate"
+    },
+    {
+      "chunk": 9,
+      "score": 44.401836718396396,
+      "level": "moderate"
+    },
+    {
+      "chunk": 10,
+      "score": 44.419189076844845,
+      "level": "moderate"
+    },
+    {
+      "chunk": 11,
+      "score": 44.4278750128081,
+      "level": "moderate"
+    },
+    {
+      "chunk": 12,
+      "score": 44.441624905414656,
+      "level": "moderate"
+    },
+    {
+      "chunk": 13,
+      "score": 44.455998999943745,
+      "level": "moderate"
+    },
+    {
+      "chunk": 14,
+      "score": 44.46448135718709,
+      "level": "moderate"
+    },
+    {
+      "chunk": 15,
+      "score": 44.47289795906198,
+      "level": "moderate"
+    },
+    {
+      "chunk": 16,
+      "score": 44.48124981720456,
+      "level": "moderate"
+    },
+    {
+      "chunk": 17,
+      "score": 44.48953792008325,
+      "level": "moderate"
+    },
+    {
+      "chunk": 18,
+      "score": 44.49776323370087,
+      "level": "moderate"
+    },
+    {
+      "chunk": 19,
+      "score": 44.505926702270294,
+      "level": "moderate"
+    },
+    {
+      "chunk": 20,
+      "score": 44.51402924886487,
+      "level": "moderate"
+    }
+  ],
+  "The World as Will and Idea by Schopenhauer": [
+    {
+      "chunk": 1,
+      "score": 41.54707177604487,
+      "level": "moderate"
+    },
+    {
+      "chunk": 2,
+      "score": 41.55505516646075,
+      "level": "moderate"
+    },
+    {
+      "chunk": 3,
+      "score": 41.513831736051095,
+      "level": "moderate"
+    },
+    {
+      "chunk": 4,
+      "score": 44.510141456974885,
+      "level": "moderate"
+    },
+    {
+      "chunk": 5,
+      "score": 44.496980037231,
+      "level": "moderate"
+    },
+    {
+      "chunk": 6,
+      "score": 44.495511342276636,
+      "level": "moderate"
+    },
+    {
+      "chunk": 7,
+      "score": 44.50149711699464,
+      "level": "moderate"
+    },
+    {
+      "chunk": 8,
+      "score": 44.391649334374,
+      "level": "moderate"
+    },
+    {
+      "chunk": 9,
+      "score": 44.39634908382943,
+      "level": "moderate"
+    },
+    {
+      "chunk": 10,
+      "score": 44.40305834462615,
+      "level": "moderate"
+    },
+    {
+      "chunk": 11,
+      "score": 44.41054621019955,
+      "level": "moderate"
+    },
+    {
+      "chunk": 12,
+      "score": 44.4188048731109,
+      "level": "moderate"
+    },
+    {
+      "chunk": 13,
+      "score": 44.42619086217104,
+      "level": "moderate"
+    },
+    {
+      "chunk": 14,
+      "score": 41.458526945518656,
+      "level": "moderate"
+    },
+    {
+      "chunk": 15,
+      "score": 38.63873138421236,
+      "level": "minimal"
+    },
+    {
+      "chunk": 16,
+      "score": 38.633191593872155,
+      "level": "minimal"
+    },
+    {
+      "chunk": 17,
+      "score": 41.6153819261433,
+      "level": "moderate"
+    },
+    {
+      "chunk": 18,
+      "score": 43.347524953254506,
+      "level": "moderate"
+    },
+    {
+      "chunk": 19,
+      "score": 44.60462129358051,
+      "level": "moderate"
+    },
+    {
+      "chunk": 20,
+      "score": 44.611671553449625,
+      "level": "moderate"
+    }
+  ],
+  "Essays by Emerson": [
+    {
+      "chunk": 1,
+      "score": 44.61867632745464,
+      "level": "moderate"
+    },
+    {
+      "chunk": 2,
+      "score": 44.62563619875366,
+      "level": "moderate"
+    },
+    {
+      "chunk": 3,
+      "score": 44.63255173936154,
+      "level": "moderate"
+    },
+    {
+      "chunk": 4,
+      "score": 44.64284315484862,
+      "level": "moderate"
+    },
+    {
+      "chunk": 5,
+      "score": 41.674650300687304,
+      "level": "moderate"
+    },
+    {
+      "chunk": 6,
+      "score": 41.68141503412711,
+      "level": "moderate"
+    },
+    {
+      "chunk": 7,
+      "score": 41.68813788040407,
+      "level": "moderate"
+    },
+    {
+      "chunk": 8,
+      "score": 44.669819355057385,
+      "level": "moderate"
+    },
+    {
+      "chunk": 9,
+      "score": 44.67645996416674,
+      "level": "moderate"
+    },
+    {
+      "chunk": 10,
+      "score": 44.68306020458226,
+      "level": "moderate"
+    },
+    {
+      "chunk": 11,
+      "score": 44.635330647432895,
+      "level": "moderate"
+    },
+    {
+      "chunk": 12,
+      "score": 44.641851605201715,
+      "level": "moderate"
+    },
+    {
+      "chunk": 13,
+      "score": 44.64833363164741,
+      "level": "moderate"
+    },
+    {
+      "chunk": 14,
+      "score": 44.65798468368051,
+      "level": "moderate"
+    },
+    {
+      "chunk": 15,
+      "score": 38.731264112495865,
+      "level": "minimal"
+    },
+    {
+      "chunk": 16,
+      "score": 38.717048586420596,
+      "level": "minimal"
+    },
+    {
+      "chunk": 17,
+      "score": 41.69836102399685,
+      "level": "moderate"
+    },
+    {
+      "chunk": 18,
+      "score": 44.679636973290854,
+      "level": "moderate"
+    },
+    {
+      "chunk": 19,
+      "score": 44.68587685371162,
+      "level": "moderate"
+    },
+    {
+      "chunk": 20,
+      "score": 44.681547950723406,
+      "level": "moderate"
+    }
+  ],
+  "The Prince by Machiavelli": [
+    {
+      "chunk": 1,
+      "score": 44.687716923028404,
+      "level": "moderate"
+    },
+    {
+      "chunk": 2,
+      "score": 44.693851042196584,
+      "level": "moderate"
+    },
+    {
+      "chunk": 3,
+      "score": 41.724950699839326,
+      "level": "moderate"
+    },
+    {
+      "chunk": 4,
+      "score": 41.73101628100464,
+      "level": "moderate"
+    },
+    {
+      "chunk": 5,
+      "score": 38.741922627972244,
+      "level": "minimal"
+    },
+    {
+      "chunk": 6,
+      "score": 41.72292118579838,
+      "level": "moderate"
+    },
+    {
+      "chunk": 7,
+      "score": 41.728886784349285,
+      "level": "moderate"
+    },
+    {
+      "chunk": 8,
+      "score": 44.70981978383832,
+      "level": "moderate"
+    },
+    {
+      "chunk": 9,
+      "score": 44.71572053860575,
+      "level": "moderate"
+    },
+    {
+      "chunk": 10,
+      "score": 44.72451197291284,
+      "level": "moderate"
+    },
+    {
+      "chunk": 11,
+      "score": 41.76446863760428,
+      "level": "moderate"
+    },
+    {
+      "chunk": 12,
+      "score": 41.770259244422235,
+      "level": "moderate"
+    },
+    {
+      "chunk": 13,
+      "score": 44.75101913169615,
+      "level": "moderate"
+    },
+    {
+      "chunk": 14,
+      "score": 44.75674862364511,
+      "level": "moderate"
+    },
+    {
+      "chunk": 15,
+      "score": 41.787448039382355,
+      "level": "moderate"
+    },
+    {
+      "chunk": 16,
+      "score": 41.790347921760734,
+      "level": "moderate"
+    },
+    {
+      "chunk": 17,
+      "score": 41.79597351053676,
+      "level": "moderate"
+    },
+    {
+      "chunk": 18,
+      "score": 41.80157010130375,
+      "level": "moderate"
+    },
+    {
+      "chunk": 19,
+      "score": 44.78213799147915,
+      "level": "moderate"
+    },
+    {
+      "chunk": 20,
+      "score": 44.803742370668644,
+      "level": "moderate"
+    }
+  ],
+  "Utopia by Thomas More": [
+    {
+      "chunk": 1,
+      "score": 44.80925373379623,
+      "level": "moderate"
+    },
+    {
+      "chunk": 2,
+      "score": 44.82080227559555,
+      "level": "moderate"
+    },
+    {
+      "chunk": 3,
+      "score": 44.805030849716246,
+      "level": "moderate"
+    },
+    {
+      "chunk": 4,
+      "score": 41.83544600410751,
+      "level": "moderate"
+    },
+    {
+      "chunk": 5,
+      "score": 38.889779421464276,
+      "level": "minimal"
+    },
+    {
+      "chunk": 6,
+      "score": 38.883584378863105,
+      "level": "minimal"
+    },
+    {
+      "chunk": 7,
+      "score": 38.944447157404845,
+      "level": "minimal"
+    },
+    {
+      "chunk": 8,
+      "score": 41.924756391479484,
+      "level": "moderate"
+    },
+    {
+      "chunk": 9,
+      "score": 44.90503978976298,
+      "level": "moderate"
+    },
+    {
+      "chunk": 10,
+      "score": 44.91291699146038,
+      "level": "moderate"
+    },
+    {
+      "chunk": 11,
+      "score": 41.943136887114534,
+      "level": "moderate"
+    },
+    {
+      "chunk": 12,
+      "score": 41.94833180709588,
+      "level": "moderate"
+    },
+    {
+      "chunk": 13,
+      "score": 44.928501989269314,
+      "level": "moderate"
+    },
+    {
+      "chunk": 14,
+      "score": 44.93364766811775,
+      "level": "moderate"
+    },
+    {
+      "chunk": 15,
+      "score": 44.938769074805926,
+      "level": "moderate"
+    },
+    {
+      "chunk": 16,
+      "score": 44.943866437242704,
+      "level": "moderate"
+    },
+    {
+      "chunk": 17,
+      "score": 44.94893998014196,
+      "level": "moderate"
+    },
+    {
+      "chunk": 18,
+      "score": 45.004164187132815,
+      "level": "moderate"
+    },
+    {
+      "chunk": 19,
+      "score": 45.0091907526144,
+      "level": "moderate"
+    },
+    {
+      "chunk": 20,
+      "score": 45.014194154117575,
+      "level": "moderate"
+    }
+  ]
+}

@@ -189,6 +189,120 @@
         44.79602215573533,
         44.80774180294679
       ]
+    },
+    {
+      "title": "Dialogues by Galileo",
+      "category": "advanced_sciences",
+      "chunks_processed": 10,
+      "average_score": 41.32187842426071,
+      "final_score": 43.931077877084334,
+      "score_trajectory": [
+        38.856468593464285,
+        38.89246356672444,
+        38.441782772743196,
+        40.9221050196985,
+        41.42740130437032,
+        44.910297602482395,
+        41.940530076247,
+        41.94573745411773,
+        41.95091997567489,
+        43.931077877084334
+      ]
+    },
+    {
+      "title": "Heredity by Mendel",
+      "category": "advanced_sciences",
+      "chunks_processed": 10,
+      "average_score": 43.97086252376393,
+      "final_score": 40.80732519686691,
+      "score_trajectory": [
+        44.936211391161976,
+        44.94132074743695,
+        44.946406172213074,
+        44.95146788862911,
+        45.006680378768266,
+        45.01169533551226,
+        45.01668723490245,
+        42.044174604157035,
+        42.04665628799123,
+        40.80732519686691
+      ]
+    },
+    {
+      "title": "Germ Theory by Pasteur",
+      "category": "advanced_sciences",
+      "chunks_processed": 10,
+      "average_score": 42.08372596656621,
+      "final_score": 43.828337436019304,
+      "score_trajectory": [
+        39.575951859978595,
+        39.59450414293885,
+        42.51447924434524,
+        42.52846965922239,
+        42.542415043953504,
+        42.5506976724879,
+        42.559041103338984,
+        42.56744688487104,
+        42.575916618506355,
+        43.828337436019304
+      ]
+    },
+    {
+      "title": "The Iliad by Homer",
+      "category": "literature",
+      "chunks_processed": 10,
+      "average_score": 43.364476042203236,
+      "final_score": 42.62715473136136,
+      "score_trajectory": [
+        42.58686739316785,
+        42.595464698547815,
+        43.89473066932745,
+        43.89713008733108,
+        43.85266297599567,
+        43.85505183549569,
+        43.857435450514,
+        43.859813844027535,
+        42.61844873626394,
+        42.62715473136136
+      ]
+    },
+    {
+      "title": "The Odyssey by Homer",
+      "category": "literature",
+      "chunks_processed": 10,
+      "average_score": 43.07444085308963,
+      "final_score": 42.218780116579325,
+      "score_trajectory": [
+        42.63771056253813,
+        42.648654178045454,
+        42.66039037412397,
+        43.91273791277854,
+        43.91508038662086,
+        42.67245557097811,
+        43.92988991171911,
+        43.93453975267942,
+        42.2141697648334,
+        42.218780116579325
+      ]
+    },
+    {
+      "title": "Inferno by Dante",
+      "category": "literature",
+      "chunks_processed": 10,
+      "average_score": 40.62236958933211,
+      "final_score": 43.989778297015214,
+      "score_trajectory": [
+        39.24456673893071,
+        39.336282036445425,
+        36.33938312740672,
+        39.30811696627062,
+        38.02226999156612,
+        41.0024559435632,
+        41.00802758383876,
+        43.98528248850131,
+        43.98753271978296,
+        43.989778297015214
+      ]
     }
   ],
   "consciousness_evolution": [
@@ -991,8 +1105,488 @@
       "score": 44.80774180294679,
       "level": "moderate",
       "timestamp": 1453.0936188697815
+    },
+    {
+      "text": "Dialogues by Galileo",
+      "category": "advanced_sciences",
+      "chunk": 1,
+      "score": 38.856468593464285,
+      "level": "minimal",
+      "timestamp": 1469.2994911670685
+    },
+    {
+      "text": "Dialogues by Galileo",
+      "category": "advanced_sciences",
+      "chunk": 2,
+      "score": 38.89246356672444,
+      "level": "minimal",
+      "timestamp": 1483.4582839012146
+    },
+    {
+      "text": "Dialogues by Galileo",
+      "category": "advanced_sciences",
+      "chunk": 3,
+      "score": 38.441782772743196,
+      "level": "minimal",
+      "timestamp": 1497.5827536582947
+    },
+    {
+      "text": "Dialogues by Galileo",
+      "category": "advanced_sciences",
+      "chunk": 4,
+      "score": 40.9221050196985,
+      "level": "moderate",
+      "timestamp": 1510.0087985992432
+    },
+    {
+      "text": "Dialogues by Galileo",
+      "category": "advanced_sciences",
+      "chunk": 5,
+      "score": 41.42740130437032,
+      "level": "moderate",
+      "timestamp": 1523.993530035019
+    },
+    {
+      "text": "Dialogues by Galileo",
+      "category": "advanced_sciences",
+      "chunk": 6,
+      "score": 44.910297602482395,
+      "level": "moderate",
+      "timestamp": 1542.9999656677246
+    },
+    {
+      "text": "Dialogues by Galileo",
+      "category": "advanced_sciences",
+      "chunk": 7,
+      "score": 41.940530076247,
+      "level": "moderate",
+      "timestamp": 1556.7602424621582
+    },
+    {
+      "text": "Dialogues by Galileo",
+      "category": "advanced_sciences",
+      "chunk": 8,
+      "score": 41.94573745411773,
+      "level": "moderate",
+      "timestamp": 1569.3918011188507
+    },
+    {
+      "text": "Dialogues by Galileo",
+      "category": "advanced_sciences",
+      "chunk": 9,
+      "score": 41.95091997567489,
+      "level": "moderate",
+      "timestamp": 1582.663938999176
+    },
+    {
+      "text": "Dialogues by Galileo",
+      "category": "advanced_sciences",
+      "chunk": 10,
+      "score": 43.931077877084334,
+      "level": "moderate",
+      "timestamp": 1598.011907339096
+    },
+    {
+      "text": "Heredity by Mendel",
+      "category": "advanced_sciences",
+      "chunk": 1,
+      "score": 44.936211391161976,
+      "level": "moderate",
+      "timestamp": 1613.7752001285553
+    },
+    {
+      "text": "Heredity by Mendel",
+      "category": "advanced_sciences",
+      "chunk": 2,
+      "score": 44.94132074743695,
+      "level": "moderate",
+      "timestamp": 1626.7844867706299
+    },
+    {
+      "text": "Heredity by Mendel",
+      "category": "advanced_sciences",
+      "chunk": 3,
+      "score": 44.946406172213074,
+      "level": "moderate",
+      "timestamp": 1641.945829153061
+    },
+    {
+      "text": "Heredity by Mendel",
+      "category": "advanced_sciences",
+      "chunk": 4,
+      "score": 44.95146788862911,
+      "level": "moderate",
+      "timestamp": 1656.3629682064056
+    },
+    {
+      "text": "Heredity by Mendel",
+      "category": "advanced_sciences",
+      "chunk": 5,
+      "score": 45.006680378768266,
+      "level": "moderate",
+      "timestamp": 1671.851325750351
+    },
+    {
+      "text": "Heredity by Mendel",
+      "category": "advanced_sciences",
+      "chunk": 6,
+      "score": 45.01169533551226,
+      "level": "moderate",
+      "timestamp": 1684.8516523838043
+    },
+    {
+      "text": "Heredity by Mendel",
+      "category": "advanced_sciences",
+      "chunk": 7,
+      "score": 45.01668723490245,
+      "level": "moderate",
+      "timestamp": 1698.2495393753052
+    },
+    {
+      "text": "Heredity by Mendel",
+      "category": "advanced_sciences",
+      "chunk": 8,
+      "score": 42.044174604157035,
+      "level": "moderate",
+      "timestamp": 1708.379602432251
+    },
+    {
+      "text": "Heredity by Mendel",
+      "category": "advanced_sciences",
+      "chunk": 9,
+      "score": 42.04665628799123,
+      "level": "moderate",
+      "timestamp": 1719.6432435512543
+    },
+    {
+      "text": "Heredity by Mendel",
+      "category": "advanced_sciences",
+      "chunk": 10,
+      "score": 40.80732519686691,
+      "level": "moderate",
+      "timestamp": 1732.7614221572876
+    },
+    {
+      "text": "Germ Theory by Pasteur",
+      "category": "advanced_sciences",
+      "chunk": 1,
+      "score": 39.575951859978595,
+      "level": "minimal",
+      "timestamp": 1749.0787100791931
+    },
+    {
+      "text": "Germ Theory by Pasteur",
+      "category": "advanced_sciences",
+      "chunk": 2,
+      "score": 39.59450414293885,
+      "level": "minimal",
+      "timestamp": 1763.9400005340576
+    },
+    {
+      "text": "Germ Theory by Pasteur",
+      "category": "advanced_sciences",
+      "chunk": 3,
+      "score": 42.51447924434524,
+      "level": "moderate",
+      "timestamp": 1778.2028951644897
+    },
+    {
+      "text": "Germ Theory by Pasteur",
+      "category": "advanced_sciences",
+      "chunk": 4,
+      "score": 42.52846965922239,
+      "level": "moderate",
+      "timestamp": 1794.8393061161041
+    },
+    {
+      "text": "Germ Theory by Pasteur",
+      "category": "advanced_sciences",
+      "chunk": 5,
+      "score": 42.542415043953504,
+      "level": "moderate",
+      "timestamp": 1809.9845323562622
+    },
+    {
+      "text": "Germ Theory by Pasteur",
+      "category": "advanced_sciences",
+      "chunk": 6,
+      "score": 42.5506976724879,
+      "level": "moderate",
+      "timestamp": 1824.197205543518
+    },
+    {
+      "text": "Germ Theory by Pasteur",
+      "category": "advanced_sciences",
+      "chunk": 7,
+      "score": 42.559041103338984,
+      "level": "moderate",
+      "timestamp": 1838.407674074173
+    },
+    {
+      "text": "Germ Theory by Pasteur",
+      "category": "advanced_sciences",
+      "chunk": 8,
+      "score": 42.56744688487104,
+      "level": "moderate",
+      "timestamp": 1850.9314074516296
+    },
+    {
+      "text": "Germ Theory by Pasteur",
+      "category": "advanced_sciences",
+      "chunk": 9,
+      "score": 42.575916618506355,
+      "level": "moderate",
+      "timestamp": 1863.4842257499695
+    },
+    {
+      "text": "Germ Theory by Pasteur",
+      "category": "advanced_sciences",
+      "chunk": 10,
+      "score": 43.828337436019304,
+      "level": "moderate",
+      "timestamp": 1876.5167708396912
+    },
+    {
+      "text": "The Iliad by Homer",
+      "category": "literature",
+      "chunk": 1,
+      "score": 42.58686739316785,
+      "level": "moderate",
+      "timestamp": 1891.6026146411896
+    },
+    {
+      "text": "The Iliad by Homer",
+      "category": "literature",
+      "chunk": 2,
+      "score": 42.595464698547815,
+      "level": "moderate",
+      "timestamp": 1902.078096628189
+    },
+    {
+      "text": "The Iliad by Homer",
+      "category": "literature",
+      "chunk": 3,
+      "score": 43.89473066932745,
+      "level": "moderate",
+      "timestamp": 1912.087107181549
+    },
+    {
+      "text": "The Iliad by Homer",
+      "category": "literature",
+      "chunk": 4,
+      "score": 43.89713008733108,
+      "level": "moderate",
+      "timestamp": 1924.0787439346313
+    },
+    {
+      "text": "The Iliad by Homer",
+      "category": "literature",
+      "chunk": 5,
+      "score": 43.85266297599567,
+      "level": "moderate",
+      "timestamp": 1934.317672252655
+    },
+    {
+      "text": "The Iliad by Homer",
+      "category": "literature",
+      "chunk": 6,
+      "score": 43.85505183549569,
+      "level": "moderate",
+      "timestamp": 1945.992882013321
+    },
+    {
+      "text": "The Iliad by Homer",
+      "category": "literature",
+      "chunk": 7,
+      "score": 43.857435450514,
+      "level": "moderate",
+      "timestamp": 1958.4766137599945
+    },
+    {
+      "text": "The Iliad by Homer",
+      "category": "literature",
+      "chunk": 8,
+      "score": 43.859813844027535,
+      "level": "moderate",
+      "timestamp": 1971.0479624271393
+    },
+    {
+      "text": "The Iliad by Homer",
+      "category": "literature",
+      "chunk": 9,
+      "score": 42.61844873626394,
+      "level": "moderate",
+      "timestamp": 1985.5075068473816
+    },
+    {
+      "text": "The Iliad by Homer",
+      "category": "literature",
+      "chunk": 10,
+      "score": 42.62715473136136,
+      "level": "moderate",
+      "timestamp": 1999.125756263733
+    },
+    {
+      "text": "The Odyssey by Homer",
+      "category": "literature",
+      "chunk": 1,
+      "score": 42.63771056253813,
+      "level": "moderate",
+      "timestamp": 2013.8404774665833
+    },
+    {
+      "text": "The Odyssey by Homer",
+      "category": "literature",
+      "chunk": 2,
+      "score": 42.648654178045454,
+      "level": "moderate",
+      "timestamp": 2025.4582827091217
+    },
+    {
+      "text": "The Odyssey by Homer",
+      "category": "literature",
+      "chunk": 3,
+      "score": 42.66039037412397,
+      "level": "moderate",
+      "timestamp": 2035.9451928138733
+    },
+    {
+      "text": "The Odyssey by Homer",
+      "category": "literature",
+      "chunk": 4,
+      "score": 43.91273791277854,
+      "level": "moderate",
+      "timestamp": 2048.0383048057556
+    },
+    {
+      "text": "The Odyssey by Homer",
+      "category": "literature",
+      "chunk": 5,
+      "score": 43.91508038662086,
+      "level": "moderate",
+      "timestamp": 2062.0011208057404
+    },
+    {
+      "text": "The Odyssey by Homer",
+      "category": "literature",
+      "chunk": 6,
+      "score": 42.67245557097811,
+      "level": "moderate",
+      "timestamp": 2073.2377388477325
+    },
+    {
+      "text": "The Odyssey by Homer",
+      "category": "literature",
+      "chunk": 7,
+      "score": 43.92988991171911,
+      "level": "moderate",
+      "timestamp": 2085.7669501304626
+    },
+    {
+      "text": "The Odyssey by Homer",
+      "category": "literature",
+      "chunk": 8,
+      "score": 43.93453975267942,
+      "level": "moderate",
+      "timestamp": 2101.8516497612
+    },
+    {
+      "text": "The Odyssey by Homer",
+      "category": "literature",
+      "chunk": 9,
+      "score": 42.2141697648334,
+      "level": "moderate",
+      "timestamp": 2113.940118074417
+    },
+    {
+      "text": "The Odyssey by Homer",
+      "category": "literature",
+      "chunk": 10,
+      "score": 42.218780116579325,
+      "level": "moderate",
+      "timestamp": 2127.187015771866
+    },
+    {
+      "text": "Inferno by Dante",
+      "category": "literature",
+      "chunk": 1,
+      "score": 39.24456673893071,
+      "level": "minimal",
+      "timestamp": 2141.3955240249634
+    },
+    {
+      "text": "Inferno by Dante",
+      "category": "literature",
+      "chunk": 2,
+      "score": 39.336282036445425,
+      "level": "minimal",
+      "timestamp": 2155.059334754944
+    },
+    {
+      "text": "Inferno by Dante",
+      "category": "literature",
+      "chunk": 3,
+      "score": 36.33938312740672,
+      "level": "minimal",
+      "timestamp": 2166.164253950119
+    },
+    {
+      "text": "Inferno by Dante",
+      "category": "literature",
+      "chunk": 4,
+      "score": 39.30811696627062,
+      "level": "minimal",
+      "timestamp": 2176.547558784485
+    },
+    {
+      "text": "Inferno by Dante",
+      "category": "literature",
+      "chunk": 5,
+      "score": 38.02226999156612,
+      "level": "minimal",
+      "timestamp": 2186.1904842853546
+    },
+    {
+      "text": "Inferno by Dante",
+      "category": "literature",
+      "chunk": 6,
+      "score": 41.0024559435632,
+      "level": "moderate",
+      "timestamp": 2195.853986978531
+    },
+    {
+      "text": "Inferno by Dante",
+      "category": "literature",
+      "chunk": 7,
+      "score": 41.00802758383876,
+      "level": "moderate",
+      "timestamp": 2206.9003767967224
+    },
+    {
+      "text": "Inferno by Dante",
+      "category": "literature",
+      "chunk": 8,
+      "score": 43.98528248850131,
+      "level": "moderate",
+      "timestamp": 2217.821954011917
+    },
+    {
+      "text": "Inferno by Dante",
+      "category": "literature",
+      "chunk": 9,
+      "score": 43.98753271978296,
+      "level": "moderate",
+      "timestamp": 2227.993111848831
+    },
+    {
+      "text": "Inferno by Dante",
+      "category": "literature",
+      "chunk": 10,
+      "score": 43.989778297015214,
+      "level": "moderate",
+      "timestamp": 2238.486357688904
     }
   ],
-  "elapsed_time": 1454.1016962528229,
-  "texts_completed": 10
+  "elapsed_time": 2239.495612859726,
+  "texts_completed": 16
 }

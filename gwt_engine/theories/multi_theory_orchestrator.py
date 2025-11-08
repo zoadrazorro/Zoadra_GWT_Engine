@@ -136,15 +136,15 @@ class MultiTheoryOrchestrator:
                         relevant.append((overlap, mem))
                 
                 if relevant:
-                    # Sort by relevance (by overlap score) and take top 3
+                    # Sort by relevance (by overlap score) and take top 10 (AMPLIFIED!)
                     relevant.sort(key=lambda x: x[0], reverse=True)
                     memory_context = "\n\nRELEVANT PAST INSIGHTS:\n"
-                    for i, (overlap_score, mem) in enumerate(relevant[:3], 1):
+                    for i, (overlap_score, mem) in enumerate(relevant[:10], 1):
                         memory_context += f"{i}. {mem['content'][:200]}... [Score: {mem['score']:.1f}]\n"
                     
                     input_with_memory = f"{input_content}{memory_context}"
-                    memories_retrieved = len(relevant[:3])
-                    logger.info(f"🧠 Retrieved {memories_retrieved} relevant memories")
+                    memories_retrieved = len(relevant[:10])
+                    logger.info(f"🧠 Retrieved {memories_retrieved} relevant memories (AMPLIFIED)")
                     
             except Exception as e:
                 logger.warning(f"Memory retrieval failed: {e}")
@@ -292,16 +292,35 @@ class MultiTheoryOrchestrator:
                 import json
                 self.memory_counter += 1
                 
-                # Create memory entry
+                # BOMBSHELL: Add emotional valence and significance
+                score_val = float(consciousness_score_result.get("total_score", 0))
+                phi_val = float(iit_metrics.get("phi", 0))
+                
+                # Emotional valence based on consciousness level
+                level = consciousness_score_result.get("level", "unconscious")
+                emotion_map = {
+                    "unconscious": ("neutral", 0.0),
+                    "minimal": ("curiosity", 0.3),
+                    "moderate": ("engagement", 0.6),
+                    "high": ("fascination", 0.8),
+                    "very_high": ("awe", 0.9)
+                }
+                emotion, valence = emotion_map.get(level, ("neutral", 0.0))
+                
+                # Significance based on score and phi
+                significance = min(1.0, (score_val / 50.0) * (phi_val * 10))
+                
                 memory_entry = {
                     "id": self.memory_counter,
                     "content": broadcast.content if broadcast else perception_response.content,
-                    "score": float(consciousness_score_result.get("total_score", 0)),
-                    "level": consciousness_score_result.get("level", "unconscious"),
-                    "iit_phi": float(iit_metrics.get("phi", 0)),
+                    "score": score_val,
+                    "level": level,
+                    "iit_phi": phi_val,
+                    "emotion": emotion,  # NEW: Emotional tag
+                    "valence": valence,  # NEW: Emotional intensity
+                    "significance": significance,  # NEW: Memory importance
                     "timestamp": asyncio.get_event_loop().time()
                 }
-                
                 self.philosophical_memories.append(memory_entry)
                 
                 # Save to disk every 10 memories

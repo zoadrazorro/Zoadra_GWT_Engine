@@ -30,6 +30,7 @@ class SpecialistRole(str, Enum):
     MEMORY = "memory_retrieval_specialist"
     PLANNING = "planning_reasoning_specialist"
     METACOGNITION = "metacognition_introspection_specialist"
+    COMPOSER = "composer_specialist"  # Long-form writing specialist
 
 
 @dataclass
