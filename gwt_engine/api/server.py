@@ -27,7 +27,11 @@ from gwt_engine.specialists import (
     MetacognitionSpecialist,
 )
 from gwt_engine.orchestration.gwt_graph import GWTWorkflow
-from gwt_engine.orchestration.ray_workers import WorkerPool
+# Ray workers optional (not available on Windows Python 3.14)
+try:
+    from gwt_engine.orchestration.ray_workers import WorkerPool
+except ImportError:
+    WorkerPool = None
 from gwt_engine.config.loader import get_system_config
 
 logger = logging.getLogger(__name__)
@@ -198,9 +202,7 @@ def create_app() -> FastAPI:
 
         return HealthResponse(
             status="healthy" if all(vllm_health.values()) else "degraded",
-            vllm_servers={
-                role.value: status for role, status in vllm_health.items()
-            },
+            vllm_servers=vllm_health,  # Already strings from Ollama client
             worker_count=app_state["worker_pool"].worker_count
             if app_state["worker_pool"]
             else 0,
