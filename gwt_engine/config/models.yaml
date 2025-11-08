@@ -1,0 +1,139 @@
+# GWT Engine Model Configuration
+# Optimized for Dual AMD 7900 XT (80GB VRAM each) + Ryzen 7950X + 128GB DDR5
+
+hardware:
+  gpu_1:
+    device_id: 0
+    vram_gb: 80
+    pcie_lanes: 8  # PCIe 4.0 x8 bottleneck
+    models:
+      - central_workspace
+      - perception
+
+  gpu_2:
+    device_id: 1
+    vram_gb: 80
+    pcie_lanes: 8
+    models:
+      - memory
+      - planning
+      - metacognition
+
+  cpu:
+    cores: 16
+    threads: 32
+    ram_gb: 128
+    models:
+      - planning_overflow  # When GPU2 saturated
+      - metacognition_overflow
+
+models:
+  central_workspace:
+    name: "llama-3.1-70b"
+    quantization: "Q4_K_M"
+    vram_required_gb: 40
+    role: "central_global_workspace"
+    description: "Consolidates information from specialists into integrated thoughts"
+    gpu_assignment: 0
+    tensor_parallel_size: 2  # Split across both GPUs
+    max_model_len: 4096
+    expected_tokens_per_sec: 25
+    priority: "critical"
+    workers: 1
+
+  perception:
+    name: "mistral-small-22b"
+    quantization: "Q5_K_M"
+    vram_required_gb: 15
+    role: "perception_specialist"
+    description: "Processes sensory/environmental data for workspace attention"
+    gpu_assignment: 0
+    tensor_parallel_size: 1
+    max_model_len: 8192
+    expected_tokens_per_sec: 65
+    priority: "high"
+    workers: 3
+
+  memory:
+    name: "qwen-2.5-coder-32b"
+    quantization: "Q4_K_M"
+    vram_required_gb: 20
+    role: "memory_retrieval_specialist"
+    description: "Manages episodic memory and working memory consolidation"
+    gpu_assignment: 1
+    tensor_parallel_size: 1
+    max_model_len: 32768  # Long context for memory retrieval
+    expected_tokens_per_sec: 70
+    priority: "high"
+    workers: 3
+
+  planning:
+    name: "llama-3.1-8b"
+    quantization: "Q5_K_M"
+    vram_required_gb: 5
+    role: "planning_reasoning_specialist"
+    description: "Decision-making and action planning"
+    gpu_assignment: 1
+    tensor_parallel_size: 1
+    max_model_len: 8192
+    expected_tokens_per_sec: 120
+    priority: "medium"
+    workers: 6
+
+  metacognition:
+    name: "gemma-2-9b"
+    quantization: "Q6_K_M"
+    vram_required_gb: 7
+    role: "metacognition_introspection_specialist"
+    description: "Self-reflection and consciousness probe responses"
+    gpu_assignment: 1
+    tensor_parallel_size: 1
+    max_model_len: 8192
+    expected_tokens_per_sec: 110
+    priority: "medium"
+    workers: 4
+
+# vLLM Server Configurations
+vllm_instances:
+  central_workspace_server:
+    models: ["central_workspace"]
+    host: "0.0.0.0"
+    port: 8000
+    gpu_memory_utilization: 0.90
+    max_num_batched_tokens: 2048
+    max_num_seqs: 32
+    tensor_parallel_size: 2
+    pipeline_parallel_size: 1  # Don't use due to PCIe x8 bottleneck
+    trust_remote_code: true
+
+  gpu1_specialists_server:
+    models: ["perception"]
+    host: "0.0.0.0"
+    port: 8001
+    gpu_memory_utilization: 0.85
+    max_num_batched_tokens: 4096
+    max_num_seqs: 48
+    tensor_parallel_size: 1
+
+  gpu2_specialists_server:
+    models: ["memory", "planning", "metacognition"]
+    host: "0.0.0.0"
+    port: 8002
+    gpu_memory_utilization: 0.85
+    max_num_batched_tokens: 4096
+    max_num_seqs: 48
+    tensor_parallel_size: 1
+
+# GWT Workspace Configuration
+gwt_workspace:
+  broadcast_threshold: 0.75  # Confidence threshold for workspace broadcasts
+  integration_window_ms: 500  # Time window for specialist integration
+  max_concurrent_specialists: 14
+  context_retention_tokens: 2048
+  consciousness_probe_interval_sec: 30
+
+# Model Paths (local storage)
+model_paths:
+  base_dir: "/models"
+  cache_dir: "/models/cache"
+  download_dir: "/models/downloads"

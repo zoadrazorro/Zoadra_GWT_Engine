@@ -1,0 +1,148 @@
+# System-wide Configuration for GWT Engine
+
+# Redis Configuration
+redis:
+  host: "localhost"
+  port: 6379
+  db: 0
+  password: null
+  max_connections: 50
+  decode_responses: true
+
+  # Message Queue Channels
+  channels:
+    workspace_broadcast: "gwt:workspace:broadcast"
+    perception_input: "gwt:perception:input"
+    memory_query: "gwt:memory:query"
+    planning_request: "gwt:planning:request"
+    metacognition_probe: "gwt:metacognition:probe"
+    specialist_response: "gwt:specialist:response"
+
+# Ray Configuration
+ray:
+  namespace: "gwt_engine"
+  dashboard_host: "0.0.0.0"
+  dashboard_port: 8265
+  num_cpus: 32
+  num_gpus: 2
+  object_store_memory: 10_000_000_000  # 10GB
+
+  # Worker Pools
+  worker_pools:
+    perception_workers: 3
+    memory_workers: 3
+    planning_workers: 6
+    metacognition_workers: 4
+    workspace_workers: 1
+
+# FastAPI Configuration
+api:
+  host: "0.0.0.0"
+  port: 7000
+  reload: false
+  workers: 4
+  log_level: "info"
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://localhost:8080"
+
+  # Rate Limiting
+  rate_limit:
+    enabled: true
+    requests_per_minute: 100
+
+  # Authentication
+  auth:
+    enabled: false  # Enable for production
+    api_key_header: "X-API-Key"
+
+# Logging Configuration
+logging:
+  version: 1
+  disable_existing_loggers: false
+
+  formatters:
+    standard:
+      format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    json:
+      class: "pythonjsonlogger.jsonlogger.JsonFormatter"
+      format: "%(asctime)s %(name)s %(levelname)s %(message)s"
+
+  handlers:
+    console:
+      class: "logging.StreamHandler"
+      level: "INFO"
+      formatter: "standard"
+      stream: "ext://sys.stdout"
+
+    file:
+      class: "logging.handlers.RotatingFileHandler"
+      level: "DEBUG"
+      formatter: "json"
+      filename: "logs/gwt_engine.log"
+      maxBytes: 10485760  # 10MB
+      backupCount: 5
+
+  loggers:
+    gwt_engine:
+      level: "DEBUG"
+      handlers: ["console", "file"]
+      propagate: false
+
+    uvicorn:
+      level: "INFO"
+      handlers: ["console"]
+
+    ray:
+      level: "WARNING"
+      handlers: ["console"]
+
+# Monitoring Configuration
+monitoring:
+  prometheus:
+    enabled: true
+    port: 9090
+    metrics_path: "/metrics"
+
+  # Health Check
+  health_check:
+    enabled: true
+    interval_sec: 30
+    timeout_sec: 5
+
+  # Performance Tracking
+  performance:
+    track_latency: true
+    track_throughput: true
+    track_gpu_utilization: true
+    track_memory_usage: true
+
+# Memory Management
+memory:
+  # ChromaDB for long-term episodic memory
+  chromadb:
+    path: "data/chromadb"
+    collection_name: "gwt_episodic_memory"
+    embedding_model: "all-MiniLM-L6-v2"
+    max_documents: 100000
+
+  # Working Memory
+  working_memory:
+    max_size_mb: 1024
+    eviction_policy: "lru"  # least recently used
+    persistence_enabled: true
+    persistence_path: "data/working_memory"
+
+# Security
+security:
+  max_request_size_mb: 10
+  timeout_sec: 300
+  max_context_length: 32768
+  sanitize_inputs: true
+
+# Development
+development:
+  debug: true
+  hot_reload: false
+  profile: false
+  mock_vllm: false  # Use mock responses instead of real models
