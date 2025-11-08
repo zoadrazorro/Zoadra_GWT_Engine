@@ -13,11 +13,19 @@ from gwt_engine.core.types import (
     MessageType,
     SpecialistRole,
 )
-from gwt_engine.inference.vllm_client import (
-    VLLMClient,
-    GenerationRequest,
-    GenerationResponse,
-)
+# Support both vLLM and Ollama clients
+try:
+    from gwt_engine.inference.vllm_client import (
+        VLLMClient,
+        GenerationRequest,
+        GenerationResponse,
+    )
+except ImportError:
+    VLLMClient = None
+    GenerationRequest = None
+    GenerationResponse = None
+
+from gwt_engine.inference.ollama_client import OllamaClient
 from gwt_engine.config.loader import get_models_config
 
 logger = logging.getLogger(__name__)
@@ -36,12 +44,12 @@ class CentralWorkspace:
 
     def __init__(
         self,
-        vllm_client: VLLMClient,
+        client,  # Can be VLLMClient or OllamaClient
         broadcast_threshold: float = 0.75,
         integration_window_ms: float = 500,
         max_workspace_messages: int = 10,
     ):
-        self.vllm_client = vllm_client
+        self.client = client
         self.broadcast_threshold = broadcast_threshold
         self.integration_window_ms = integration_window_ms
         self.max_workspace_messages = max_workspace_messages
@@ -100,26 +108,41 @@ class CentralWorkspace:
         prompt = self._create_integration_prompt(integration_context)
 
         try:
-            response = await self.vllm_client.generate(
-                GenerationRequest(
+            # Check if using Ollama client
+            if isinstance(self.client, OllamaClient):
+                response = await self.client.generate(
                     prompt=prompt,
                     max_tokens=512,
                     temperature=0.7,
-                    top_p=0.9,
                 )
-            )
+                response_text = response["text"]
+                tokens_generated = response.get("eval_count", 0)
+                latency_ms = response.get("total_duration", 0) / 1_000_000  # Convert ns to ms
+            else:
+                # vLLM client
+                response = await self.client.generate(
+                    GenerationRequest(
+                        prompt=prompt,
+                        max_tokens=512,
+                        temperature=0.7,
+                        top_p=0.9,
+                    )
+                )
+                response_text = response.text
+                tokens_generated = response.tokens_generated
+                latency_ms = response.latency_ms
 
             # Create broadcast message
             broadcast_message = WorkspaceMessage(
                 type=MessageType.WORKSPACE_BROADCAST,
-                content=response.text,
+                content=response_text,
                 source=SpecialistRole.CENTRAL_WORKSPACE,
                 confidence=self._calculate_integration_confidence(integration_context),
                 metadata={
                     "integration_id": self.integration_count,
                     "sources": [msg.source.value for msg in self.pending_messages],
-                    "tokens_generated": response.tokens_generated,
-                    "latency_ms": response.latency_ms,
+                    "tokens_generated": tokens_generated,
+                    "latency_ms": latency_ms,
                 },
                 priority=self._determine_broadcast_priority(integration_context),
             )

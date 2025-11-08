@@ -10,7 +10,14 @@ from gwt_engine.core.types import (
     SpecialistResponse,
     SpecialistRole,
 )
-from gwt_engine.inference.vllm_client import VLLMClient, GenerationRequest
+# Support both vLLM and Ollama clients
+try:
+    from gwt_engine.inference.vllm_client import VLLMClient, GenerationRequest
+except ImportError:
+    VLLMClient = None
+    GenerationRequest = None
+
+from gwt_engine.inference.ollama_client import OllamaClient
 
 logger = logging.getLogger(__name__)
 
@@ -26,8 +33,8 @@ class BaseSpecialist(ABC):
     - Has specialized prompting for its domain
     """
 
-    def __init__(self, vllm_client: VLLMClient, role: SpecialistRole):
-        self.vllm_client = vllm_client
+    def __init__(self, client, role: SpecialistRole):
+        self.client = client  # Can be VLLMClient or OllamaClient
         self.role = role
         self.requests_processed = 0
         self.total_processing_time_ms = 0.0
@@ -67,17 +74,27 @@ class BaseSpecialist(ABC):
     async def _generate_response(
         self, prompt: str, max_tokens: int = 512, temperature: float = 0.7
     ) -> str:
-        """Generate text response using vLLM"""
+        """Generate text response using Ollama or vLLM"""
         try:
-            response = await self.vllm_client.generate(
-                GenerationRequest(
+            # Check if using Ollama client
+            if isinstance(self.client, OllamaClient):
+                response = await self.client.generate(
                     prompt=prompt,
                     max_tokens=max_tokens,
                     temperature=temperature,
-                    top_p=0.9,
                 )
-            )
-            return response.text.strip()
+                return response["text"].strip()
+            else:
+                # vLLM client
+                response = await self.client.generate(
+                    GenerationRequest(
+                        prompt=prompt,
+                        max_tokens=max_tokens,
+                        temperature=temperature,
+                        top_p=0.9,
+                    )
+                )
+                return response.text.strip()
 
         except Exception as e:
             logger.error(f"{self.role.value} generation failed: {e}")
