@@ -30,6 +30,19 @@ class OllamaGenerationRequest:
     top_k: int = 40
     stop: Optional[List[str]] = None
     stream: bool = False
+    
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert to dictionary for JSON serialization"""
+        return {
+            "prompt": self.prompt,
+            "model": self.model,
+            "max_tokens": self.max_tokens,
+            "temperature": self.temperature,
+            "top_p": self.top_p,
+            "top_k": self.top_k,
+            "stop": self.stop,
+            "stream": self.stream,
+        }
 
 
 @dataclass
@@ -111,8 +124,11 @@ class OllamaClient:
             )
 
         except httpx.HTTPError as e:
-            logger.error(f"Ollama request failed for {self.role.value}: {e}")
+            logger.error(f"Ollama HTTP error for {self.role.value}: {e}")
             raise RuntimeError(f"Ollama request failed: {e}")
+        except Exception as e:
+            logger.error(f"Ollama generation error: {e}")
+            raise RuntimeError(f"Ollama generation failed: {e}")
 
     async def generate_chat(
         self, messages: List[Dict[str, str]], request: OllamaGenerationRequest

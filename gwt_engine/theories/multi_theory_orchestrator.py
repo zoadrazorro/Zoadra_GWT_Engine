@@ -136,10 +136,10 @@ class MultiTheoryOrchestrator:
                         relevant.append((overlap, mem))
                 
                 if relevant:
-                    # Sort by relevance and take top 3
-                    relevant.sort(reverse=True)
+                    # Sort by relevance (by overlap score) and take top 3
+                    relevant.sort(key=lambda x: x[0], reverse=True)
                     memory_context = "\n\nRELEVANT PAST INSIGHTS:\n"
-                    for i, (score, mem) in enumerate(relevant[:3], 1):
+                    for i, (overlap_score, mem) in enumerate(relevant[:3], 1):
                         memory_context += f"{i}. {mem['content'][:200]}... [Score: {mem['score']:.1f}]\n"
                     
                     input_with_memory = f"{input_content}{memory_context}"
