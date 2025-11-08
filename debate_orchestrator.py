@@ -27,8 +27,8 @@ from gwt_engine.specialists.cross_temporal_debate import (
     ActualOccasion
 )
 from gwt_engine.specialists.composer import ComposerSpecialist
-from gwt_engine.specialists.metacognition.module import MetacognitionModule
-from gwt_engine.core.workspace import Workspace
+# from gwt_engine.specialists.metacognition.module import MetacognitionModule
+# from gwt_engine.core.workspace import Workspace
 
 
 class DebateOrchestrator:
@@ -40,8 +40,8 @@ class DebateOrchestrator:
     def __init__(self):
         """Initialize the debate orchestrator with consciousness components."""
         self.composer = ComposerSpecialist()
-        self.metacognition = MetacognitionModule()
-        self.workspace = Workspace()
+        # self.metacognition = MetacognitionModule()  # Not needed for basic operation
+        # self.workspace = Workspace()  # Not needed for basic operation
 
         # Debate topics
         self.debate_topics = [
@@ -103,7 +103,7 @@ class DebateOrchestrator:
             f"Keep it to 2-3 sentences."
         )
 
-        question = self.composer.compose(
+        question = self.composer.compose_sync(
             topic=question_prompt,
             style="formal",
             max_length=200
@@ -119,7 +119,7 @@ class DebateOrchestrator:
             f"Keep it to 3-4 sentences."
         )
 
-        response = self.composer.compose(
+        response = self.composer.compose_sync(
             topic=response_prompt,
             style="formal",
             max_length=300
@@ -133,7 +133,7 @@ class DebateOrchestrator:
             f"Keep it to 2-3 sentences."
         )
 
-        elenchus = self.composer.compose(
+        elenchus = self.composer.compose_sync(
             topic=elenchus_prompt,
             style="analytical",
             max_length=200
@@ -156,7 +156,7 @@ class DebateOrchestrator:
                 f"what productive perplexity (aporia) has been reached? "
                 f"What deeper question emerges? Keep it to 1-2 sentences."
             )
-            aporia = self.composer.compose(
+            aporia = self.composer.compose_sync(
                 topic=aporia_prompt,
                 style="analytical",
                 max_length=150
@@ -190,7 +190,7 @@ class DebateOrchestrator:
             f"Format as numbered axioms. Be concise - one sentence each."
         )
 
-        axioms_text = self.composer.compose(
+        axioms_text = self.composer.compose_sync(
             topic=axioms_prompt,
             style="formal",
             max_length=300
@@ -206,7 +206,7 @@ class DebateOrchestrator:
             f"from your axioms. One sentence, starting with 'PROPOSITION:'"
         )
 
-        proposition = self.composer.compose(
+        proposition = self.composer.compose_sync(
             topic=prop_prompt,
             style="formal",
             max_length=150
@@ -219,7 +219,7 @@ class DebateOrchestrator:
             f"Keep it to 3-4 sentences. Start with 'PROOF:'"
         )
 
-        proof = self.composer.compose(
+        proof = self.composer.compose_sync(
             topic=proof_prompt,
             style="analytical",
             max_length=400
@@ -239,7 +239,7 @@ class DebateOrchestrator:
             f"'{proposition}'. One sentence."
         )
 
-        corollary = self.composer.compose(
+        corollary = self.composer.compose_sync(
             topic=corollary_prompt,
             style="formal",
             max_length=150
@@ -255,7 +255,7 @@ class DebateOrchestrator:
                 f"2-3 sentences."
             )
 
-            scholium = self.composer.compose(
+            scholium = self.composer.compose_sync(
                 topic=scholium_prompt,
                 style="narrative",
                 max_length=250
@@ -304,7 +304,7 @@ class DebateOrchestrator:
             f"3-4 sentences. Emphasize temporal flow and becoming."
         )
 
-        content = self.composer.compose(
+        content = self.composer.compose_sync(
             topic=occasion_prompt,
             style="narrative",
             max_length=350
@@ -324,7 +324,7 @@ class DebateOrchestrator:
             f"One sentence."
         )
 
-        satisfaction = self.composer.compose(
+        satisfaction = self.composer.compose_sync(
             topic=satisfaction_prompt,
             style="formal",
             max_length=150
@@ -434,7 +434,7 @@ class DebateOrchestrator:
             f"3-4 sentences."
         )
 
-        observation = self.composer.compose(
+        observation = self.composer.compose_sync(
             topic=observation_prompt,
             style="analytical",
             max_length=300

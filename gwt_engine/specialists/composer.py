@@ -407,3 +407,41 @@ Write this section with depth and originality.
             "max_tokens": self.max_tokens,
             "role": self.role.value
         }
+    
+    # Synchronous wrapper for debate orchestrator compatibility
+    def compose_sync(
+        self,
+        topic: str,
+        style: str = "formal",
+        max_length: int = 512
+    ) -> str:
+        """
+        Synchronous wrapper for compose - for compatibility with debate orchestrator
+        
+        Args:
+            topic: The prompt/topic
+            style: Writing style
+            max_length: Max tokens
+            
+        Returns:
+            Composed text
+        """
+        import asyncio
+        
+        # Run async compose in sync context
+        loop = asyncio.get_event_loop()
+        if loop.is_running():
+            # If already in async context, create new loop
+            import nest_asyncio
+            nest_asyncio.apply()
+        
+        response = loop.run_until_complete(
+            self.compose(
+                prompt=topic,
+                style=style,
+                section_type="body",
+                constraints={"word_count": max_length // 2}
+            )
+        )
+        
+        return response.content
