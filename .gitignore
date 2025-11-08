@@ -205,3 +205,27 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# GWT Engine Specific
+# Model files (large binary files)
+/models/
+*.safetensors
+*.gguf
+*.bin
+*.pt
+*.pth
+
+# Data directories
+data/
+logs/
+*.log
+
+# ChromaDB
+chroma/
+*.chroma
+
+# Ray temporary files
+/tmp/ray/
+
+# vLLM cache
+.cache/vllm/
