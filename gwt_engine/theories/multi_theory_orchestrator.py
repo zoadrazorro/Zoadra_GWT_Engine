@@ -151,10 +151,14 @@ class MultiTheoryOrchestrator:
         )
         
         # Update prediction error based on actual vs predicted
-        if prediction:
+        if prediction and input_content:
             # Simple heuristic: lower error if prediction contains key terms from input
-            prediction_error = 0.3 if any(word in prediction.lower() for word in input_content.lower().split()[:5]) else 0.7
+            input_words = input_content.lower().split()[:5]
+            prediction_error = 0.3 if input_words and any(word in prediction.lower() for word in input_words) else 0.7
             await self.predictive_processor.update_prediction_error(prediction_error)
+        else:
+            # Default moderate error if no prediction
+            await self.predictive_processor.update_prediction_error(0.5)
 
         # === Phase 5: Attention Schema Observation ===
         await self.ast_observer.observe_attention(
