@@ -29,8 +29,8 @@ hardware:
 
 models:
   central_workspace:
-    name: "llama-3.1-70b"
-    quantization: "Q4_K_M"
+    name: "Qwen/Qwen2.5-72B-Instruct"
+    quantization: "AWQ"  # Using AWQ quantization for vLLM
     vram_required_gb: 40
     role: "central_global_workspace"
     description: "Consolidates information from specialists into integrated thoughts"
@@ -42,9 +42,9 @@ models:
     workers: 1
 
   perception:
-    name: "mistral-small-22b"
-    quantization: "Q5_K_M"
-    vram_required_gb: 15
+    name: "Qwen/Qwen2.5-14B-Instruct"
+    quantization: "AWQ"
+    vram_required_gb: 8
     role: "perception_specialist"
     description: "Processes sensory/environmental data for workspace attention"
     gpu_assignment: 0
@@ -55,9 +55,9 @@ models:
     workers: 3
 
   memory:
-    name: "qwen-2.5-coder-32b"
-    quantization: "Q4_K_M"
-    vram_required_gb: 20
+    name: "Qwen/Qwen2.5-32B-Instruct"
+    quantization: "AWQ"
+    vram_required_gb: 18
     role: "memory_retrieval_specialist"
     description: "Manages episodic memory and working memory consolidation"
     gpu_assignment: 1
@@ -68,9 +68,9 @@ models:
     workers: 3
 
   planning:
-    name: "llama-3.1-8b"
-    quantization: "Q5_K_M"
-    vram_required_gb: 5
+    name: "Qwen/Qwen2.5-7B-Instruct"
+    quantization: "AWQ"
+    vram_required_gb: 4
     role: "planning_reasoning_specialist"
     description: "Decision-making and action planning"
     gpu_assignment: 1
@@ -81,9 +81,9 @@ models:
     workers: 6
 
   metacognition:
-    name: "gemma-2-9b"
-    quantization: "Q6_K_M"
-    vram_required_gb: 7
+    name: "microsoft/Phi-3.5-mini-instruct"
+    quantization: "fp16"
+    vram_required_gb: 8
     role: "metacognition_introspection_specialist"
     description: "Self-reflection and consciousness probe responses"
     gpu_assignment: 1
@@ -137,3 +137,6 @@ model_paths:
   base_dir: "/models"
   cache_dir: "/models/cache"
   download_dir: "/models/downloads"
+
+# Alternative open models (no authentication required)
+# Using Qwen2.5 series and Microsoft Phi-3.5

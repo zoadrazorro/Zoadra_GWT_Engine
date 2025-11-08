@@ -55,7 +55,7 @@ GWT posits that consciousness arises from a "global workspace" where:
 │Qwen 32B │      │Llama 8B │      │  Gemma 9B    │
 │GPU 1    │      │GPU 1    │      │  GPU 1       │
 │3 workers│      │6 workers│      │  4 workers   │
-└────┬────┘      └────┬────┘      └──────┬───────┘
+└────┬────┘      └────┬────┘      └──── ──┬───────┘
      │                │                   │
      └────────────────┴───────────────────┘
                       │
