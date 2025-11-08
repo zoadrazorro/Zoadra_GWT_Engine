@@ -49,7 +49,7 @@ class HigherOrderThoughtGenerator:
             confidence: Confidence score
         """
         first_order = {
-            "specialist": specialist.value,
+            "specialist": specialist if isinstance(specialist, str) else specialist.value,
             "content": content,
             "confidence": confidence,
             "is_conscious": False,  # Not conscious until HOT generated

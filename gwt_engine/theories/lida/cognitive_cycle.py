@@ -99,7 +99,7 @@ class LIDACognitiveController:
         """
         coalition = {
             "id": coalition_id,
-            "specialists": [s.value for s in specialists],
+            "specialists": [s if isinstance(s, str) else s.value for s in specialists],
             "content": content,
             "activation": activation_strength,
         }
@@ -202,7 +202,7 @@ class LIDACognitiveController:
 
         return {
             "cycle_count": self.cycle_count,
-            "current_phase": self.current_phase.value,
+            "current_phase": self.current_phase.value if hasattr(self.current_phase, 'value') else str(self.current_phase),
             "cycle_duration_target": self.cycle_duration_sec,
             "average_cycle_time": avg_cycle_time,
             "coalitions_current_cycle": len(self.current_coalitions),

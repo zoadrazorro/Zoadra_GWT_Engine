@@ -48,7 +48,7 @@ class AttentionSchemaObserver:
             confidence: Confidence/salience of current focus
         """
         attention_state = {
-            "active_specialists": [s.value for s in active_specialists],
+            "active_specialists": [s if isinstance(s, str) else s.value for s in active_specialists],
             "focus": workspace_focus,
             "confidence": confidence,
         }
