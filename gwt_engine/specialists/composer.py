@@ -428,12 +428,13 @@ Write this section with depth and originality.
         """
         import asyncio
         
-        # Run async compose in sync context
-        loop = asyncio.get_event_loop()
-        if loop.is_running():
-            # If already in async context, create new loop
-            import nest_asyncio
-            nest_asyncio.apply()
+        # Create new event loop for sync context
+        try:
+            loop = asyncio.get_running_loop()
+        except RuntimeError:
+            # No running loop, create new one
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
         
         response = loop.run_until_complete(
             self.compose(
