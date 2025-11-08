@@ -121,10 +121,11 @@ class MultiTheoryOrchestrator:
             confidence=perception_response.confidence,
         )
 
-        # Record activation (IIT)
+        # Record activation (IIT) - use varying confidence based on content length
+        activation_strength = min(1.0, len(perception_response.content) / 500.0)
         await self.phi_calculator.record_activation(
             "perception",
-            perception_response.confidence,
+            activation_strength,
         )
 
         # === Phase 2: Coalition Competition (LIDA) ===
@@ -148,6 +149,12 @@ class MultiTheoryOrchestrator:
             consciousness_state,
             workspace_client,
         )
+        
+        # Update prediction error based on actual vs predicted
+        if prediction:
+            # Simple heuristic: lower error if prediction contains key terms from input
+            prediction_error = 0.3 if any(word in prediction.lower() for word in input_content.lower().split()[:5]) else 0.7
+            await self.predictive_processor.update_prediction_error(prediction_error)
 
         # === Phase 5: Attention Schema Observation ===
         await self.ast_observer.observe_attention(
@@ -162,6 +169,15 @@ class MultiTheoryOrchestrator:
 
         # === Phase 6: Higher-Order Thought Generation ===
         # Generate HOT about perception
+        # Record more specialist activations for IIT
+        await self.phi_calculator.record_activation(
+            "memory",
+            0.7 + (consciousness_state.integration_coherence * 0.3),
+        )
+        await self.phi_calculator.record_activation(
+            "planning",
+            0.6 + (consciousness_state.consciousness_level * 0.4),
+        )
         hot = await self.hot_generator.generate_higher_order_thought(
             perception_response.content,
             workspace_client,

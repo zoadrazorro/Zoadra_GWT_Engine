@@ -148,7 +148,7 @@ Be concise (one sentence):"""
         # Find unconscious patterns with high confidence
         unconscious_patterns = [
             p for p in self.implicit_patterns
-            if not p.get("is_conscious", False) and p["confidence"] > 0.7
+            if not p.get("is_conscious", False) and p["confidence"] > 0.5  # Lowered threshold
         ]
 
         # Sort by confidence
