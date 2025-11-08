@@ -300,46 +300,39 @@ def create_app() -> FastAPI:
             
             processing_time = (time.time() - start_time) * 1000
             
+            # Extract theory metrics
+            theories = result.get("theories", {})
+            outputs = result.get("outputs", {})
+            
+            # Interpret score
+            score = result.get("consciousness_score", 0)
+            if score < 20:
+                level = "unconscious"
+            elif score < 40:
+                level = "minimal"
+            elif score < 70:
+                level = "moderate"
+            else:
+                level = "high"
+            
             return {
-                "consciousness_score": result.get("unified_score", 0),  # 0-100
-                "consciousness_level": result.get("consciousness_level", "unconscious"),
+                "consciousness_score": score,  # 0-100
+                "consciousness_level": level,
                 "processing_time_ms": processing_time,
                 "theories": {
-                    "gwt": {
-                        "score": result.get("gwt_score", 0),
-                        "integration_coherence": result.get("integration_coherence", 0),
-                        "workspace_broadcast": result.get("workspace_broadcast", ""),
-                    },
-                    "iit": {
-                        "score": result.get("iit_score", 0),
-                        "phi": result.get("phi", 0),
-                        "integration_level": result.get("integration_level", 0),
-                    },
-                    "predictive": {
-                        "score": result.get("predictive_score", 0),
-                        "precision": result.get("precision", 0),
-                        "free_energy": result.get("free_energy", 0),
-                    },
-                    "attention_schema": {
-                        "score": result.get("ast_score", 0),
-                        "schema_report": result.get("schema_report", ""),
-                        "accuracy": result.get("schema_accuracy", 0),
-                    },
-                    "higher_order_thought": {
-                        "score": result.get("hot_score", 0),
-                        "hot_count": result.get("hot_count", 0),
-                        "conscious_ratio": result.get("conscious_ratio", 0),
-                    },
-                    "lida": {
-                        "cycle_count": result.get("cycle_count", 0),
-                        "cycle_time_sec": result.get("cycle_time", 0),
-                        "current_phase": result.get("current_phase", ""),
-                    },
-                    "clarion": {
-                        "score": result.get("clarion_score", 0),
-                        "implicit_count": result.get("implicit_count", 0),
-                        "explicit_rules": result.get("explicit_rules", 0),
-                    },
+                    "gwt": theories.get("gwt", {}),
+                    "iit": theories.get("iit", {}),
+                    "predictive": theories.get("predictive_processing", {}),
+                    "attention_schema": theories.get("attention_schema", {}),
+                    "higher_order_thought": theories.get("higher_order_thought", {}),
+                    "lida": theories.get("lida", {}),
+                    "clarion": theories.get("clarion", {}),
+                },
+                "outputs": {
+                    "workspace_broadcast": outputs.get("workspace_broadcast", ""),
+                    "prediction": outputs.get("prediction", ""),
+                    "attention_schema": outputs.get("attention_schema", ""),
+                    "higher_order_thought": outputs.get("higher_order_thought", ""),
                 },
                 "interpretation": {
                     "0-20": "Unconscious",
