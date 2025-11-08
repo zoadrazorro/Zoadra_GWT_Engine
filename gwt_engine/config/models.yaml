@@ -29,15 +29,15 @@ hardware:
 
 models:
   central_workspace:
-    name: "Qwen/Qwen2.5-14B-Instruct"
-    quantization: "AWQ"  # Using AWQ quantization for vLLM
-    vram_required_gb: 8
+    name: "Qwen/Qwen2.5-32B-Instruct"
+    description: "Central integration and broadcasting - MAXIMUM POWER"
+    quantization: "AWQ"
+    vram_required_gb: 18
     role: "central_global_workspace"
-    description: "Consolidates information from specialists into integrated thoughts"
     gpu_assignment: 0
     tensor_parallel_size: 1
-    max_model_len: 4096
-    expected_tokens_per_sec: 65
+    max_model_len: 8192
+    expected_tokens_per_sec: 45
     priority: "critical"
     workers: 1
 
@@ -68,28 +68,28 @@ models:
     workers: 2
 
   planning:
-    name: "microsoft/Phi-3.5-mini-instruct"
-    quantization: "fp16"
+    name: "Qwen/Qwen2.5-7B-Instruct"
+    quantization: "AWQ"
     vram_required_gb: 4
     role: "planning_reasoning_specialist"
-    description: "Decision-making and action planning"
+    description: "Decision-making and action planning - UPGRADED"
     gpu_assignment: 1
     tensor_parallel_size: 1
     max_model_len: 8192
-    expected_tokens_per_sec: 110
+    expected_tokens_per_sec: 120
     priority: "medium"
     workers: 3
 
   metacognition:
-    name: "microsoft/Phi-3.5-mini-instruct"
-    quantization: "fp16"
+    name: "Qwen/Qwen2.5-7B-Instruct"
+    quantization: "AWQ"
     vram_required_gb: 4
     role: "metacognition_introspection_specialist"
-    description: "Self-reflection and consciousness probe responses"
+    description: "Self-reflection and consciousness probe responses - UPGRADED"
     gpu_assignment: 1
     tensor_parallel_size: 1
     max_model_len: 8192
-    expected_tokens_per_sec: 110
+    expected_tokens_per_sec: 120
     priority: "medium"
     workers: 2
 

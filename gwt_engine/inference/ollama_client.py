@@ -82,11 +82,11 @@ class OllamaClientPool:
     def __init__(self):
         self.clients: Dict[str, OllamaClient] = {}
         self.model_mapping = {
-            "central_workspace": "qwen2.5:14b",
-            "perception": "qwen2.5:7b",
-            "memory": "qwen2.5:14b",
-            "planning": "gemma3:12b",
-            "metacognition": "gemma3:12b",
+            "central_workspace": "qwen2.5:32b",  # UPGRADED: 32B for maximum integration power
+            "perception": "qwen2.5:14b",         # UPGRADED: 14B for better perception
+            "memory": "qwen2.5:14b",             # 14B for memory
+            "planning": "qwen2.5:7b",            # 7B for fast planning
+            "metacognition": "qwen2.5:7b",       # 7B for fast metacognition
         }
         
     async def initialize(self):
