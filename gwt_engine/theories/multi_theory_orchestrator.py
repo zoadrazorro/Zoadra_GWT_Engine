@@ -116,21 +116,21 @@ class MultiTheoryOrchestrator:
 
         # Record first-order state (HOT)
         await self.hot_generator.record_first_order_state(
-            specialist=SpecialistRole.PERCEPTION,
+            specialist="perception",
             content=perception_response.content,
             confidence=perception_response.confidence,
         )
 
         # Record activation (IIT)
         await self.phi_calculator.record_activation(
-            SpecialistRole.PERCEPTION,
+            "perception",
             perception_response.confidence,
         )
 
         # === Phase 2: Coalition Competition (LIDA) ===
         await self.lida_controller.register_coalition(
             coalition_id="perception_coalition",
-            specialists=[SpecialistRole.PERCEPTION],
+            specialists=["perception"],
             content=perception_response.content,
             activation_strength=perception_response.confidence,
         )
@@ -143,7 +143,7 @@ class MultiTheoryOrchestrator:
 
         # === Phase 4: Predictive Processing ===
         # Generate prediction about next state
-        workspace_client = self.ollama_pool.get_client(SpecialistRole.CENTRAL_WORKSPACE)
+        workspace_client = self.ollama_pool.get_client("central_workspace")
         prediction = await self.predictive_processor.generate_prediction(
             consciousness_state,
             workspace_client,
@@ -157,7 +157,7 @@ class MultiTheoryOrchestrator:
         )
 
         # Generate attention schema
-        metacog_client = self.ollama_pool.get_client(SpecialistRole.METACOGNITION)
+        metacog_client = self.ollama_pool.get_client("metacognition")
         attention_schema = await self.ast_observer.generate_attention_schema(metacog_client)
 
         # === Phase 6: Higher-Order Thought Generation ===
