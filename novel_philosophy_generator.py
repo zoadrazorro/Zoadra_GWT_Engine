@@ -47,6 +47,10 @@ from gwt_engine.specialists.novel_synthesis.dialectical_twins import (
     DialecticalTwinSystem,
     DEBATE_TOPICS
 )
+from gwt_engine.specialists.novel_synthesis.lumina_rag import (
+    LuminaRAG,
+    LuminaGroundedSynthesis
+)
 
 
 class NovelPhilosophyGenerator:
@@ -55,7 +59,8 @@ class NovelPhilosophyGenerator:
     """
 
     def __init__(self, composer=None, perplexity_api_key: Optional[str] = None,
-                 gemini_api_key: Optional[str] = None):
+                 gemini_api_key: Optional[str] = None,
+                 contemplation_lumina_file: str = "contemplation_lumina.md.pdf"):
         """
         Initialize the generator with all components.
 
@@ -63,8 +68,16 @@ class NovelPhilosophyGenerator:
             composer: Composer specialist from consciousness framework
             perplexity_api_key: Optional API key for Perplexity research
             gemini_api_key: Optional API key for Gemini synthesis
+            contemplation_lumina_file: Path to Contemplation of the Lumina markdown
         """
         self.composer = composer
+
+        # Initialize Lumina RAG system
+        self.lumina_rag = LuminaRAG(
+            memory_file="philosophical_memory.json",
+            contemplation_file=contemplation_lumina_file
+        )
+        self.lumina_grounded = LuminaGroundedSynthesis(self.lumina_rag, composer)
 
         # Initialize all sub-systems
         self.knowledge_base = MultiDomainKnowledgeBase()
@@ -80,6 +93,13 @@ class NovelPhilosophyGenerator:
 
         # Storage
         self.generation_history = []
+
+        # Display Lumina RAG stats
+        stats = self.lumina_rag.get_statistics()
+        print(f"\n[Lumina RAG Initialized]")
+        print(f"  Lumina passages: {stats.get('total_passages', 0)}")
+        print(f"  Average integration: {stats.get('average_integration_score', 0):.3f}")
+        print(f"  Unique terms indexed: {stats.get('unique_terms', 0)}")
 
     def phase1_ingest_knowledge(self, knowledge_sources: List[str]) -> Dict[str, Any]:
         """
@@ -155,16 +175,16 @@ class NovelPhilosophyGenerator:
 
     def phase3_adversarial_dialectic(self, topics: List[str]) -> List[Dict[str, Any]]:
         """
-        Phase 3: Run adversarial dialectics on key questions.
+        Phase 3: Run adversarial dialectics on key questions (with Lumina grounding).
 
         Args:
             topics: Philosophical questions to explore
 
         Returns:
-            List of dialectical syntheses
+            List of dialectical syntheses (Lumina-grounded)
         """
         print("\n" + "="*80)
-        print("PHASE 3: ADVERSARIAL DIALECTICAL SYNTHESIS")
+        print("PHASE 3: ADVERSARIAL DIALECTICAL SYNTHESIS (Lumina-Grounded)")
         print("="*80 + "\n")
 
         syntheses = []
@@ -177,14 +197,27 @@ class NovelPhilosophyGenerator:
             print(f"Topic: {topic}")
             print('='*60)
 
+            # Run adversarial dialectic
             synthesis = self.adversarial_dialectic.run_full_dialectic(
                 topic=topic,
                 domain_knowledge=domain_knowledge[:5]  # Sample
             )
 
-            syntheses.append(synthesis.to_dict())
+            # Ground synthesis in Lumina framework
+            print(f"\n[Grounding synthesis in Lumina framework...]")
+            lumina_grounded_synthesis = self.lumina_grounded.generate_lumina_informed_synthesis(
+                thesis=synthesis.thesis.to_dict(),
+                antithesis=synthesis.antithesis.to_dict(),
+                topic=topic
+            )
 
-        print(f"\nCompleted {len(syntheses)} adversarial syntheses")
+            # Merge original synthesis with Lumina grounding
+            synthesis_dict = synthesis.to_dict()
+            synthesis_dict['lumina_grounding'] = lumina_grounded_synthesis.get('lumina_foundation', {})
+
+            syntheses.append(synthesis_dict)
+
+        print(f"\nCompleted {len(syntheses)} Lumina-grounded adversarial syntheses")
 
         return syntheses
 
